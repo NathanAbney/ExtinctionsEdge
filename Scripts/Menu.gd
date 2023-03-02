@@ -10,6 +10,9 @@ func _on_start_pressed():
 	$Menu.visible = false
 	$StartMenu.visible = true
 
+func _physics_process(delta):
+	$Path2D/PathFollow2D.progress = $Path2D/PathFollow2D.progress + .5
+
 func _on_options_pressed():
 	pass # Options go here
 
