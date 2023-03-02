@@ -28,7 +28,7 @@ func _on_area_2d_area_entered(area):
 	health = health - 1
 	$Life.update(health)
 	if health == 0:
-		queue_free()
+		die()
 
 func _on_hurt_timeout():
 	hurt = false
@@ -50,3 +50,17 @@ func _on_timer_timeout():
 	fire.position.x = global_position.x + h
 	fire.position.y = global_position.y + y
 	fire.velocity = global_position.direction_to(player.global_position) * 250
+
+func die():
+	$Area2D.queue_free()
+	$CollisionShape2D.queue_free()
+	$Life.queue_free()
+	$Timer.queue_free()
+	$Sprite2D.visible = false
+	$Particles.emitting = true
+	$Shadow.visible = false
+	$DeathTimer.start()
+
+
+func _on_death_timer_timeout():
+	queue_free

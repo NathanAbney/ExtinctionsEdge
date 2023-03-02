@@ -33,11 +33,22 @@ func _on_area_2d_area_entered(area):
 	health = health - 1
 	$Life.update(health)
 	if health == 0:
-		queue_free()
+		die()
 
 func _on_hurt_timeout():
 	hurt = false
 
 func _on_activation_area_area_entered(area):
-	print("Entered")
 	activated = true
+
+func die():
+	$Area2D.queue_free()
+	$CollisionShape2D.queue_free()
+	$Life.queue_free()
+	$Sprite2D.visible = false
+	$Shadow.visible = false
+	$Particles.emitting = true
+	$DeathTimer.start()
+
+func _on_death_timer_timeout():
+	queue_free()

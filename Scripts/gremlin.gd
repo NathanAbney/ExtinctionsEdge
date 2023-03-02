@@ -27,7 +27,18 @@ func check_route():
 		target = player.global_position
 
 func _on_area_2d_area_entered(area):
-	queue_free()
+	die()
 
 func _on_activation_area_area_entered(area):
 	activated = true
+
+func die():
+	$Area2D.queue_free()
+	$CollisionShape2D.queue_free()
+	$Sprite2D.visible = false
+	$Particles.emitting = true
+	$Shadow.visible = false
+	$DeathTimer.start()
+
+func _on_death_timer_timeout():
+	queue_free()

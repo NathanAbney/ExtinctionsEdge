@@ -1,2 +1,13 @@
 res://Scenes/main_menu.tscn
-res://Scripts/Menu.gd
+res://Scenes/fire.tscn
+res://Scripts/fire.gd
+res://Scenes/FlameLash.tscn
+res://Scripts/FlameLash.gd
+res://Scenes/game_level.tscn
+res://Scenes/sorcerer.tscn
+res://Scripts/sorcerer.gd
+res://Scenes/goblin.tscn
+res://Scripts/goblin.gd
+res://Scenes/gremlin.tscn
+res://Scripts/gremlin.gd
+res://Scenes/player_1.tscn
