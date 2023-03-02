@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://cix2bd3iypu2p"]
+
+[node name="Game Over" type="Node2D"]
+
+[node name="Panel" type="Panel" parent="."]
+offset_left = 1275.0
+offset_top = 844.0
+offset_right = 1342.0
+offset_bottom = 892.0
+scale = Vector2(-30.7622, -28.7306)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.286, 0.286)
+
+[node name="Label" type="Label" parent="Sprite2D"]
+offset_left = -418.0
+offset_top = -232.0
+offset_right = 396.0
+offset_bottom = -17.0
+theme_override_font_sizes/font_size = 155
+text = "Game over"

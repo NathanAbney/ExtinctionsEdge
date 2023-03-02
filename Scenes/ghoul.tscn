@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://ccxvl0403b63"]
+
+[ext_resource type="Script" path="res://Scripts/ghoul.gd" id="1_1ub7i"]
+[ext_resource type="Texture2D" uid="uid://bjeghg8gb06c0" path="res://Sprites/Light.png" id="2_fqcct"]
+[ext_resource type="Texture2D" uid="uid://dqtveq4llwknv" path="res://Sprites/0x72_DungeonTilesetII_v1.4.png" id="3_urq52"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dpmbe"]
+size = Vector2(11, 15)
+
+[node name="Ghoul" type="CharacterBody2D"]
+collision_layer = 64
+collision_mask = 0
+script = ExtResource("1_1ub7i")
+
+[node name="Shadow" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(1, 16)
+scale = Vector2(0.024, 0.00400001)
+texture = ExtResource("2_fqcct")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.301961)
+position = Vector2(1, -4)
+rotation = 0.0349066
+texture = ExtResource("3_urq52")
+hframes = 32
+vframes = 16
+frame = 8
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 64
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0.5, 4.5)
+rotation = 0.0349066
+shape = SubResource("RectangleShape2D_dpmbe")

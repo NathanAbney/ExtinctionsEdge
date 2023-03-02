@@ -1,0 +1,161 @@
+[gd_scene load_steps=15 format=3 uid="uid://1qks2f2p4xxf"]
+
+[ext_resource type="Script" path="res://Scripts/boss1.gd" id="1_nqmcu"]
+[ext_resource type="Texture2D" uid="uid://dqtveq4llwknv" path="res://Sprites/0x72_DungeonTilesetII_v1.4.png" id="2_0trs6"]
+[ext_resource type="Script" path="res://Scripts/BossLife.gd" id="3_me61r"]
+[ext_resource type="Texture2D" uid="uid://wshs4jur2tgo" path="res://Sprites/HealthBar20.png" id="4_j7epn"]
+[ext_resource type="Texture2D" uid="uid://bjeghg8gb06c0" path="res://Sprites/Light.png" id="5_hwsjq"]
+[ext_resource type="PackedScene" uid="uid://c1i8dkcvrsp14" path="res://Scenes/Magic8.tscn" id="6_hp2uk"]
+[ext_resource type="Script" path="res://Scripts/Path2D.gd" id="6_ryh56"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dpmbe"]
+size = Vector2(11, 14)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lw5ja"]
+size = Vector2(13, 16)
+
+[sub_resource type="Animation" id="Animation_nnhpy"]
+length = 0.35
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [136, 137, 138, 139]
+}
+
+[sub_resource type="Animation" id="Animation_1dg1r"]
+resource_name = "Walking"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [218, 219, 220, 221, 222]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2ian5"]
+_data = {
+"RESET": SubResource("Animation_nnhpy"),
+"Walking": SubResource("Animation_1dg1r")
+}
+
+[sub_resource type="Curve2D" id="Curve2D_0ys1r"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 75, -50, 0, 0, 0, 0, -75, -50, 0, 0, 0, 0, -75, 50, 0, 0, 0, 0, 75, 50, 0, 0, 0, 0, 75, -50)
+}
+point_count = 5
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_eh4k5"]
+radius = 173.349
+
+[node name="Wizard Boss" type="CharacterBody2D" groups=["enemy"]]
+collision_layer = 16
+collision_mask = 19
+script = ExtResource("1_nqmcu")
+
+[node name="Shadow" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(0, 16)
+scale = Vector2(0.033, 0.00900001)
+texture = ExtResource("5_hwsjq")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_0trs6")
+hframes = 32
+vframes = 16
+frame = 136
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 8)
+shape = SubResource("RectangleShape2D_dpmbe")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-0.5, 8)
+shape = SubResource("RectangleShape2D_lw5ja")
+
+[node name="Life" type="Container" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("3_me61r")
+
+[node name="HealthBar" type="Sprite2D" parent="Life"]
+position = Vector2(1.13687e-13, -16)
+scale = Vector2(2.81818, 2.25)
+texture = ExtResource("4_j7epn")
+vframes = 20
+
+[node name="Hurt" type="Timer" parent="."]
+wait_time = 0.3
+
+[node name="Attack" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="FlameTimer" type="Timer" parent="."]
+wait_time = 0.7
+one_shot = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Sprite2D")
+autoplay = "RESET"
+libraries = {
+"": SubResource("AnimationLibrary_2ian5")
+}
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+scale = Vector2(0.5, 0.5)
+color = Color(0.407843, 0, 0.407843, 1)
+energy = 0.5
+texture = ExtResource("5_hwsjq")
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_0ys1r")
+script = ExtResource("6_ryh56")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+position = Vector2(75, -50)
+rotation = 3.14159
+rotates = false
+
+[node name="Magic8" parent="Path2D/PathFollow2D" instance=ExtResource("6_hp2uk")]
+position = Vector2(0, 1)
+rotation = 3.14159
+
+[node name="PathFollow2D2" type="PathFollow2D" parent="Path2D"]
+position = Vector2(-75, 50)
+rotation = 1.5708
+progress = 250.0
+rotates = false
+
+[node name="Magic9" parent="Path2D/PathFollow2D2" instance=ExtResource("6_hp2uk")]
+rotation = 3.14159
+
+[node name="ActivationBox" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ActivationBox"]
+shape = SubResource("CircleShape2D_eh4k5")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="timeout" from="Hurt" to="." method="_on_hurt_timeout"]
+[connection signal="timeout" from="Attack" to="." method="_on_attack_timeout"]
+[connection signal="timeout" from="FlameTimer" to="." method="_on_flame_timer_timeout"]
+[connection signal="area_entered" from="ActivationBox" to="." method="_on_activation_box_area_entered"]
