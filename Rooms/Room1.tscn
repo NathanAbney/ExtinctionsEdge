@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Rooms/Room1.gd" id="1_yftfx"]
 [ext_resource type="Texture2D" uid="uid://dqtveq4llwknv" path="res://Sprites/0x72_DungeonTilesetII_v1.4.png" id="2_dxeaf"]
-[ext_resource type="PackedScene" uid="uid://b2ku3pda1i3ns" path="res://Scenes/player_1.tscn" id="3_rgild"]
+[ext_resource type="PackedScene" uid="uid://ctxnlmnyr30mm" path="res://Scenes/player_1.tscn" id="3_rgild"]
 [ext_resource type="PackedScene" uid="uid://buawbm3ybmojk" path="res://Scenes/stairs.tscn" id="4_aqmk7"]
 [ext_resource type="PackedScene" path="res://Scenes/potion.tscn" id="5_alew1"]
 
@@ -1656,7 +1656,7 @@ layer_2/tile_data = PackedInt32Array()
 [node name="Player1" parent="." groups=["player"] instance=ExtResource("3_rgild")]
 position = Vector2(-536, 22)
 
-[node name="CanvasModulate" type="CanvasModulate" parent="."]
+[node name="Darken" type="CanvasModulate" parent="."]
 color = Color(0.294118, 0.294118, 0.294118, 1)
 
 [node name="Stairs" parent="." instance=ExtResource("4_aqmk7")]

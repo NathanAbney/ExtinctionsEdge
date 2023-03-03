@@ -1,6 +1,12 @@
 Timer
+Label
+CanvasModulate
+Node2D
+Node
+ColorRect
+VBoxContainer
+Control
 AnimationPlayer
 AnimationTree
-ColorRect
 PathFollow2D
 Path2D

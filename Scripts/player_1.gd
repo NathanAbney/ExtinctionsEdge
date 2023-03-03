@@ -3,6 +3,7 @@ extends CharacterBody2D
 @export var move_speed : float = 80
 @export var health : int = 6
 @export var hurt = false
+@export var noshoot = false
 
 signal dead
 
@@ -10,12 +11,11 @@ signal dead
 @onready var state_machine = animation_tree.get("parameters/playback")
 
 func _ready():
+	$Fade.visible = true
 	$TransitionPlayer.play("Fade_In")
 	sethealth(Global.health)
-	$Fade.visible = true
 	if Global.dino != null:
 		$Sprite2D.texture = Global.dino
-
 
 func _physics_process(_delta):
 	if (!hurt):
@@ -38,8 +38,11 @@ func _physics_process(_delta):
 		if velocity == Vector2.ZERO:
 			state_machine.travel("idle")
 		
-		if (Input.is_action_just_pressed("Click")):
+		if (Input.is_action_just_pressed("Click") and !noshoot):
 			shoot();
+		
+		if(Input.is_action_just_pressed("esc")):
+			pause()
 		
 		move_and_slide()
 	$Wand.look_at(get_global_mouse_position())
@@ -79,3 +82,13 @@ func speedboost():
 func _on_speed_timeout():
 	print("reset")
 	move_speed = 80
+
+func pause():
+	noshoot = true
+	$"Shoot Timer".start()
+	$Control.visible = true
+	get_parent().get_tree().paused = true
+
+
+func _on_shoot_timer_timeout():
+	noshoot = false

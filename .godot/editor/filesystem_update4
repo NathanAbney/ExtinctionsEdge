@@ -9,8 +9,6 @@ res://Scenes/sorcerer.tscn
 res://Scenes/gremlin.tscn
 res://Scenes/goblin.tscn
 res://Rooms/Room1.tscn
-res://Rooms/Room1.gd
 res://Rooms/Room2.tscn
-res://Rooms/Room3.gd
 res://Rooms/Room3.tscn
-res://Scripts/Menu.gd
+res://Scripts/Pause.gd
