@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://b2ku3pda1i3ns"]
+[gd_scene load_steps=33 format=3 uid="uid://b2ku3pda1i3ns"]
 
 [ext_resource type="Script" path="res://Scripts/player_1.gd" id="1_8jlmc"]
 [ext_resource type="Texture2D" uid="uid://lp8dg4vhphcr" path="res://Sprites/DinoSprites - vita.png" id="1_yguhk"]
@@ -146,6 +146,97 @@ transitions = ["walk", "stop_walk", SubResource("AnimationNodeStateMachineTransi
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t7uql"]
 size = Vector2(18.7581, 19.3332)
 
+[sub_resource type="Animation" id="Animation_yytmo"]
+resource_name = "Fade_out"
+length = 0.2
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Fade:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(0, 0, 0, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Fade:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_x7idb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Fade:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Fade:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_k67k3"]
+resource_name = "Fade_In"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Fade:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Fade:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2d5r0"]
+_data = {
+"Fade_In": SubResource("Animation_k67k3"),
+"Fade_out": SubResource("Animation_yytmo"),
+"RESET": SubResource("Animation_x7idb")
+}
+
 [node name="Player1" type="CharacterBody2D"]
 collision_mask = 130
 script = ExtResource("1_8jlmc")
@@ -252,6 +343,18 @@ position_smoothing_enabled = true
 position = Vector2(-2, 0)
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("5_k6vjt")
+
+[node name="Fade" type="ColorRect" parent="."]
+offset_left = -892.0
+offset_top = -508.0
+offset_right = 912.0
+offset_bottom = 551.0
+color = Color(0, 0, 0, 1)
+
+[node name="TransitionPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_2d5r0")
+}
 
 [connection signal="timeout" from="Hurt" to="." method="_on_hurt_timeout"]
 [connection signal="timeout" from="Speed" to="." method="_on_speed_timeout"]

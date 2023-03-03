@@ -15,6 +15,10 @@ func _on_player_1_dead():
 	get_tree().change_scene_to_file(\"res://Scenes/game_over.tscn\")
 
 func next_level():
+	$Player1/TransitionPlayer.play(\"Fade_out\")
+	$Timer.start()
+
+func _on_timer_timeout():
 	rng.randomize()
 	var room = rng.randi_range(0,1)
 	if room == 0:
@@ -2792,4 +2796,9 @@ position = Vector2(-648, 24)
 [node name="Trap5" parent="Traps" instance=ExtResource("5_lyw8l")]
 position = Vector2(-568, -8)
 
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
 [connection signal="dead" from="Player1" to="." method="_on_player_1_dead"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

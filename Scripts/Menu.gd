@@ -11,7 +11,7 @@ func _on_start_pressed():
 	$StartMenu.visible = true
 
 func _physics_process(delta):
-	$Path2D/PathFollow2D.progress = $Path2D/PathFollow2D.progress + .5
+	$Path2D/PathFollow2D.progress = $Path2D/PathFollow2D.progress + 25 * delta
 
 func _on_options_pressed():
 	pass # Options go here
@@ -39,4 +39,9 @@ func _on_green_dino_pressed():
 
 func _on_begin_pressed():
 	Global.health = 6
+	$Fade.visible = true
+	$TransitionPlayer.play("Fade_out")
+	$FadeTimer.start()
+
+func _on_fade_timer_timeout():
 	get_tree().change_scene_to_file("res://Rooms/Room1.tscn")

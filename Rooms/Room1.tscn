@@ -1669,4 +1669,9 @@ position = Vector2(-360, 24)
 
 [node name="Monsters" type="Node" parent="."]
 
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
 [connection signal="dead" from="Player1" to="." method="_on_player_1_dead"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

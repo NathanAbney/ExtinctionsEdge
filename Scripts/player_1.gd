@@ -10,7 +10,9 @@ signal dead
 @onready var state_machine = animation_tree.get("parameters/playback")
 
 func _ready():
+	$TransitionPlayer.play("Fade_In")
 	sethealth(Global.health)
+	$Fade.visible = true
 	if Global.dino != null:
 		$Sprite2D.texture = Global.dino
 
