@@ -4,6 +4,7 @@ extends CharacterBody2D
 @export var health : int = 6
 @export var hurt = false
 @export var noshoot = false
+@export var noshoot2 = false
 
 signal dead
 
@@ -41,6 +42,9 @@ func _physics_process(_delta):
 		if (Input.is_action_just_pressed("Click") and !noshoot):
 			shoot();
 		
+		if (Input.is_action_just_pressed("Space") and !noshoot2):
+			shoot2();
+		
 		if(Input.is_action_just_pressed("esc")):
 			pause()
 		
@@ -67,6 +71,13 @@ func shoot():
 	bullet.velocity.y = (get_global_mouse_position().y- bullet.position.y) * 2
 	bullet.z_index = -1
 
+func shoot2():
+	noshoot2 = true
+	var bullet = preload("res://Scenes/earth_move.tscn").instantiate()
+	get_parent().add_child(bullet)
+	bullet.position = global_position
+	$"Shoot Timer 2".start()
+
 func _on_area_2d_area_entered(area):
 	if !hurt:
 		take_damage()
@@ -89,6 +100,9 @@ func pause():
 	$Control.visible = true
 	get_parent().get_tree().paused = true
 
-
 func _on_shoot_timer_timeout():
 	noshoot = false
+
+func _on_shoot_timer_2_timeout():
+	$Regain.emitting = true
+	noshoot2 = false

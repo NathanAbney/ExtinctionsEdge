@@ -23,7 +23,7 @@ func _physics_process(delta):
 		move_and_slide()
 
 func check_route():
-	if global_position.distance_to(target) <= 500:
+	if global_position.distance_to(target) <= 50000:
 		target = player.global_position
 
 func _on_area_2d_area_entered(area):
