@@ -1,16 +1,2 @@
-res://Scenes/boss2.tscn
-res://Scripts/BossLife.gd
-res://Scripts/boss2.gd
-res://Rooms/Boss2.tscn
 res://Scenes/main_menu.tscn
-res://Rooms/Boss1.tscn
-res://Scenes/player_1.tscn
-res://Scenes/boss1.tscn
-res://Scenes/gremlin.tscn
-res://Scenes/mushroom_tiny.tscn
-res://Scripts/mushroom_tiny.gd
-res://Scenes/mushroom_medium.tscn
-res://Scripts/mushroom_medium.gd
-res://Scenes/mushroom_spawner.tscn
-res://Scripts/mushroom_spawner.gd
-res://Scripts/WizardLife.gd
+res://Scripts/Menu.gd

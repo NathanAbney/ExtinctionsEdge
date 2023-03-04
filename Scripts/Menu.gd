@@ -5,6 +5,9 @@ func _ready():
 	$StartMenu/Dinos/BlueDino.disabled = true
 	$StartMenu/Dinos/RedDino.disabled = true
 	$StartMenu/Dinos/YellowDino.disabled = true
+	
+	#grab focus of the start button
+	$Menu/Start.grab_focus()
 
 func _on_start_pressed():
 	$Menu.visible = false
