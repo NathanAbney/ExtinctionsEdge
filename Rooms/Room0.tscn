@@ -1,9 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://bbpg72n1agu5d"]
+[gd_scene load_steps=11 format=3]
 
 [ext_resource type="Texture2D" uid="uid://dqtveq4llwknv" path="res://Sprites/0x72_DungeonTilesetII_v1.4.png" id="2_xkoyr"]
 [ext_resource type="PackedScene" uid="uid://ctxnlmnyr30mm" path="res://Scenes/player_1.tscn" id="3_6pgvl"]
 [ext_resource type="PackedScene" uid="uid://buawbm3ybmojk" path="res://Scenes/stairs.tscn" id="4_iccoa"]
-[ext_resource type="Shader" path="res://Rooms/Boss2.gdshader" id="4_ren4q"]
+[ext_resource type="Shader" path="res://Shaders/Fog.gdshader" id="4_ren4q"]
 
 [sub_resource type="GDScript" id="GDScript_52s8u"]
 script/source = "extends Node2D

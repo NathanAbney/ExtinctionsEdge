@@ -1,12 +1,13 @@
-[gd_scene load_steps=13 format=3 uid="uid://ddj7dnpeeamnu"]
+[gd_scene load_steps=14 format=3 uid="uid://c518kiuetrkiq"]
 
 [ext_resource type="Script" path="res://Rooms/Room2.gd" id="1_yadmt"]
 [ext_resource type="Texture2D" uid="uid://dqtveq4llwknv" path="res://Sprites/0x72_DungeonTilesetII_v1.4.png" id="2_4d0pm"]
 [ext_resource type="PackedScene" uid="uid://ctxnlmnyr30mm" path="res://Scenes/player_1.tscn" id="3_keuci"]
 [ext_resource type="PackedScene" uid="uid://buawbm3ybmojk" path="res://Scenes/stairs.tscn" id="4_iyj30"]
+[ext_resource type="PackedScene" uid="uid://bmtonylm38np2" path="res://Scenes/coin.tscn" id="5_dogfj"]
 [ext_resource type="PackedScene" uid="uid://7aiah756c005" path="res://Scenes/trap.tscn" id="5_lyw8l"]
 [ext_resource type="PackedScene" uid="uid://ccxvl0403b63" path="res://Scenes/ghoul.tscn" id="6_ajp56"]
-[ext_resource type="Shader" path="res://Rooms/Boss2.gdshader" id="7_ngyr4"]
+[ext_resource type="Shader" path="res://Shaders/Fog.gdshader" id="7_ngyr4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sxuaj"]
 texture = ExtResource("2_4d0pm")
@@ -2755,6 +2756,39 @@ position = Vector2(-776, 24)
 position = Vector2(-552, -168)
 
 [node name="Items" type="Node" parent="."]
+
+[node name="Coin" parent="Items" instance=ExtResource("5_dogfj")]
+position = Vector2(-600, 24)
+
+[node name="Coin2" parent="Items" instance=ExtResource("5_dogfj")]
+position = Vector2(-696, 8)
+
+[node name="Coin3" parent="Items" instance=ExtResource("5_dogfj")]
+position = Vector2(-536, 104)
+
+[node name="Coin4" parent="Items" instance=ExtResource("5_dogfj")]
+position = Vector2(-536, 183)
+
+[node name="Coin5" parent="Items" instance=ExtResource("5_dogfj")]
+position = Vector2(-552, 183)
+
+[node name="Coin6" parent="Items" instance=ExtResource("5_dogfj")]
+position = Vector2(-472, 8)
+
+[node name="Coin7" parent="Items" instance=ExtResource("5_dogfj")]
+position = Vector2(-441, 24)
+
+[node name="Coin8" parent="Items" instance=ExtResource("5_dogfj")]
+position = Vector2(-424, 24)
+
+[node name="Coin9" parent="Items" instance=ExtResource("5_dogfj")]
+position = Vector2(-313, 7)
+
+[node name="Coin10" parent="Items" instance=ExtResource("5_dogfj")]
+position = Vector2(-552, -73)
+
+[node name="Coin11" parent="Items" instance=ExtResource("5_dogfj")]
+position = Vector2(-536, -153)
 
 [node name="Monsters" type="Node" parent="."]
 
