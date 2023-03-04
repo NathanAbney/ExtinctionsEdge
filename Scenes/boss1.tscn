@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/boss1.gd" id="1_nqmcu"]
 [ext_resource type="Texture2D" uid="uid://dqtveq4llwknv" path="res://Sprites/0x72_DungeonTilesetII_v1.4.png" id="2_0trs6"]
-[ext_resource type="Script" path="res://Scripts/BossLife.gd" id="3_me61r"]
+[ext_resource type="Script" path="res://Scripts/WizardLife.gd" id="4_03igs"]
 [ext_resource type="Texture2D" uid="uid://wshs4jur2tgo" path="res://Sprites/HealthBar20.png" id="4_j7epn"]
 [ext_resource type="Texture2D" uid="uid://bjeghg8gb06c0" path="res://Sprites/Light.png" id="5_hwsjq"]
 [ext_resource type="PackedScene" uid="uid://c1i8dkcvrsp14" path="res://Scenes/Magic8.tscn" id="6_hp2uk"]
@@ -60,7 +60,7 @@ _data = {
 point_count = 5
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_eh4k5"]
-radius = 173.349
+radius = 253.0
 
 [node name="Wizard Boss" type="CharacterBody2D" groups=["enemy"]]
 collision_layer = 16
@@ -94,7 +94,7 @@ shape = SubResource("RectangleShape2D_lw5ja")
 [node name="Life" type="Container" parent="."]
 offset_right = 40.0
 offset_bottom = 40.0
-script = ExtResource("3_me61r")
+script = ExtResource("4_03igs")
 
 [node name="HealthBar" type="Sprite2D" parent="Life"]
 position = Vector2(1.13687e-13, -16)

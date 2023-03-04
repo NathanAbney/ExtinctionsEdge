@@ -27,7 +27,7 @@ func attack(move : int):
 			$Sprite2D.flip_h = true
 		else:
 			$Sprite2D.flip_h = false
-		for i in range(10):
+		for i in range(5):
 			var summon = preload("res://Scenes/gremlin.tscn").instantiate()
 			get_parent().add_child(summon)
 			summon.position.x = global_position.x + rng.randf_range(5,80)
@@ -47,6 +47,7 @@ func _on_area_2d_area_entered(area):
 	$Life.update(health)
 	if health == 0:
 		queue_free()
+		get_parent().get_parent().next_level()
 	if health == 20:
 		global_position.x = global_position.x + rng.randf_range(5,90)
 		global_position.y = global_position.y + rng.randf_range(5,90)
@@ -70,6 +71,6 @@ func _on_flame_timer_timeout():
 	if mana == 0:
 		$Attack.start()
 
-
 func _on_activation_box_area_entered(area):
+	get_parent().get_parent().camera_zoom()
 	active = true
