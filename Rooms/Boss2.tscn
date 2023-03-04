@@ -1,6 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://dsydyn4uhfv14"]
+[gd_scene load_steps=14 format=3 uid="uid://dsydyn4uhfv14"]
 
 [ext_resource type="Script" path="res://Rooms/Boss1.gd" id="1_3j4rd"]
+[ext_resource type="Shader" path="res://Rooms/Boss2.gdshader" id="1_xeq45"]
 [ext_resource type="Texture2D" uid="uid://dqtveq4llwknv" path="res://Sprites/0x72_DungeonTilesetII_v1.4.png" id="2_fbrky"]
 [ext_resource type="PackedScene" uid="uid://ctxnlmnyr30mm" path="res://Scenes/player_1.tscn" id="3_8d6n3"]
 [ext_resource type="PackedScene" path="res://Scenes/potion.tscn" id="4_gfydd"]
@@ -2681,6 +2682,22 @@ physics_layer_0/collision_mask = 17
 physics_layer_1/collision_layer = 128
 sources/0 = SubResource("TileSetAtlasSource_sxuaj")
 
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_2w3oi"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_rcfwm"]
+seamless = true
+noise = SubResource("FastNoiseLite_2w3oi")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_icgu1"]
+shader = ExtResource("1_xeq45")
+shader_parameter/octaves = 4
+shader_parameter/starting_amplitude = 0.5
+shader_parameter/starting_frequency = 1.0
+shader_parameter/shift = -0.189
+shader_parameter/velocity = Vector2(0.01, 0.01)
+shader_parameter/fog_color = Vector4(0, 0, 0, 0.8)
+shader_parameter/noise = SubResource("NoiseTexture2D_rcfwm")
+
 [node name="Mushroom Boss Room" type="Node2D"]
 script = ExtResource("1_3j4rd")
 
@@ -2757,6 +2774,15 @@ position = Vector2(358, -185)
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.2
 one_shot = true
+
+[node name="Fog" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_icgu1")
+offset_left = -1102.0
+offset_top = -378.0
+offset_right = -1056.0
+offset_bottom = -329.0
+scale = Vector2(43.299, 18.6759)
+color = Color(1, 1, 1, 0.141176)
 
 [connection signal="dead" from="Player1" to="." method="_on_player_1_dead"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

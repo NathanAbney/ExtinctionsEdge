@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://bbpg72n1agu5d"]
+[gd_scene load_steps=11 format=3 uid="uid://bbpg72n1agu5d"]
 
 [ext_resource type="Texture2D" uid="uid://dqtveq4llwknv" path="res://Sprites/0x72_DungeonTilesetII_v1.4.png" id="2_xkoyr"]
 [ext_resource type="PackedScene" uid="uid://ctxnlmnyr30mm" path="res://Scenes/player_1.tscn" id="3_6pgvl"]
 [ext_resource type="PackedScene" uid="uid://buawbm3ybmojk" path="res://Scenes/stairs.tscn" id="4_iccoa"]
+[ext_resource type="Shader" path="res://Rooms/Boss2.gdshader" id="4_ren4q"]
 
 [sub_resource type="GDScript" id="GDScript_52s8u"]
 script/source = "extends Node2D
@@ -2697,6 +2698,22 @@ physics_layer_0/collision_mask = 17
 physics_layer_1/collision_layer = 128
 sources/0 = SubResource("TileSetAtlasSource_sxuaj")
 
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_0md6o"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_val7s"]
+seamless = true
+noise = SubResource("FastNoiseLite_0md6o")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5cgsm"]
+shader = ExtResource("4_ren4q")
+shader_parameter/octaves = 4
+shader_parameter/starting_amplitude = 0.5
+shader_parameter/starting_frequency = 1.0
+shader_parameter/shift = -0.189
+shader_parameter/velocity = Vector2(0.01, 0.01)
+shader_parameter/fog_color = Vector4(0, 0, 0, 0.8)
+shader_parameter/noise = SubResource("NoiseTexture2D_val7s")
+
 [node name="Room0" type="Node2D"]
 script = SubResource("GDScript_52s8u")
 
@@ -2755,6 +2772,15 @@ position = Vector2(-360, 88)
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.2
 one_shot = true
+
+[node name="Fog" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_5cgsm")
+offset_left = -1102.0
+offset_top = -378.0
+offset_right = -1056.0
+offset_bottom = -329.0
+scale = Vector2(43.299, 18.6759)
+color = Color(1, 1, 1, 0.141176)
 
 [connection signal="dead" from="Player1" to="." method="_on_player_1_dead"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

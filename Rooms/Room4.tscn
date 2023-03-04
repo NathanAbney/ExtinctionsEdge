@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dcqtvtbu47jnx"]
+[gd_scene load_steps=16 format=3 uid="uid://dcqtvtbu47jnx"]
 
 [ext_resource type="Texture2D" uid="uid://dqtveq4llwknv" path="res://Sprites/0x72_DungeonTilesetII_v1.4.png" id="1_8gqhn"]
 [ext_resource type="PackedScene" uid="uid://ctxnlmnyr30mm" path="res://Scenes/player_1.tscn" id="2_okkyx"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://cr7uabtswvwym" path="res://Scenes/goblin.tscn" id="6_carx7"]
 [ext_resource type="PackedScene" uid="uid://iplfwjqi3ppk" path="res://Scenes/sorcerer.tscn" id="7_evh2s"]
 [ext_resource type="PackedScene" uid="uid://cd4ar3jmgtrg8" path="res://Scenes/gremlin.tscn" id="8_knvas"]
+[ext_resource type="Shader" path="res://Rooms/Boss2.gdshader" id="9_m2ajq"]
 
 [sub_resource type="GDScript" id="GDScript_52s8u"]
 script/source = "extends Node2D
@@ -2702,6 +2703,22 @@ physics_layer_0/collision_mask = 17
 physics_layer_1/collision_layer = 128
 sources/0 = SubResource("TileSetAtlasSource_sxuaj")
 
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_8ccoi"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_1gbo1"]
+seamless = true
+noise = SubResource("FastNoiseLite_8ccoi")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xwk2c"]
+shader = ExtResource("9_m2ajq")
+shader_parameter/octaves = 4
+shader_parameter/starting_amplitude = 0.5
+shader_parameter/starting_frequency = 1.0
+shader_parameter/shift = -0.189
+shader_parameter/velocity = Vector2(0.01, 0.01)
+shader_parameter/fog_color = Vector4(0, 0, 0, 0.8)
+shader_parameter/noise = SubResource("NoiseTexture2D_1gbo1")
+
 [node name="Room0" type="Node2D"]
 script = SubResource("GDScript_52s8u")
 
@@ -2809,6 +2826,15 @@ position = Vector2(100, 38)
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.2
 one_shot = true
+
+[node name="Fog" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_xwk2c")
+offset_left = -1102.0
+offset_top = -378.0
+offset_right = -1056.0
+offset_bottom = -329.0
+scale = Vector2(43.299, 18.6759)
+color = Color(1, 1, 1, 0.141176)
 
 [connection signal="dead" from="Player1" to="." method="_on_player_1_dead"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
