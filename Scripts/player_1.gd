@@ -17,6 +17,9 @@ func _ready():
 	sethealth(Global.health)
 	if Global.dino != null:
 		$Sprite2D.texture = Global.dino
+	if Global.hat < 5:
+		$Hat.visible = true
+		$Hat.frame = Global.hat
 
 func _physics_process(_delta):
 	if (!hurt):
@@ -34,8 +37,12 @@ func _physics_process(_delta):
 			state_machine.travel("walk")
 			if velocity.x > 0:
 				$Sprite2D.flip_h = false;
+				$Hat.position.x = -5
+				$Hat.rotation = -.14
 			if velocity.x < 0:
 				$Sprite2D.flip_h = true;
+				$Hat.position.x = 5
+				$Hat.rotation = .14
 		if velocity == Vector2.ZERO:
 			state_machine.travel("idle")
 		
@@ -79,7 +86,7 @@ func shoot2():
 	$"Shoot Timer 2".start()
 
 func _on_area_2d_area_entered(area):
-	if !hurt:
+	if !hurt && !Global.god_mode:
 		take_damage()
 
 func sethealth(new : int):

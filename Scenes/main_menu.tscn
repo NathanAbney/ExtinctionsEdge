@@ -1,10 +1,11 @@
-[gd_scene load_steps=24 format=3 uid="uid://dcjilvt1lr07w"]
+[gd_scene load_steps=25 format=3 uid="uid://dcjilvt1lr07w"]
 
 [ext_resource type="Script" path="res://Scripts/Menu.gd" id="1_dt8ef"]
 [ext_resource type="Texture2D" uid="uid://dqtveq4llwknv" path="res://Sprites/0x72_DungeonTilesetII_v1.4.png" id="1_mk1wo"]
 [ext_resource type="Material" uid="uid://vwprmsgn4vg8" path="res://ExcludeCanvas.tres" id="3_6ree2"]
 [ext_resource type="Texture2D" uid="uid://b0eax7jlcnjbh" path="res://Sprites/Dino Dungeon.png" id="3_a0hhn"]
 [ext_resource type="FontFile" uid="uid://d2naa1ovvhg1t" path="res://monogram.ttf" id="5_qoess"]
+[ext_resource type="Texture2D" uid="uid://c4g7tp1ow81dk" path="res://Sprites/Discord.png" id="6_hyfl8"]
 [ext_resource type="Texture2D" uid="uid://cfy70wk30huvf" path="res://Sprites/Red.png" id="6_jker4"]
 [ext_resource type="Texture2D" uid="uid://bfnlrsrir1hvn" path="res://Sprites/RedSelected.png" id="7_8oc17"]
 [ext_resource type="Texture2D" uid="uid://bdnpujd06dyu2" path="res://Sprites/Blue.png" id="7_mcgxj"]
@@ -1732,16 +1733,23 @@ position = Vector2(650, 878)
 scale = Vector2(3, 3)
 texture = ExtResource("3_a0hhn")
 
-[node name="Menu" type="VBoxContainer" parent="."]
-material = ExtResource("3_6ree2")
+[node name="Menu" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
 offset_left = 616.0
-offset_top = 906.0
+offset_top = 1006.0
 offset_right = 684.0
-offset_bottom = 1002.0
+offset_bottom = 1006.0
+
+[node name="Box" type="VBoxContainer" parent="Menu"]
+material = ExtResource("3_6ree2")
+offset_top = -100.0
+offset_right = 68.0
+offset_bottom = -4.0
 size_flags_vertical = 4
 alignment = 1
 
-[node name="Start" type="Button" parent="Menu"]
+[node name="Start" type="Button" parent="Menu/Box"]
 material = ExtResource("3_6ree2")
 layout_mode = 2
 focus_neighbor_left = NodePath("../Exit")
@@ -1757,7 +1765,7 @@ action_mode = 0
 text = "Start Game"
 flat = true
 
-[node name="Options" type="Button" parent="Menu"]
+[node name="Options" type="Button" parent="Menu/Box"]
 material = ExtResource("3_6ree2")
 layout_mode = 2
 focus_neighbor_left = NodePath("../Start")
@@ -1773,7 +1781,7 @@ action_mode = 0
 text = "Options"
 flat = true
 
-[node name="Credits" type="Button" parent="Menu"]
+[node name="Credits" type="Button" parent="Menu/Box"]
 material = ExtResource("3_6ree2")
 layout_mode = 2
 focus_neighbor_left = NodePath("../Options")
@@ -1789,7 +1797,7 @@ action_mode = 0
 text = "Credits"
 flat = true
 
-[node name="Exit" type="Button" parent="Menu"]
+[node name="Exit" type="Button" parent="Menu/Box"]
 material = ExtResource("3_6ree2")
 layout_mode = 2
 focus_neighbor_left = NodePath("../Credits")
@@ -1805,21 +1813,41 @@ action_mode = 0
 text = "Exit"
 flat = true
 
+[node name="Sprite2D" type="Sprite2D" parent="Menu"]
+position = Vector2(132, 15)
+scale = Vector2(0.5, 0.5)
+
+[node name="Discord" type="TextureButton" parent="Menu/Sprite2D"]
+offset_left = -508.0
+offset_top = -26.0
+offset_right = -476.0
+offset_bottom = 6.0
+texture_normal = ExtResource("6_hyfl8")
+texture_pressed = ExtResource("6_hyfl8")
+
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
+visible = false
 color = Color(0.65098, 0.65098, 0.65098, 1)
 
-[node name="StartMenu" type="HBoxContainer" parent="."]
+[node name="StartMenu" type="Control" parent="."]
 visible = false
-offset_left = 601.0
+layout_mode = 3
+anchors_preset = 0
+offset_left = 699.0
 offset_top = 914.0
-offset_right = 695.0
+offset_right = 699.0
 offset_bottom = 966.0
 
-[node name="Dinos" type="GridContainer" parent="StartMenu"]
+[node name="Menu" type="HBoxContainer" parent="StartMenu"]
+offset_left = -98.0
+offset_right = -4.0
+offset_bottom = 52.0
+
+[node name="Dinos" type="GridContainer" parent="StartMenu/Menu"]
 layout_mode = 2
 columns = 2
 
-[node name="RedDino" type="TextureButton" parent="StartMenu/Dinos"]
+[node name="RedDino" type="TextureButton" parent="StartMenu/Menu/Dinos"]
 material = ExtResource("3_6ree2")
 layout_mode = 2
 theme = SubResource("Theme_81lmk")
@@ -1829,7 +1857,7 @@ texture_pressed = ExtResource("7_8oc17")
 texture_hover = ExtResource("7_8oc17")
 texture_disabled = ExtResource("8_0mi4n")
 
-[node name="BlueDino" type="TextureButton" parent="StartMenu/Dinos"]
+[node name="BlueDino" type="TextureButton" parent="StartMenu/Menu/Dinos"]
 material = ExtResource("3_6ree2")
 layout_mode = 2
 theme = SubResource("Theme_81lmk")
@@ -1839,7 +1867,7 @@ texture_pressed = ExtResource("9_cri6e")
 texture_hover = ExtResource("9_cri6e")
 texture_disabled = ExtResource("8_0mi4n")
 
-[node name="YellowDino" type="TextureButton" parent="StartMenu/Dinos"]
+[node name="YellowDino" type="TextureButton" parent="StartMenu/Menu/Dinos"]
 material = ExtResource("3_6ree2")
 layout_mode = 2
 texture_normal = ExtResource("8_67mvi")
@@ -1847,7 +1875,7 @@ texture_pressed = ExtResource("11_lsnyx")
 texture_hover = ExtResource("11_lsnyx")
 texture_disabled = ExtResource("8_0mi4n")
 
-[node name="GreenDino" type="TextureButton" parent="StartMenu/Dinos"]
+[node name="GreenDino" type="TextureButton" parent="StartMenu/Menu/Dinos"]
 material = ExtResource("3_6ree2")
 layout_mode = 2
 texture_normal = ExtResource("9_1um5a")
@@ -1855,13 +1883,26 @@ texture_pressed = ExtResource("13_6lrpx")
 texture_hover = ExtResource("13_6lrpx")
 texture_disabled = ExtResource("8_0mi4n")
 
-[node name="Begin" type="Button" parent="StartMenu"]
+[node name="Begin" type="Button" parent="StartMenu/Menu"]
 material = ExtResource("3_6ree2")
 layout_mode = 2
 theme = SubResource("Theme_coavw")
 theme_override_colors/font_color = Color(0.627451, 0.627451, 0.627451, 1)
 theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
 text = "Begin"
+flat = true
+
+[node name="Back" type="Button" parent="StartMenu"]
+material = ExtResource("3_6ree2")
+layout_mode = 2
+offset_left = -68.0
+offset_top = 39.0
+offset_right = -30.0
+offset_bottom = 91.0
+theme = SubResource("Theme_coavw")
+theme_override_colors/font_color = Color(0.627451, 0.627451, 0.627451, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+text = "Back"
 flat = true
 
 [node name="Fade" type="ColorRect" parent="."]
@@ -1968,15 +2009,18 @@ focus_next = NodePath("../MasterVol/MVol")
 focus_previous = NodePath("../Code")
 text = "Back"
 
-[connection signal="pressed" from="Menu/Start" to="." method="_on_start_pressed"]
-[connection signal="pressed" from="Menu/Options" to="." method="_on_options_pressed"]
-[connection signal="pressed" from="Menu/Credits" to="." method="_on_credits_pressed"]
-[connection signal="pressed" from="Menu/Exit" to="." method="_on_exit_pressed"]
-[connection signal="pressed" from="StartMenu/Dinos/RedDino" to="." method="_on_red_dino_pressed"]
-[connection signal="pressed" from="StartMenu/Dinos/BlueDino" to="." method="_on_blue_dino_pressed"]
-[connection signal="pressed" from="StartMenu/Dinos/YellowDino" to="." method="_on_yellow_dino_pressed"]
-[connection signal="pressed" from="StartMenu/Dinos/GreenDino" to="." method="_on_green_dino_pressed"]
-[connection signal="pressed" from="StartMenu/Begin" to="." method="_on_begin_pressed"]
+[connection signal="pressed" from="Menu/Box/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="Menu/Box/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="Menu/Box/Credits" to="." method="_on_credits_pressed"]
+[connection signal="pressed" from="Menu/Box/Exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="Menu/Sprite2D/Discord" to="." method="_on_discord_pressed"]
+[connection signal="pressed" from="StartMenu/Menu/Dinos/RedDino" to="." method="_on_red_dino_pressed"]
+[connection signal="pressed" from="StartMenu/Menu/Dinos/BlueDino" to="." method="_on_blue_dino_pressed"]
+[connection signal="pressed" from="StartMenu/Menu/Dinos/YellowDino" to="." method="_on_yellow_dino_pressed"]
+[connection signal="pressed" from="StartMenu/Menu/Dinos/GreenDino" to="." method="_on_green_dino_pressed"]
+[connection signal="pressed" from="StartMenu/Menu/Begin" to="." method="_on_begin_pressed"]
+[connection signal="pressed" from="StartMenu/Back" to="." method="_on_back_pressed"]
 [connection signal="timeout" from="FadeTimer" to="." method="_on_fade_timer_timeout"]
 [connection signal="toggled" from="Options/OptionPanel/Fullscreen" to="." method="_on_fullscreen_toggled"]
+[connection signal="text_submitted" from="Options/OptionPanel/Code" to="." method="_on_code_text_submitted"]
 [connection signal="pressed" from="Options/OptionPanel/Back" to="." method="_on_back_pressed"]
