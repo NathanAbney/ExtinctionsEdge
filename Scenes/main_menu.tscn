@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://dcjilvt1lr07w"]
+[gd_scene load_steps=24 format=3 uid="uid://dcjilvt1lr07w"]
 
 [ext_resource type="Script" path="res://Scripts/Menu.gd" id="1_dt8ef"]
 [ext_resource type="Texture2D" uid="uid://dqtveq4llwknv" path="res://Sprites/0x72_DungeonTilesetII_v1.4.png" id="1_mk1wo"]
@@ -1677,6 +1677,9 @@ _data = {
 "RESET": SubResource("Animation_7bac4")
 }
 
+[sub_resource type="Theme" id="Theme_w7158"]
+default_font = ExtResource("5_qoess")
+
 [node name="Main Menu" type="Node2D"]
 script = ExtResource("1_dt8ef")
 
@@ -1730,6 +1733,7 @@ scale = Vector2(3, 3)
 texture = ExtResource("3_a0hhn")
 
 [node name="Menu" type="VBoxContainer" parent="."]
+visible = false
 material = ExtResource("3_6ree2")
 offset_left = 616.0
 offset_top = 906.0
@@ -1741,6 +1745,12 @@ alignment = 1
 [node name="Start" type="Button" parent="Menu"]
 material = ExtResource("3_6ree2")
 layout_mode = 2
+focus_neighbor_left = NodePath("../Exit")
+focus_neighbor_top = NodePath("../Exit")
+focus_neighbor_right = NodePath("../Options")
+focus_neighbor_bottom = NodePath("../Options")
+focus_next = NodePath("../Options")
+focus_previous = NodePath("../Exit")
 theme = SubResource("Theme_coavw")
 theme_override_colors/font_color = Color(0.627451, 0.627451, 0.627451, 1)
 theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
@@ -1751,6 +1761,12 @@ flat = true
 [node name="Options" type="Button" parent="Menu"]
 material = ExtResource("3_6ree2")
 layout_mode = 2
+focus_neighbor_left = NodePath("../Start")
+focus_neighbor_top = NodePath("../Start")
+focus_neighbor_right = NodePath("../Credits")
+focus_neighbor_bottom = NodePath("../Credits")
+focus_next = NodePath("../Credits")
+focus_previous = NodePath("../Start")
 theme = SubResource("Theme_coavw")
 theme_override_colors/font_color = Color(0.627451, 0.627451, 0.627451, 1)
 theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
@@ -1761,6 +1777,12 @@ flat = true
 [node name="Credits" type="Button" parent="Menu"]
 material = ExtResource("3_6ree2")
 layout_mode = 2
+focus_neighbor_left = NodePath("../Options")
+focus_neighbor_top = NodePath("../Options")
+focus_neighbor_right = NodePath("../Exit")
+focus_neighbor_bottom = NodePath("../Exit")
+focus_next = NodePath("../Exit")
+focus_previous = NodePath("../Options")
 theme = SubResource("Theme_coavw")
 theme_override_colors/font_color = Color(0.627451, 0.627451, 0.627451, 1)
 theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
@@ -1771,6 +1793,12 @@ flat = true
 [node name="Exit" type="Button" parent="Menu"]
 material = ExtResource("3_6ree2")
 layout_mode = 2
+focus_neighbor_left = NodePath("../Credits")
+focus_neighbor_top = NodePath("../Credits")
+focus_neighbor_right = NodePath("../Start")
+focus_neighbor_bottom = NodePath("../Start")
+focus_next = NodePath("../Start")
+focus_previous = NodePath("../Credits")
 theme = SubResource("Theme_coavw")
 theme_override_colors/font_color = Color(0.627451, 0.627451, 0.627451, 1)
 theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
@@ -1853,6 +1881,95 @@ libraries = {
 wait_time = 0.5
 one_shot = true
 
+[node name="Options" type="Control" parent="."]
+material = ExtResource("3_6ree2")
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -8.56003
+offset_right = 8.56003
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+metadata/_edit_use_anchors_ = true
+
+[node name="OptionPanel" type="VBoxContainer" parent="Options"]
+material = ExtResource("3_6ree2")
+layout_mode = 0
+offset_left = 601.0
+offset_top = 905.0
+offset_right = 724.0
+offset_bottom = 1017.0
+size_flags_vertical = 4
+theme = SubResource("Theme_w7158")
+alignment = 1
+
+[node name="MasterVol" type="RichTextLabel" parent="Options/OptionPanel"]
+clip_contents = false
+layout_mode = 2
+size_flags_vertical = 8
+text = " Master Volume
+"
+fit_content = true
+tab_size = 2
+visible_characters = 17
+visible_ratio = 1.13333
+
+[node name="MVol" type="HSlider" parent="Options/OptionPanel/MasterVol"]
+modulate = Color(0, 0.72549, 0.882353, 1)
+layout_mode = 2
+anchor_right = 1.0
+anchor_bottom = 3.308
+offset_top = 17.0
+offset_right = -1.0
+offset_bottom = -3.004
+focus_neighbor_left = NodePath("../../Back")
+focus_neighbor_top = NodePath("../../Back")
+focus_neighbor_right = NodePath("../../Fullscreen")
+focus_neighbor_bottom = NodePath("../../Fullscreen")
+focus_next = NodePath("../../Fullscreen")
+focus_previous = NodePath("../../Back")
+
+[node name="Fullscreen" type="CheckButton" parent="Options/OptionPanel"]
+layout_mode = 2
+size_flags_vertical = 10
+size_flags_stretch_ratio = 10.0
+focus_neighbor_left = NodePath("../MasterVol/MVol")
+focus_neighbor_top = NodePath("../MasterVol/MVol")
+focus_neighbor_right = NodePath("../Code")
+focus_neighbor_bottom = NodePath("../Code")
+focus_next = NodePath("../Code")
+focus_previous = NodePath("../MasterVol/MVol")
+text = "Fullscreen"
+
+[node name="Code" type="LineEdit" parent="Options/OptionPanel"]
+layout_mode = 2
+size_flags_vertical = 10
+focus_neighbor_left = NodePath("../Fullscreen")
+focus_neighbor_top = NodePath("../Fullscreen")
+focus_neighbor_right = NodePath("../Back")
+focus_neighbor_bottom = NodePath("../Back")
+focus_next = NodePath("../Back")
+focus_previous = NodePath("../Fullscreen")
+placeholder_text = "Enter Code"
+alignment = 1
+caret_blink = true
+
+[node name="Back" type="Button" parent="Options/OptionPanel"]
+layout_mode = 2
+size_flags_vertical = 8
+focus_neighbor_left = NodePath("../Code")
+focus_neighbor_top = NodePath("../Code")
+focus_neighbor_right = NodePath("../MasterVol/MVol")
+focus_neighbor_bottom = NodePath("../MasterVol/MVol")
+focus_next = NodePath("../MasterVol/MVol")
+focus_previous = NodePath("../Code")
+text = "Back"
+
 [connection signal="pressed" from="Menu/Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="Menu/Options" to="." method="_on_options_pressed"]
 [connection signal="pressed" from="Menu/Credits" to="." method="_on_credits_pressed"]
@@ -1863,3 +1980,5 @@ one_shot = true
 [connection signal="pressed" from="StartMenu/Dinos/GreenDino" to="." method="_on_green_dino_pressed"]
 [connection signal="pressed" from="StartMenu/Begin" to="." method="_on_begin_pressed"]
 [connection signal="timeout" from="FadeTimer" to="." method="_on_fade_timer_timeout"]
+[connection signal="toggled" from="Options/OptionPanel/Fullscreen" to="." method="_on_fullscreen_toggled"]
+[connection signal="pressed" from="Options/OptionPanel/Back" to="." method="_on_back_pressed"]
