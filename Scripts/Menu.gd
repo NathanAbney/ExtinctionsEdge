@@ -5,6 +5,9 @@ func _ready():
 	$StartMenu/Dinos/BlueDino.disabled = true
 	$StartMenu/Dinos/RedDino.disabled = true
 	$StartMenu/Dinos/YellowDino.disabled = true
+	
+	#grab focus of the start button
+	$Menu/Start.grab_focus()
 
 func _on_start_pressed():
 	$Menu.visible = false
@@ -14,6 +17,8 @@ func _physics_process(delta):
 	$Path2D/PathFollow2D.progress = $Path2D/PathFollow2D.progress + 25 * delta
 
 func _on_options_pressed():
+	$Options.visible = true
+	$Menu.visible = false
 	pass # Options go here
 
 func _on_credits_pressed():
@@ -45,3 +50,16 @@ func _on_begin_pressed():
 
 func _on_fade_timer_timeout():
 	get_tree().change_scene_to_file("res://Rooms/Room1.tscn")
+
+
+func _on_back_pressed():
+	$Options.visible = false
+	$Menu.visible = true
+	pass # Replace with function body.
+	
+
+func _on_fullscreen_toggled(button_pressed):
+	if button_pressed:
+		DisplayServer.window_set_mode(3)
+	else:
+		DisplayServer.window_set_mode(0)
