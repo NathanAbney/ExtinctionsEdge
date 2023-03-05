@@ -1,13 +1,10 @@
-[gd_scene load_steps=37 format=3 uid="uid://ctxnlmnyr30mm"]
+[gd_scene load_steps=33 format=3 uid="uid://ctxnlmnyr30mm"]
 
 [ext_resource type="Script" path="res://Scripts/player_1.gd" id="1_8jlmc"]
 [ext_resource type="Texture2D" uid="uid://lp8dg4vhphcr" path="res://Sprites/DinoSprites - vita.png" id="1_yguhk"]
 [ext_resource type="Texture2D" uid="uid://dqtveq4llwknv" path="res://Sprites/0x72_DungeonTilesetII_v1.4.png" id="3_mi1fe"]
 [ext_resource type="Script" path="res://Scripts/Life.gd" id="4_fs4sy"]
 [ext_resource type="Texture2D" uid="uid://bjeghg8gb06c0" path="res://Sprites/Light.png" id="5_k6vjt"]
-[ext_resource type="Material" uid="uid://vwprmsgn4vg8" path="res://ExcludeCanvas.tres" id="6_46u2r"]
-[ext_resource type="Script" path="res://Scripts/Pause.gd" id="6_83vfw"]
-[ext_resource type="FontFile" uid="uid://d2naa1ovvhg1t" path="res://monogram.ttf" id="7_12qhx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_501lt"]
 size = Vector2(13, 11)
@@ -240,9 +237,6 @@ _data = {
 "RESET": SubResource("Animation_x7idb")
 }
 
-[sub_resource type="Theme" id="Theme_5hcdm"]
-default_font = ExtResource("7_12qhx")
-
 [node name="Player1" type="CharacterBody2D"]
 collision_mask = 130
 script = ExtResource("1_8jlmc")
@@ -370,70 +364,6 @@ libraries = {
 "": SubResource("AnimationLibrary_2d5r0")
 }
 
-[node name="Control" type="Node2D" parent="."]
-process_mode = 3
-visible = false
-position = Vector2(-247, -161)
-scale = Vector2(1.25, 1.25)
-
-[node name="ColorRect" type="ColorRect" parent="Control"]
-offset_left = -127.0
-offset_top = -101.0
-offset_right = 375.0
-offset_bottom = 202.0
-scale = Vector2(3.64, 2.76)
-color = Color(0, 0, 0, 0.619608)
-
-[node name="Pause" type="VBoxContainer" parent="Control"]
-process_mode = 3
-offset_left = 118.0
-offset_top = 85.0
-offset_right = 174.0
-offset_bottom = 176.0
-alignment = 1
-script = ExtResource("6_83vfw")
-
-[node name="Start2" type="Label" parent="Control/Pause"]
-process_mode = 3
-material = ExtResource("6_46u2r")
-layout_mode = 2
-theme = SubResource("Theme_5hcdm")
-theme_override_colors/font_color = Color(0.627451, 0.627451, 0.627451, 1)
-text = "Paused"
-horizontal_alignment = 1
-uppercase = true
-
-[node name="Start" type="Button" parent="Control/Pause"]
-process_mode = 3
-material = ExtResource("6_46u2r")
-layout_mode = 2
-theme = SubResource("Theme_5hcdm")
-theme_override_colors/font_color = Color(0.627451, 0.627451, 0.627451, 1)
-theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
-action_mode = 0
-text = "Continue"
-
-[node name="Options" type="Button" parent="Control/Pause"]
-process_mode = 3
-material = ExtResource("6_46u2r")
-layout_mode = 2
-theme = SubResource("Theme_5hcdm")
-theme_override_colors/font_color = Color(0.627451, 0.627451, 0.627451, 1)
-theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
-action_mode = 0
-text = "Options
-"
-
-[node name="Exit" type="Button" parent="Control/Pause"]
-process_mode = 3
-material = ExtResource("6_46u2r")
-layout_mode = 2
-theme = SubResource("Theme_5hcdm")
-theme_override_colors/font_color = Color(0.627451, 0.627451, 0.627451, 1)
-theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
-action_mode = 0
-text = "Exit"
-
 [node name="Regain" type="CPUParticles2D" parent="."]
 position = Vector2(0, 14)
 emitting = false
@@ -458,6 +388,3 @@ anim_speed_max = 7.76
 [connection signal="timeout" from="Shoot Timer" to="." method="_on_shoot_timer_timeout"]
 [connection signal="timeout" from="Shoot Timer 2" to="." method="_on_shoot_timer_2_timeout"]
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
-[connection signal="pressed" from="Control/Pause/Start" to="Control/Pause" method="_on_start_pressed"]
-[connection signal="pressed" from="Control/Pause/Options" to="Control/Pause" method="_on_options_pressed"]
-[connection signal="pressed" from="Control/Pause/Exit" to="Control/Pause" method="_on_exit_pressed"]

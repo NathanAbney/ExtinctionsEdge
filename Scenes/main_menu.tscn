@@ -1733,7 +1733,6 @@ scale = Vector2(3, 3)
 texture = ExtResource("3_a0hhn")
 
 [node name="Menu" type="VBoxContainer" parent="."]
-visible = false
 material = ExtResource("3_6ree2")
 offset_left = 616.0
 offset_top = 906.0
@@ -1882,6 +1881,7 @@ wait_time = 0.5
 one_shot = true
 
 [node name="Options" type="Control" parent="."]
+visible = false
 material = ExtResource("3_6ree2")
 layout_mode = 3
 anchors_preset = 8
@@ -1916,8 +1916,6 @@ text = " Master Volume
 "
 fit_content = true
 tab_size = 2
-visible_characters = 17
-visible_ratio = 1.13333
 
 [node name="MVol" type="HSlider" parent="Options/OptionPanel/MasterVol"]
 modulate = Color(0, 0.72549, 0.882353, 1)

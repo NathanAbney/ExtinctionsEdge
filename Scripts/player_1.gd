@@ -97,7 +97,12 @@ func _on_speed_timeout():
 func pause():
 	noshoot = true
 	$"Shoot Timer".start()
-	$Control.visible = true
+	var menu = preload("res://Scenes/pause_menu.tscn").instantiate()
+	menu.scale.x = 1.25
+	menu.scale.y = 1.25
+	menu.position.x = global_position.x - 247
+	menu.position.y = global_position.y - 161
+	get_parent().add_child(menu)
 	get_parent().get_tree().paused = true
 
 func _on_shoot_timer_timeout():

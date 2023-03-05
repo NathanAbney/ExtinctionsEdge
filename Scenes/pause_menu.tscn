@@ -1,0 +1,75 @@
+[gd_scene load_steps=5 format=3 uid="uid://hflpe2gjbrx2"]
+
+[ext_resource type="Script" path="res://Scripts/Pause.gd" id="1_xtgqx"]
+[ext_resource type="Material" uid="uid://vwprmsgn4vg8" path="res://ExcludeCanvas.tres" id="2_ada41"]
+[ext_resource type="FontFile" uid="uid://d2naa1ovvhg1t" path="res://monogram.ttf" id="3_ms6lp"]
+
+[sub_resource type="Theme" id="Theme_kown1"]
+default_font = ExtResource("3_ms6lp")
+
+[node name="Pause" type="Node2D"]
+process_mode = 3
+position = Vector2(-247, -161)
+scale = Vector2(1.25, 1.25)
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -127.0
+offset_top = -101.0
+offset_right = 375.0
+offset_bottom = 202.0
+scale = Vector2(3.64, 2.76)
+color = Color(0, 0, 0, 0.619608)
+
+[node name="Pause" type="VBoxContainer" parent="."]
+process_mode = 3
+offset_left = 118.0
+offset_top = 85.0
+offset_right = 174.0
+offset_bottom = 176.0
+alignment = 1
+script = ExtResource("1_xtgqx")
+
+[node name="Start2" type="Label" parent="Pause"]
+process_mode = 3
+material = ExtResource("2_ada41")
+layout_mode = 2
+theme = SubResource("Theme_kown1")
+theme_override_colors/font_color = Color(0.627451, 0.627451, 0.627451, 1)
+text = "Paused"
+horizontal_alignment = 1
+uppercase = true
+
+[node name="Start" type="Button" parent="Pause"]
+process_mode = 3
+material = ExtResource("2_ada41")
+layout_mode = 2
+theme = SubResource("Theme_kown1")
+theme_override_colors/font_color = Color(0.627451, 0.627451, 0.627451, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+action_mode = 0
+text = "Continue"
+
+[node name="Options" type="Button" parent="Pause"]
+process_mode = 3
+material = ExtResource("2_ada41")
+layout_mode = 2
+theme = SubResource("Theme_kown1")
+theme_override_colors/font_color = Color(0.627451, 0.627451, 0.627451, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+action_mode = 0
+text = "Options
+"
+
+[node name="Exit" type="Button" parent="Pause"]
+process_mode = 3
+material = ExtResource("2_ada41")
+layout_mode = 2
+theme = SubResource("Theme_kown1")
+theme_override_colors/font_color = Color(0.627451, 0.627451, 0.627451, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+action_mode = 0
+text = "Exit"
+
+[connection signal="pressed" from="Pause/Start" to="Pause" method="_on_start_pressed"]
+[connection signal="pressed" from="Pause/Options" to="Pause" method="_on_options_pressed"]
+[connection signal="pressed" from="Pause/Exit" to="Pause" method="_on_exit_pressed"]
