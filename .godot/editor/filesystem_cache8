@@ -1,5 +1,5 @@
 2a60927148abd1d33b818b535e306557
-::res://::1677963313
+::res://::1677983952
 ExcludeCanvas.tres::CanvasItemMaterial::1520323798753705785::1677963246::0::1::::<><>::
 Global.gd::GDScript::-1::1677963246::0::1::::<>Node<>::
 icon.svg::CompressedTexture2D::4650086093553276866::1677963246::1677963246::1::::<><>::
@@ -16,7 +16,7 @@ Room2.tscn::PackedScene::7390356989092899326::1677963246::0::1::::<><>::res://Ro
 Room3.gd::GDScript::-1::1677963246::0::1::::<>Node2D<>::
 Room3.tscn::PackedScene::6750862236324207751::1677963246::0::1::::<><>::uid://dqtveq4llwknv<>res://Rooms/Room3.gd<>uid://ctxnlmnyr30mm<>uid://buawbm3ybmojk<>uid://iplfwjqi3ppk
 Room4.tscn::PackedScene::7333861907392077957::1677963246::0::1::::<><>::uid://dqtveq4llwknv<>uid://ctxnlmnyr30mm<>uid://buawbm3ybmojk<>res://Scenes/potion.tscn<>uid://8noo4xeajv6e<>uid://cr7uabtswvwym<>uid://iplfwjqi3ppk<>uid://cd4ar3jmgtrg8
-::res://Scenes/::1677963246
+::res://Scenes/::1677983742
 boss1.tscn::PackedScene::1858580719974195815::1677963246::0::1::::<><>::res://Scripts/boss1.gd<>uid://dqtveq4llwknv<>res://Scripts/WizardLife.gd<>uid://wshs4jur2tgo<>uid://bjeghg8gb06c0<>uid://c1i8dkcvrsp14<>res://Scripts/Path2D.gd
 boss2.tscn::PackedScene::2534553466336786104::1677963246::0::1::::<><>::res://Scripts/boss2.gd<>uid://olofe4nfgk68<>uid://bjeghg8gb06c0<>res://Scripts/MushroomLife.gd<>uid://wshs4jur2tgo
 earth_move.tscn::PackedScene::6848661918227883411::1677963246::0::1::::<><>::res://Scripts/earth_move.gd<>uid://cs5gfid4j8npc<>uid://bjeghg8gb06c0
@@ -28,7 +28,7 @@ ghoul.tscn::PackedScene::145941053018916238::1677963246::0::1::::<><>::res://Scr
 goblin.tscn::PackedScene::6033326219940717468::1677963246::0::1::::<><>::res://Scripts/goblin.gd<>uid://dqtveq4llwknv<>uid://bjeghg8gb06c0<>res://Scripts/Life2.gd
 gremlin.tscn::PackedScene::5043306696775469545::1677963246::0::1::::<><>::res://Scripts/gremlin.gd<>uid://dqtveq4llwknv<>uid://bjeghg8gb06c0
 Magic8.tscn::PackedScene::6616275871451227917::1677963246::0::1::::<><>::res://Scripts/Magic8.gd<>uid://c62atm803bwkn<>uid://bjeghg8gb06c0
-main_menu.tscn::PackedScene::7318725651355347314::1677963246::0::1::::<><>::res://Scripts/Menu.gd<>uid://dqtveq4llwknv<>uid://vwprmsgn4vg8<>uid://b0eax7jlcnjbh<>uid://d2naa1ovvhg1t<>uid://cfy70wk30huvf<>uid://bfnlrsrir1hvn<>uid://bdnpujd06dyu2<>uid://dm60cusmyavjc<>uid://ototbinov3pa<>uid://h7g01oc2ir8a<>uid://du50v7dr0cdm6<>uid://cs2kul7k21e7a<>uid://ba3morynwmjy8
+main_menu.tscn::PackedScene::7318725651355347314::1677983742::0::1::::<><>::res://Scripts/Menu.gd<>uid://dqtveq4llwknv<>uid://vwprmsgn4vg8<>uid://b0eax7jlcnjbh<>uid://d2naa1ovvhg1t<>uid://cfy70wk30huvf<>uid://bfnlrsrir1hvn<>uid://bdnpujd06dyu2<>uid://dm60cusmyavjc<>uid://ototbinov3pa<>uid://h7g01oc2ir8a<>uid://du50v7dr0cdm6<>uid://cs2kul7k21e7a<>uid://ba3morynwmjy8
 mushroom_medium.tscn::PackedScene::7859899757648115494::1677963246::0::1::::<><>::res://Scripts/mushroom_medium.gd<>uid://bjeghg8gb06c0<>uid://olofe4nfgk68<>uid://dqtveq4llwknv<>res://Scripts/Life2.gd
 mushroom_spawner.tscn::PackedScene::9020941066808736295::1677963246::0::1::::<><>::res://Scripts/mushroom_spawner.gd<>uid://olofe4nfgk68
 mushroom_tiny.tscn::PackedScene::1026749349817963331::1677963246::0::1::::<><>::res://Scripts/mushroom_tiny.gd<>uid://bjeghg8gb06c0<>uid://olofe4nfgk68
@@ -38,7 +38,7 @@ potion.tscn::PackedScene::-1::1677963246::0::1::::<><>::uid://dqtveq4llwknv<>res
 sorcerer.tscn::PackedScene::593154401460830052::1677963246::0::1::::<><>::res://Scripts/sorcerer.gd<>uid://bjeghg8gb06c0<>uid://dqtveq4llwknv<>res://Scripts/Life2.gd
 stairs.tscn::PackedScene::3791535790715515876::1677963246::0::1::::<><>::uid://dqtveq4llwknv<>res://Scripts/stairs.gd
 trap.tscn::PackedScene::2246529150860957844::1677963246::0::1::::<><>::res://Scripts/trap.gd<>uid://dqtveq4llwknv
-::res://Scripts/::1677963246
+::res://Scripts/::1677983742
 boss1.gd::GDScript::-1::1677963246::0::1::::<>CharacterBody2D<>::
 boss2.gd::GDScript::-1::1677963246::0::1::::<>CharacterBody2D<>::
 earth_move.gd::GDScript::-1::1677963246::0::1::::<>CharacterBody2D<>::
@@ -52,7 +52,7 @@ HealthBar.gd::GDScript::-1::1677963246::0::1::::<>ColorRect<>::
 Life2.gd::GDScript::-1::1677963246::0::1::::<>Container<>::
 Life.gd::GDScript::-1::1677963246::0::1::::<>Container<>::
 Magic8.gd::GDScript::-1::1677963246::0::1::::<>CharacterBody2D<>::
-Menu.gd::GDScript::-1::1677963246::0::1::::<>Node2D<>::
+Menu.gd::GDScript::-1::1677983742::0::1::::<>Node2D<>::
 MushroomLife.gd::GDScript::-1::1677963246::0::1::::<>Container<>::
 mushroom_medium.gd::GDScript::-1::1677963246::0::1::::<>CharacterBody2D<>::
 mushroom_spawner.gd::GDScript::-1::1677963246::0::1::::<>Node2D<>::

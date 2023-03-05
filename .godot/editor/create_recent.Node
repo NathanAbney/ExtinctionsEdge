@@ -1,3 +1,14 @@
+CheckButton
+RichTextLabel
+Button
+HSlider
+LineEdit
+ColorRect
+VBoxContainer
+TabBar
+TabContainer
+Control
+PopupMenu
 StaticBody2D
 Node2D
 CollisionShape2D
@@ -8,9 +19,6 @@ CPUParticles2D
 Label
 CanvasModulate
 Node
-ColorRect
-VBoxContainer
-Control
 AnimationPlayer
 PathFollow2D
 Path2D
