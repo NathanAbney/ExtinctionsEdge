@@ -1743,6 +1743,7 @@ offset_bottom = 1006.0
 
 [node name="Box" type="VBoxContainer" parent="Menu"]
 material = ExtResource("3_6ree2")
+layout_mode = 0
 offset_top = -100.0
 offset_right = 68.0
 offset_bottom = -4.0
@@ -1822,6 +1823,12 @@ offset_left = -508.0
 offset_top = -26.0
 offset_right = -476.0
 offset_bottom = 6.0
+focus_neighbor_left = NodePath("../../Box/Start")
+focus_neighbor_top = NodePath("../../Box/Start")
+focus_neighbor_right = NodePath("../../Box/Start")
+focus_neighbor_bottom = NodePath("../../Box/Exit")
+focus_next = NodePath("../../Box/Start")
+focus_previous = NodePath("../../Box/Exit")
 texture_normal = ExtResource("6_hyfl8")
 texture_pressed = ExtResource("6_hyfl8")
 
@@ -1839,6 +1846,7 @@ offset_right = 699.0
 offset_bottom = 966.0
 
 [node name="Menu" type="HBoxContainer" parent="StartMenu"]
+layout_mode = 0
 offset_left = -98.0
 offset_right = -4.0
 offset_bottom = 52.0
