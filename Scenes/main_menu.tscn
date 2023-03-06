@@ -15,7 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://du50v7dr0cdm6" path="res://Sprites/BlueSelected.png" id="9_cri6e"]
 [ext_resource type="Texture2D" uid="uid://cs2kul7k21e7a" path="res://Sprites/YellowSelected.png" id="11_lsnyx"]
 [ext_resource type="Texture2D" uid="uid://ba3morynwmjy8" path="res://Sprites/GreenSelected.png" id="13_6lrpx"]
-[ext_resource type="Script" path="res://Scenes/Hat Selection.gd" id="16_5kcqx"]
+[ext_resource type="Script" path="res://Scripts/Hat Selection.gd" id="16_kas8l"]
 [ext_resource type="Texture2D" uid="uid://dcdl7j7lj8tp2" path="res://Sprites/HatsTest.png" id="16_pdrt0"]
 
 [sub_resource type="Curve2D" id="Curve2D_v6ljx"]
@@ -1921,7 +1921,7 @@ offset_left = -120.0
 offset_top = 1.0
 offset_right = -80.0
 offset_bottom = 51.0
-script = ExtResource("16_5kcqx")
+script = ExtResource("16_kas8l")
 
 [node name="Last" type="Button" parent="StartMenu/Hat Selection"]
 material = ExtResource("3_6ree2")

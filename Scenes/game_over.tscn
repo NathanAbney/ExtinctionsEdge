@@ -1,23 +1,63 @@
-[gd_scene format=3 uid="uid://cix2bd3iypu2p"]
+[gd_scene load_steps=5 format=3 uid="uid://dh5fwbqmosit4"]
 
-[node name="Game Over" type="Node2D"]
+[ext_resource type="Script" path="res://Scenes/Game Over.gd" id="1_ctewe"]
+[ext_resource type="Material" uid="uid://vwprmsgn4vg8" path="res://ExcludeCanvas.tres" id="2_llher"]
+[ext_resource type="FontFile" uid="uid://d2naa1ovvhg1t" path="res://monogram.ttf" id="3_2a8ya"]
 
-[node name="Panel" type="Panel" parent="."]
-offset_left = 1275.0
-offset_top = 844.0
-offset_right = 1342.0
-offset_bottom = 892.0
-scale = Vector2(-30.7622, -28.7306)
+[sub_resource type="Theme" id="Theme_kown1"]
+default_font = ExtResource("3_2a8ya")
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Pause" type="Node2D"]
+process_mode = 3
+position = Vector2(-247, -161)
+scale = Vector2(1.25, 1.25)
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.286, 0.286)
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -127.0
+offset_top = -101.0
+offset_right = 375.0
+offset_bottom = 202.0
+scale = Vector2(3.64, 2.76)
+color = Color(0, 0, 0, 0.619608)
 
-[node name="Label" type="Label" parent="Sprite2D"]
-offset_left = -418.0
-offset_top = -232.0
-offset_right = 396.0
-offset_bottom = -17.0
-theme_override_font_sizes/font_size = 155
-text = "Game over"
+[node name="Game Over" type="VBoxContainer" parent="."]
+process_mode = 3
+offset_left = 169.6
+offset_top = 85.6
+offset_right = 225.6
+offset_bottom = 176.6
+alignment = 1
+script = ExtResource("1_ctewe")
+
+[node name="Game Over" type="Label" parent="Game Over"]
+process_mode = 3
+material = ExtResource("2_llher")
+layout_mode = 2
+theme = SubResource("Theme_kown1")
+theme_override_colors/font_color = Color(0.627451, 0.627451, 0.627451, 1)
+text = "Game Over"
+horizontal_alignment = 1
+uppercase = true
+
+[node name="Restart" type="Button" parent="Game Over"]
+process_mode = 3
+material = ExtResource("2_llher")
+layout_mode = 2
+theme = SubResource("Theme_kown1")
+theme_override_colors/font_color = Color(0.627451, 0.627451, 0.627451, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+action_mode = 0
+text = "Restart"
+
+[node name="Exit" type="Button" parent="Game Over"]
+process_mode = 3
+material = ExtResource("2_llher")
+layout_mode = 2
+theme = SubResource("Theme_kown1")
+theme_override_colors/font_color = Color(0.627451, 0.627451, 0.627451, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+action_mode = 0
+text = "Exit"
+
+[connection signal="pressed" from="Game Over/Restart" to="Game Over" method="_on_start_pressed"]
+[connection signal="pressed" from="Game Over/Exit" to="Game Over" method="_on_exit_pressed"]
