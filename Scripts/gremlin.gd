@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-var speed = 150
+var speed = 2.5
 var target: Vector2 = Vector2.ZERO
 var player = null
 var health = 2
@@ -20,7 +20,7 @@ func _physics_process(delta):
 			$Sprite2D.flip_h = true
 		else:
 			$Sprite2D.flip_h = false
-		move_and_slide()
+		move_and_collide(velocity)
 
 func check_route():
 	if global_position.distance_to(target) <= 50000:

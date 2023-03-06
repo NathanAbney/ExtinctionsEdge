@@ -7,8 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://dcdl7j7lj8tp2" path="res://Sprites/HatsTest.png" id="5_2irjk"]
 [ext_resource type="Texture2D" uid="uid://bjeghg8gb06c0" path="res://Sprites/Light.png" id="5_k6vjt"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_501lt"]
-size = Vector2(13, 11)
+[sub_resource type="CircleShape2D" id="CircleShape2D_cgv08"]
+radius = 4.12311
 
 [sub_resource type="Animation" id="Animation_yayo7"]
 length = 0.001
@@ -205,7 +205,7 @@ transitions = ["walk", "stop_walk", SubResource("AnimationNodeStateMachineTransi
 [sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_7d8r5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t7uql"]
-size = Vector2(18.7581, 19.3332)
+size = Vector2(15.0065, 14.8717)
 
 [sub_resource type="Animation" id="Animation_k67k3"]
 resource_name = "Fade_In"
@@ -337,15 +337,16 @@ frame = 4
 
 [node name="Hat" type="Sprite2D" parent="."]
 visible = false
-position = Vector2(-5, -11)
+position = Vector2(-5, -10)
 rotation = -0.20944
 scale = Vector2(1.014, 1.014)
 texture = ExtResource("5_2irjk")
 hframes = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-0.5, 4.5)
-shape = SubResource("RectangleShape2D_501lt")
+position = Vector2(0, 3)
+rotation = 1.5708
+shape = SubResource("CircleShape2D_cgv08")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -407,7 +408,7 @@ one_shot = true
 collision_mask = 124
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(-0.5, 4.5)
+position = Vector2(-1.19209e-07, 3)
 scale = Vector2(0.799653, -0.672417)
 shape = SubResource("RectangleShape2D_t7uql")
 

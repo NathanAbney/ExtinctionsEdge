@@ -8,7 +8,7 @@
 size = Vector2(6, 6)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lw5ja"]
-size = Vector2(8, 8)
+size = Vector2(6, 6)
 
 [sub_resource type="Animation" id="Animation_nnhpy"]
 step = 0.2

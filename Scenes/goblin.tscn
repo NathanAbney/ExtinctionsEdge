@@ -5,11 +5,12 @@
 [ext_resource type="Texture2D" uid="uid://bjeghg8gb06c0" path="res://Sprites/Light.png" id="2_w21nf"]
 [ext_resource type="Script" path="res://Scripts/Life2.gd" id="3_35834"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_dpmbe"]
-size = Vector2(10, 15)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0s85l"]
+radius = 5.0
+height = 15.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lw5ja"]
-size = Vector2(10, 16)
+size = Vector2(10, 15)
 
 [sub_resource type="Animation" id="Animation_nnhpy"]
 length = 0.001
@@ -59,6 +60,7 @@ script = ExtResource("1_da5vg")
 
 [node name="Shadow" type="Sprite2D" parent="."]
 modulate = Color(0, 0, 0, 1)
+z_index = -1
 position = Vector2(1, 16)
 scale = Vector2(0.024, 0.00400001)
 texture = ExtResource("2_w21nf")
@@ -71,14 +73,14 @@ frame = 215
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1, 7.5)
-shape = SubResource("RectangleShape2D_dpmbe")
+shape = SubResource("CapsuleShape2D_0s85l")
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 16
 collision_mask = 268
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(1, 8)
+position = Vector2(1, 7.5)
 shape = SubResource("RectangleShape2D_lw5ja")
 
 [node name="Life" type="Container" parent="."]

@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 var rng = RandomNumberGenerator.new()
-var speed = 70
+var speed = 1
 var target: Vector2 = Vector2.ZERO
 var player = null
 var health = 2
@@ -15,18 +15,12 @@ func _ready():
 
 func _physics_process(delta):
 	if !hurt and activated:
-		check_route()
-		target = player.global_position
-		velocity = global_position.direction_to(target) * speed
+		velocity = global_position.direction_to(player.global_position) * speed
 		if player.global_position.x > global_position.x:
 			$Sprite2D.flip_h = false
 		else:
 			$Sprite2D.flip_h = true
-		move_and_slide()
-
-func check_route():
-	if global_position.distance_to(target) <= 500:
-		target = player.global_position
+		move_and_collide(velocity)
 
 func _on_area_2d_area_entered(area):
 	$Hurt.start()

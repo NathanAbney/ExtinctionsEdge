@@ -60,6 +60,7 @@ script = ExtResource("1_tt0jo")
 
 [node name="Shadow" type="Sprite2D" parent="."]
 modulate = Color(0, 0, 0, 1)
+z_index = -1
 position = Vector2(1, 16)
 scale = Vector2(0.024, 0.00400001)
 texture = ExtResource("2_1sp1s")

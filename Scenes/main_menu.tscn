@@ -1743,6 +1743,7 @@ offset_bottom = 1006.0
 
 [node name="Box" type="VBoxContainer" parent="Menu"]
 material = ExtResource("3_6ree2")
+layout_mode = 0
 offset_top = -100.0
 offset_right = 68.0
 offset_bottom = -4.0
@@ -1839,6 +1840,7 @@ offset_right = 699.0
 offset_bottom = 966.0
 
 [node name="Menu" type="HBoxContainer" parent="StartMenu"]
+layout_mode = 0
 offset_left = -98.0
 offset_right = -4.0
 offset_bottom = 52.0
