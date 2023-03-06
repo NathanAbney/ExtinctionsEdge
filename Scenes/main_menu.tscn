@@ -1823,6 +1823,12 @@ offset_left = -508.0
 offset_top = -26.0
 offset_right = -476.0
 offset_bottom = 6.0
+focus_neighbor_left = NodePath("../../Box/Start")
+focus_neighbor_top = NodePath("../../Box/Start")
+focus_neighbor_right = NodePath("../../Box/Start")
+focus_neighbor_bottom = NodePath("../../Box/Exit")
+focus_next = NodePath("../../Box/Start")
+focus_previous = NodePath("../../Box/Exit")
 texture_normal = ExtResource("6_hyfl8")
 texture_pressed = ExtResource("6_hyfl8")
 
