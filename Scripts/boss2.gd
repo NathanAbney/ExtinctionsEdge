@@ -21,6 +21,7 @@ func _physics_process(delta):
 			$AnimationPlayer.play("Idle")
 			$Attack.start()
 			dash_active = false
+			$Duplicate.stop()
 		move_and_slide()
 	if moveReady and active:
 		if(player.global_position.x < global_position.x):
@@ -34,6 +35,7 @@ func _physics_process(delta):
 func attack(move : int):
 	if move == 0:
 		$AnimationPlayer.play("Walking")
+		$Duplicate.start()
 		dash_active = true
 		target = player.global_position
 	if move == 1:
@@ -62,3 +64,11 @@ func _on_activation_box_area_entered(area):
 	active = true
 	moveReady = false
 	$Attack.start(3)
+
+func _on_duplicate_timeout():
+	var summon = preload("res://Scenes/boss2Dud.tscn").instantiate()
+	get_parent().add_child(summon)
+	summon.position = global_position
+	summon.flip_h = $Sprite2D.flip_h
+	summon.frame = $Sprite2D.frame
+	summon.z_index = -1

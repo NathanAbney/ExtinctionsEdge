@@ -37,11 +37,13 @@ func _physics_process(_delta):
 			state_machine.travel("walk")
 			if velocity.x > 0:
 				$Sprite2D.flip_h = false;
-				$Hat.position.x = -4
+				$Hat.flip_h = false;
+				$Hat.position.x = -3.2
 				$Hat.rotation = -.12
 			if velocity.x < 0:
 				$Sprite2D.flip_h = true;
-				$Hat.position.x = 4
+				$Hat.flip_h = true
+				$Hat.position.x = 3.2
 				$Hat.rotation = .12
 		if velocity == Vector2.ZERO:
 			state_machine.travel("idle")

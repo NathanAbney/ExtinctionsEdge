@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://dcjilvt1lr07w"]
+[gd_scene load_steps=27 format=3 uid="uid://dcjilvt1lr07w"]
 
 [ext_resource type="Script" path="res://Scripts/Menu.gd" id="1_dt8ef"]
 [ext_resource type="Texture2D" uid="uid://dqtveq4llwknv" path="res://Sprites/0x72_DungeonTilesetII_v1.4.png" id="1_mk1wo"]
@@ -15,6 +15,8 @@
 [ext_resource type="Texture2D" uid="uid://du50v7dr0cdm6" path="res://Sprites/BlueSelected.png" id="9_cri6e"]
 [ext_resource type="Texture2D" uid="uid://cs2kul7k21e7a" path="res://Sprites/YellowSelected.png" id="11_lsnyx"]
 [ext_resource type="Texture2D" uid="uid://ba3morynwmjy8" path="res://Sprites/GreenSelected.png" id="13_6lrpx"]
+[ext_resource type="Script" path="res://Scenes/Hat Selection.gd" id="16_5kcqx"]
+[ext_resource type="Texture2D" uid="uid://dcdl7j7lj8tp2" path="res://Sprites/HatsTest.png" id="16_pdrt0"]
 
 [sub_resource type="Curve2D" id="Curve2D_v6ljx"]
 _data = {
@@ -1847,9 +1849,10 @@ offset_bottom = 966.0
 
 [node name="Menu" type="HBoxContainer" parent="StartMenu"]
 layout_mode = 0
-offset_left = -98.0
-offset_right = -4.0
-offset_bottom = 52.0
+offset_left = -75.0
+offset_top = 1.0
+offset_right = 19.0
+offset_bottom = 53.0
 
 [node name="Dinos" type="GridContainer" parent="StartMenu/Menu"]
 layout_mode = 2
@@ -1911,6 +1914,45 @@ theme = SubResource("Theme_coavw")
 theme_override_colors/font_color = Color(0.627451, 0.627451, 0.627451, 1)
 theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
 text = "Back"
+flat = true
+
+[node name="Hat Selection" type="VBoxContainer" parent="StartMenu"]
+layout_mode = 0
+offset_left = -120.0
+offset_top = 1.0
+offset_right = -80.0
+offset_bottom = 51.0
+script = ExtResource("16_5kcqx")
+
+[node name="Last" type="Button" parent="StartMenu/Hat Selection"]
+material = ExtResource("3_6ree2")
+layout_mode = 2
+focus_mode = 0
+theme = SubResource("Theme_coavw")
+theme_override_colors/font_color = Color(0.627451, 0.627451, 0.627451, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+action_mode = 0
+text = "Last"
+flat = true
+
+[node name="Container" type="Container" parent="StartMenu/Hat Selection"]
+layout_mode = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="StartMenu/Hat Selection/Container"]
+position = Vector2(20, 0)
+scale = Vector2(1.843, 1.843)
+texture = ExtResource("16_pdrt0")
+hframes = 4
+
+[node name="Next" type="Button" parent="StartMenu/Hat Selection"]
+material = ExtResource("3_6ree2")
+layout_mode = 2
+focus_mode = 0
+theme = SubResource("Theme_coavw")
+theme_override_colors/font_color = Color(0.627451, 0.627451, 0.627451, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+action_mode = 0
+text = "Next"
 flat = true
 
 [node name="Fade" type="ColorRect" parent="."]
@@ -2028,6 +2070,8 @@ text = "Back"
 [connection signal="pressed" from="StartMenu/Menu/Dinos/GreenDino" to="." method="_on_green_dino_pressed"]
 [connection signal="pressed" from="StartMenu/Menu/Begin" to="." method="_on_begin_pressed"]
 [connection signal="pressed" from="StartMenu/Back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="StartMenu/Hat Selection/Last" to="StartMenu/Hat Selection" method="_on_last_pressed"]
+[connection signal="pressed" from="StartMenu/Hat Selection/Next" to="StartMenu/Hat Selection" method="_on_next_pressed"]
 [connection signal="timeout" from="FadeTimer" to="." method="_on_fade_timer_timeout"]
 [connection signal="toggled" from="Options/OptionPanel/Fullscreen" to="." method="_on_fullscreen_toggled"]
 [connection signal="text_submitted" from="Options/OptionPanel/Code" to="." method="_on_code_text_submitted"]

@@ -1,5 +1,7 @@
 extends Node2D
 
+var unlocked = [0,0,0,0]
+
 func _ready():
 	Global.dino = ImageTexture.create_from_image(Image.load_from_file("res://Sprites/DinoSprites - vita.png"))
 	$StartMenu/Menu/Dinos/BlueDino.disabled = true
