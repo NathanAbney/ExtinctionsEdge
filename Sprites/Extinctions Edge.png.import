@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b0eax7jlcnjbh"
-path="res://.godot/imported/Dino Dungeon.png-a38b0cfd04f2998e1de20cf8809ecdf6.ctex"
+uid="uid://dmlgkrv33ficu"
+path="res://.godot/imported/Extinctions Edge.png-9b83643dc1af4de5d47040c2a3a381d8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Dino Dungeon.png"
-dest_files=["res://.godot/imported/Dino Dungeon.png-a38b0cfd04f2998e1de20cf8809ecdf6.ctex"]
+source_file="res://Sprites/Extinctions Edge.png"
+dest_files=["res://.godot/imported/Extinctions Edge.png-9b83643dc1af4de5d47040c2a3a381d8.ctex"]
 
 [params]
 

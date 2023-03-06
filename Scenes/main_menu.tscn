@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://Scripts/Menu.gd" id="1_dt8ef"]
 [ext_resource type="Texture2D" uid="uid://dqtveq4llwknv" path="res://Sprites/0x72_DungeonTilesetII_v1.4.png" id="1_mk1wo"]
+[ext_resource type="Texture2D" uid="uid://dmlgkrv33ficu" path="res://Sprites/Extinctions Edge.png" id="3_0kby7"]
 [ext_resource type="Material" uid="uid://vwprmsgn4vg8" path="res://ExcludeCanvas.tres" id="3_6ree2"]
-[ext_resource type="Texture2D" uid="uid://b0eax7jlcnjbh" path="res://Sprites/Dino Dungeon.png" id="3_a0hhn"]
 [ext_resource type="FontFile" uid="uid://d2naa1ovvhg1t" path="res://monogram.ttf" id="5_qoess"]
 [ext_resource type="Texture2D" uid="uid://c4g7tp1ow81dk" path="res://Sprites/Discord.png" id="6_hyfl8"]
 [ext_resource type="Texture2D" uid="uid://cfy70wk30huvf" path="res://Sprites/Red.png" id="6_jker4"]
@@ -1726,14 +1726,13 @@ offset_right = 753.0
 offset_bottom = 1182.0
 color = Color(0, 0, 0, 0.454902)
 
+[node name="ExtinctionsEdge" type="Sprite2D" parent="."]
+position = Vector2(652, 885)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("3_0kby7")
+
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(650, 937)
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-material = ExtResource("3_6ree2")
-position = Vector2(650, 878)
-scale = Vector2(3, 3)
-texture = ExtResource("3_a0hhn")
 
 [node name="Menu" type="Control" parent="."]
 layout_mode = 3
