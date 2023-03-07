@@ -29,12 +29,7 @@ func next_level():
 	$Timer.start()
 
 func _on_timer_timeout():
-	rng.randomize()
-	var room = rng.randi_range(0,1)
-	if room == 0:
-		get_tree().change_scene_to_file(\"res://Rooms/Room1.tscn\")
-	if room == 1:
-		get_tree().change_scene_to_file(\"res://Rooms/Room2.tscn\")
+	get_tree().change_scene_to_file(\"res://Rooms/Room5.tscn\")
 "
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sxuaj"]
@@ -2725,7 +2720,7 @@ shader_parameter/velocity = Vector2(0.01, 0.01)
 shader_parameter/fog_color = Vector4(0, 0, 0, 0.8)
 shader_parameter/noise = SubResource("NoiseTexture2D_1gbo1")
 
-[node name="Room0" type="Node2D"]
+[node name="Room4" type="Node2D"]
 script = SubResource("GDScript_52s8u")
 
 [node name="ColorRect" type="ColorRect" parent="."]

@@ -107,6 +107,7 @@ libraries = {
 }
 
 [node name="ActivationArea" type="Area2D" parent="." groups=["enemy"]]
+visible = false
 collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ActivationArea"]

@@ -16,4 +16,10 @@ func next_level():
 	$Timer.start()
 
 func _on_timer_timeout():
-	get_tree().change_scene_to_file("res://Rooms/Room2.tscn")
+	rng.randomize()
+	var room = rng.randi_range(0,1)
+	if room == 0:
+		get_tree().change_scene_to_file("res://Rooms/Room4.tscn")
+	if room == 1:
+		get_tree().change_scene_to_file("res://Rooms/Room5.tscn")
+
