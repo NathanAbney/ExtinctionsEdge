@@ -131,7 +131,7 @@ libraries = {
 }
 
 [node name="Attack" type="Timer" parent="."]
-wait_time = 2.0
+wait_time = 1.5
 
 [node name="Duplicate" type="Timer" parent="."]
 wait_time = 0.1

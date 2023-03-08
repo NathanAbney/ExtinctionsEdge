@@ -17,9 +17,10 @@ func next_level():
 
 func _on_timer_timeout():
 	rng.randomize()
-	var room = rng.randi_range(0,1)
+	var room = rng.randi_range(0,2)
 	if room == 0:
 		get_tree().change_scene_to_file("res://Rooms/Room4.tscn")
 	if room == 1:
 		get_tree().change_scene_to_file("res://Rooms/Room5.tscn")
-
+	if room == 2:
+		get_tree().change_scene_to_file("res://Rooms/Room6.tscn")

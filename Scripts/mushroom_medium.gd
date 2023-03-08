@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 var rng = RandomNumberGenerator.new()
-var speed = 1
+var speed = 1.4
 var target: Vector2 = Vector2.ZERO
 var player = null
 var health = 2

@@ -16,7 +16,7 @@ script/source = "extends Node2D
 var rng = RandomNumberGenerator.new()
 
 func _on_player_1_dead():
-	var menu = preload(\"res://Scenes/pause_menu.tscn\").instantiate()
+	var menu = preload(\"res://Scenes/game_over.tscn\").instantiate()
 	menu.scale.x = 1.25
 	menu.scale.y = 1.25
 	menu.position.x = $Player1.global_position.x - 247

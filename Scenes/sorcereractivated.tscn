@@ -1,9 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://iplfwjqi3ppk"]
+[gd_scene load_steps=11 format=3 uid="uid://fry335qufqk5"]
 
-[ext_resource type="Script" path="res://Scripts/sorcerer.gd" id="1_u41ls"]
-[ext_resource type="Texture2D" uid="uid://bjeghg8gb06c0" path="res://Sprites/Light.png" id="2_qh5ky"]
-[ext_resource type="Texture2D" uid="uid://dqtveq4llwknv" path="res://Sprites/0x72_DungeonTilesetII_v1.4.png" id="3_vsx0b"]
-[ext_resource type="Script" path="res://Scripts/Life2.gd" id="4_ety2o"]
+[ext_resource type="Script" path="res://Scripts/sorcereractivated.gd" id="1_hu0yk"]
+[ext_resource type="Texture2D" uid="uid://bjeghg8gb06c0" path="res://Sprites/Light.png" id="2_tcpne"]
+[ext_resource type="Texture2D" uid="uid://dqtveq4llwknv" path="res://Sprites/0x72_DungeonTilesetII_v1.4.png" id="3_hbpob"]
+[ext_resource type="Script" path="res://Scripts/Life2.gd" id="4_xg5ap"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dpmbe"]
 size = Vector2(12, 16)
@@ -49,19 +49,22 @@ _data = {
 "Walking": SubResource("Animation_1dg1r")
 }
 
-[node name="Sorcerer" type="CharacterBody2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_rqsh0"]
+radius = 157.013
+
+[node name="SorcererActivated" type="CharacterBody2D"]
 collision_layer = 16
 collision_mask = 19
-script = ExtResource("1_u41ls")
+script = ExtResource("1_hu0yk")
 
 [node name="Shadow" type="Sprite2D" parent="."]
 modulate = Color(0, 0, 0, 1)
 position = Vector2(1, 16)
 scale = Vector2(0.024, 0.00400001)
-texture = ExtResource("2_qh5ky")
+texture = ExtResource("2_tcpne")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("3_vsx0b")
+texture = ExtResource("3_hbpob")
 hframes = 32
 vframes = 16
 frame = 281
@@ -81,12 +84,12 @@ shape = SubResource("RectangleShape2D_lw5ja")
 [node name="Life" type="Container" parent="."]
 offset_right = 40.0
 offset_bottom = 40.0
-script = ExtResource("4_ety2o")
+script = ExtResource("4_xg5ap")
 
 [node name="Heart1" type="Sprite2D" parent="Life"]
 position = Vector2(1, -4)
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("3_vsx0b")
+texture = ExtResource("3_hbpob")
 hframes = 32
 vframes = 32
 frame = 530
@@ -123,7 +126,16 @@ color = Color(0.647059, 0, 0.647059, 1)
 wait_time = 0.4
 one_shot = true
 
+[node name="Area2D2" type="Area2D" parent="."]
+visible = false
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2"]
+position = Vector2(0, 8)
+shape = SubResource("CircleShape2D_rqsh0")
+
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="timeout" from="Hurt" to="." method="_on_hurt_timeout"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="DeathTimer" to="." method="_on_death_timer_timeout"]
+[connection signal="area_entered" from="Area2D2" to="." method="_on_area_2d_2_area_entered"]

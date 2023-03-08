@@ -16,5 +16,5 @@ func _on_timer_timeout():
 	summon.position.y = global_position.y + rng.randf_range(8,20)
 	summon.activated = true
 	rng.randomize
-	var time = rng.randi_range(10,60)
+	var time = rng.randi_range(8,25)
 	$Timer.start(time)

@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@export var move_speed : float = 80
+@export var move_speed : float = 110
 @export var health : int = 6
 @export var hurt = false
 @export var noshoot = false
@@ -96,12 +96,12 @@ func sethealth(new : int):
 	$Life.update(health)
 
 func speedboost():
-	move_speed = 120
+	move_speed = 140
 	$Speed.start()
 
 func _on_speed_timeout():
 	print("reset")
-	move_speed = 80
+	move_speed = 110
 
 func pause():
 	noshoot = true

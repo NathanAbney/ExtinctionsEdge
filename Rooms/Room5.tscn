@@ -2,7 +2,6 @@
 
 [ext_resource type="Texture2D" uid="uid://dqtveq4llwknv" path="res://Sprites/0x72_DungeonTilesetII_v1.4.png" id="2_xkoyr"]
 [ext_resource type="PackedScene" uid="uid://ctxnlmnyr30mm" path="res://Scenes/player_1.tscn" id="3_6pgvl"]
-[ext_resource type="PackedScene" uid="uid://iplfwjqi3ppk" path="res://Scenes/sorcerer.tscn" id="4_03kbk"]
 [ext_resource type="PackedScene" uid="uid://buawbm3ybmojk" path="res://Scenes/stairs.tscn" id="4_iccoa"]
 [ext_resource type="Shader" path="res://Shaders/Fog.gdshader" id="4_ren4q"]
 [ext_resource type="PackedScene" uid="uid://bmtonylm38np2" path="res://Scenes/coin.tscn" id="5_uxp3q"]
@@ -10,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://bdereg22dgaaq" path="res://Scenes/Chest.tscn" id="6_ptev3"]
 [ext_resource type="PackedScene" uid="uid://cd4ar3jmgtrg8" path="res://Scenes/gremlin.tscn" id="7_0ya5c"]
 [ext_resource type="PackedScene" uid="uid://7aiah756c005" path="res://Scenes/trap.tscn" id="9_7dcde"]
+[ext_resource type="PackedScene" uid="uid://fry335qufqk5" path="res://Scenes/sorcereractivated.tscn" id="10_cov30"]
 
 [sub_resource type="GDScript" id="GDScript_52s8u"]
 script/source = "extends Node2D
@@ -17,7 +17,13 @@ script/source = "extends Node2D
 var rng = RandomNumberGenerator.new()
 
 func _on_player_1_dead():
-	get_tree().change_scene_to_file(\"res://Scenes/game_over.tscn\")
+	var menu = preload(\"res://Scenes/game_over.tscn\").instantiate()
+	menu.scale.x = 1.25
+	menu.scale.y = 1.25
+	menu.position.x = $Player1.global_position.x - 247
+	menu.position.y = $Player1.global_position.y - 161
+	add_child(menu)
+	get_tree().paused = true
 
 func next_level():
 	$Player1/TransitionPlayer.play(\"Fade_out\")
@@ -25,13 +31,11 @@ func next_level():
 
 func _on_timer_timeout():
 	rng.randomize()
-	var room = rng.randi_range(0,2)
+	var room = rng.randi_range(0,1)
 	if room == 0:
-		get_tree().change_scene_to_file(\"res://Rooms/Room1.tscn\")
+		get_tree().change_scene_to_file(\"res://Rooms/Room3.tscn\")
 	if room == 1:
 		get_tree().change_scene_to_file(\"res://Rooms/Room2.tscn\")
-	if room == 2:
-		get_tree().change_scene_to_file(\"res://Rooms/Room5.tscn\")
 "
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sxuaj"]
@@ -2776,9 +2780,6 @@ position = Vector2(72, -200)
 
 [node name="Items" type="Node" parent="."]
 
-[node name="Chest" parent="Items" instance=ExtResource("6_ptev3")]
-position = Vector2(-104, -57)
-
 [node name="Coin5" parent="Items" instance=ExtResource("5_uxp3q")]
 position = Vector2(-7, -184)
 
@@ -2794,13 +2795,10 @@ position = Vector2(-152, 169)
 [node name="Coin4" parent="Items" instance=ExtResource("5_uxp3q")]
 position = Vector2(-216, -105)
 
+[node name="Chest" parent="Items" instance=ExtResource("6_ptev3")]
+position = Vector2(-104, -57)
+
 [node name="Monsters" type="Node" parent="."]
-
-[node name="Sorcerer" parent="Monsters" instance=ExtResource("4_03kbk")]
-position = Vector2(-121, 92)
-
-[node name="Sorcerer2" parent="Monsters" instance=ExtResource("4_03kbk")]
-position = Vector2(104, -81)
 
 [node name="Gremlin" parent="Monsters" instance=ExtResource("7_0ya5c")]
 position = Vector2(100, -217)
@@ -2825,6 +2823,15 @@ position = Vector2(-39, 167)
 
 [node name="Goblin3" parent="Monsters" instance=ExtResource("6_63qxj")]
 position = Vector2(-232, -174)
+
+[node name="SorcererActivated" parent="Monsters" instance=ExtResource("10_cov30")]
+position = Vector2(-104, 79)
+
+[node name="SorcererActivated2" parent="Monsters" instance=ExtResource("10_cov30")]
+position = Vector2(88, -66)
+
+[node name="SorcererActivated3" parent="Monsters" instance=ExtResource("10_cov30")]
+position = Vector2(88, 78)
 
 [node name="Traps" type="Node" parent="."]
 
