@@ -100,7 +100,6 @@ func speedboost():
 	$Speed.start()
 
 func _on_speed_timeout():
-	print("reset")
 	move_speed = 110
 
 func pause():

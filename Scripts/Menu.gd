@@ -46,12 +46,13 @@ func _on_green_dino_pressed():
 
 func _on_begin_pressed():
 	Global.health = 6
+	Global.current_level = 0
 	$Fade.visible = true
 	$TransitionPlayer.play("Fade_out")
 	$FadeTimer.start()
 
 func _on_fade_timer_timeout():
-	get_tree().change_scene_to_file("res://Rooms/Room1.tscn")
+	get_tree().change_scene_to_file("res://Rooms/Small/SmallRoom1.tscn")
 
 func _on_back_pressed():
 	if $Options.visible:

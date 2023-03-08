@@ -2,6 +2,11 @@ extends Node2D
 
 var rng = RandomNumberGenerator.new()
 
+func _ready():
+	Global.current_level = Global.current_level + 1
+	print("Level ", Global.current_level)
+	print(Global.next_level)
+
 func _on_player_1_dead():
 	var menu = preload("res://Scenes/game_over.tscn").instantiate()
 	menu.scale.x = 1.25
@@ -16,9 +21,5 @@ func next_level():
 	$Timer.start()
 
 func _on_timer_timeout():
-	rng.randomize()
-	var room = rng.randi_range(0,1)
-	if room == 0:
-		get_tree().change_scene_to_file("res://Rooms/Room4.tscn")
-	if room == 1:
-		get_tree().change_scene_to_file("res://Rooms/Room3.tscn")
+	Global.change_next_level()
+	get_tree().change_scene_to_file(Global.next_level)

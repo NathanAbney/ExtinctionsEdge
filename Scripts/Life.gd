@@ -2,7 +2,6 @@ extends Container
 
 func update(health : int):
 	Global.health = health
-	print(Global.health)
 	if health == 6:
 		$Heart3.frame = 530
 		$Heart2.frame = 530
