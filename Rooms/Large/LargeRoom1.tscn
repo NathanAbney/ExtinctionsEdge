@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://iplfwjqi3ppk" path="res://Scenes/sorcerer.tscn" id="7_ayfla"]
 [ext_resource type="PackedScene" uid="uid://ccxvl0403b63" path="res://Scenes/ghoul.tscn" id="8_5yuq0"]
 [ext_resource type="PackedScene" uid="uid://bdereg22dgaaq" path="res://Scenes/Chest.tscn" id="9_moanv"]
-[ext_resource type="PackedScene" uid="uid://cd4ar3jmgtrg8" path="res://Scenes/gremlin.tscn" id="9_tuc2k"]
+[ext_resource type="PackedScene" uid="uid://d2c4opv7ri7jt" path="res://Scenes/golden_knight.tscn" id="11_8xc3e"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sxuaj"]
 texture = ExtResource("1_m51mi")
@@ -2741,7 +2741,7 @@ layer_3/z_index = 0
 layer_3/tile_data = PackedInt32Array(1310774, 983040, 16, 1376310, 983040, 16, 1441846, 983040, 16, 1507382, 983040, 16, 1572918, 983040, 16, 1638454, 983040, 16, 1703990, 983040, 16, 1769526, 983040, 16, 1835062, 983040, 16, 1900598, 983040, 16, 1900599, 983040, 16, 1900600, 983040, 16, 1900601, 983040, 16, 1900602, 983040, 16, 1900603, 983040, 16, 1900604, 983040, 16, 1900605, 983040, 16, 1900606, 983040, 16, 1900607, 983040, 16, 1835071, 983040, 16, 1769535, 983040, 16, 1703999, 983040, 16, 1638463, 983040, 16, 1572927, 983040, 16, 1507391, 983040, 16, 1441855, 983040, 16, 1376319, 983040, 16, 1310783, 983040, 16, 1310782, 983040, 16, 1310781, 983040, 16, 1310780, 983040, 16, 1310779, 983040, 16, 1310778, 983040, 16, 1310777, 983040, 16, 1310776, 983040, 16, 1310775, 983040, 16)
 
 [node name="Player1" parent="." groups=["player"] instance=ExtResource("2_m752j")]
-position = Vector2(-437, 195)
+position = Vector2(-384, 213)
 
 [node name="Darken" type="CanvasModulate" parent="."]
 color = Color(0.294118, 0.294118, 0.294118, 1)
@@ -2794,24 +2794,6 @@ position = Vector2(3466, 1875)
 
 [node name="Ghoul4" parent="Monsters" instance=ExtResource("8_5yuq0")]
 position = Vector2(2842, -2488)
-
-[node name="Gremlin" parent="Monsters" instance=ExtResource("9_tuc2k")]
-position = Vector2(92, -420)
-
-[node name="Gremlin2" parent="Monsters" instance=ExtResource("9_tuc2k")]
-position = Vector2(358, -421)
-
-[node name="Gremlin3" parent="Monsters" instance=ExtResource("9_tuc2k")]
-position = Vector2(251, -382)
-
-[node name="Gremlin4" parent="Monsters" instance=ExtResource("9_tuc2k")]
-position = Vector2(140, -344)
-
-[node name="Gremlin5" parent="Monsters" instance=ExtResource("9_tuc2k")]
-position = Vector2(368, -319)
-
-[node name="Gremlin6" parent="Monsters" instance=ExtResource("9_tuc2k")]
-position = Vector2(166, -415)
 
 [node name="Goblin5" parent="Monsters" instance=ExtResource("6_q53i7")]
 position = Vector2(183, 94)
@@ -2881,6 +2863,9 @@ position = Vector2(1593, 203)
 
 [node name="Goblin27" parent="Monsters" instance=ExtResource("6_q53i7")]
 position = Vector2(1618, 204)
+
+[node name="Golden Knight" parent="Monsters" instance=ExtResource("11_8xc3e")]
+position = Vector2(106, -412)
 
 [node name="Traps" type="Node" parent="."]
 
