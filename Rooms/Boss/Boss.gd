@@ -1,5 +1,8 @@
 extends Node2D
 
+func _ready():
+	Global.current_level = Global.current_level + 1
+
 func _on_player_1_dead():
 	var menu = preload("res://Scenes/game_over.tscn").instantiate()
 	menu.scale.x = 1.25
@@ -14,7 +17,11 @@ func next_level():
 	$Timer.start()
 
 func _on_timer_timeout():
-	get_tree().change_scene_to_file("res://Scenes/main_menu.tscn")
+	if !Global.boss_rush:
+		get_tree().change_scene_to_file("res://Scenes/main_menu.tscn")
+	else:
+		Global.change_next_level()
+		get_tree().change_scene_to_file(Global.next_level)
 
 func camera_zoom():
 	$Player1/Camera2D.zoom.x = .5

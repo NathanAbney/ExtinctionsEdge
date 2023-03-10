@@ -14,6 +14,12 @@ func _ready():
 func _on_start_pressed():
 	$Menu.visible = false
 	$StartMenu.visible = true
+	$"StartMenu/Hat Selection/Container/Sprite2D".frame = Global.hat
+
+func _on_boss_rush_pressed():
+	Global.boss_rush = true
+	_on_start_pressed()
+	$"StartMenu/Hat Selection/Container/Sprite2D".frame = Global.hat
 
 func _physics_process(delta):
 	$Path2D/PathFollow2D.progress = $Path2D/PathFollow2D.progress + 25 * delta
@@ -52,7 +58,10 @@ func _on_begin_pressed():
 	$FadeTimer.start()
 
 func _on_fade_timer_timeout():
-	get_tree().change_scene_to_file("res://Rooms/Small/SmallRoom1.tscn")
+	if !Global.boss_rush:
+		get_tree().change_scene_to_file("res://Rooms/Small/SmallRoom1.tscn")
+	else:
+		get_tree().change_scene_to_file("res://Rooms/Boss/Boss1.tscn")
 
 func _on_back_pressed():
 	if $Options.visible:
@@ -68,21 +77,17 @@ func _on_fullscreen_toggled(button_pressed):
 		DisplayServer.window_set_mode(0)
 
 func _on_discord_pressed():
-	# OS.shell_open("https://discord.gg/mNXaP7dzhR")
-	Global.hat = 1
+	OS.shell_open("https://discord.gg/mNXaP7dzhR")
 
 # Cheat Codes
 
 func _on_code_text_submitted(new_text):
 	if new_text == "BARNEY":
 		Global.dino = ImageTexture.create_from_image(Image.load_from_file("res://Sprites/DinoSprites - purp.png"))
-		$Options/OptionPanel/Code.clear()
 	if new_text == "WEENIEHUT":
 		$StartMenu/Menu/Dinos/BlueDino.disabled = false
 		$StartMenu/Menu/Dinos/RedDino.disabled = false
 		$StartMenu/Menu/Dinos/YellowDino.disabled = false
-		$Options/OptionPanel/Code.clear()
 	if new_text == "GENES1S":
 		Global.god_mode = true
-		$Options/OptionPanel/Code.clear()
-
+	$Options/OptionPanel/Code.clear()
