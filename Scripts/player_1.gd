@@ -77,8 +77,15 @@ func shoot():
 	var bullet = preload("res://Scenes/fire.tscn").instantiate()
 	get_parent().add_child(bullet)
 	bullet.position = $Wand/Sprite2D/Marker2D.global_position
-	bullet.velocity.x = (get_global_mouse_position().x - bullet.position.x) * 2
-	bullet.velocity.y = (get_global_mouse_position().y- bullet.position.y) * 2
+	var x = global_position.direction_to(get_global_mouse_position()).x
+	var y = global_position.direction_to(get_global_mouse_position()).y
+	var slope = (x/y) / 100
+	if x/y < 0:
+		slope = -slope
+	var direction = Vector2.ZERO
+	direction.x = x * slope
+	direction.y = y * slope
+	bullet.velocity = direction.normalized() * 200
 	bullet.z_index = -1
 
 func shoot2():

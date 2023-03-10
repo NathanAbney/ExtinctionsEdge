@@ -1,19 +1,19 @@
-[gd_scene load_steps=13 format=3 uid="uid://b50wns0oep88w"]
+[gd_scene load_steps=13 format=3 uid="uid://m82bc61shiqw"]
 
-[ext_resource type="Script" path="res://Scripts/golden_knight.gd" id="1_h14s4"]
-[ext_resource type="Texture2D" uid="uid://bjeghg8gb06c0" path="res://Sprites/Light.png" id="2_24c6w"]
-[ext_resource type="Texture2D" uid="uid://q8lk5x6hqbgf" path="res://Sprites/aeQmEd.png" id="2_t8gp1"]
-[ext_resource type="Script" path="res://Scripts/LifeGoldenKnight.gd" id="4_lfjmj"]
-[ext_resource type="Texture2D" uid="uid://dqtveq4llwknv" path="res://Sprites/0x72_DungeonTilesetII_v1.4.png" id="5_sa036"]
+[ext_resource type="Script" path="res://Scripts/boss3.gd" id="1_wl7ue"]
+[ext_resource type="Texture2D" uid="uid://bjeghg8gb06c0" path="res://Sprites/Light.png" id="2_8583q"]
+[ext_resource type="Texture2D" uid="uid://560dnitb5hai" path="res://Sprites/Alchemist.png" id="3_fasrn"]
+[ext_resource type="Script" path="res://Scripts/LifeAlchemist.gd" id="4_2nmrw"]
+[ext_resource type="Texture2D" uid="uid://wshs4jur2tgo" path="res://Sprites/HealthBar20.png" id="5_2boqu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dpmbe"]
-size = Vector2(19, 26)
+size = Vector2(10, 18)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_gqqyq"]
-size = Vector2(21, 28)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lw5ja"]
+size = Vector2(10, 18)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_eh4k5"]
-radius = 172.003
+radius = 253.0
 
 [sub_resource type="Animation" id="Animation_e14jl"]
 resource_name = "Idle"
@@ -29,7 +29,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.25, 0.5, 0.75),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [56, 57, 58, 59]
+"values": [4, 5, 6, 7]
 }
 
 [sub_resource type="Animation" id="Animation_nnhpy"]
@@ -51,7 +51,6 @@ tracks/0/keys = {
 [sub_resource type="Animation" id="Animation_1dg1r"]
 resource_name = "Walking"
 length = 0.4
-loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -62,7 +61,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [59, 60, 61, 63]
+"values": [164, 165, 166, 167]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_2ian5"]
@@ -72,40 +71,52 @@ _data = {
 "Walking": SubResource("Animation_1dg1r")
 }
 
-[node name="Golden Knight" type="CharacterBody2D" groups=["enemy"]]
+[node name="Alchemist Boss" type="CharacterBody2D" groups=["enemy"]]
 collision_layer = 16
 collision_mask = 275
-script = ExtResource("1_h14s4")
+script = ExtResource("1_wl7ue")
 
 [node name="Shadow" type="Sprite2D" parent="."]
 modulate = Color(0, 0, 0, 1)
-position = Vector2(0, 16)
-scale = Vector2(0.033, 0.00900001)
-texture = ExtResource("2_24c6w")
+position = Vector2(0.499999, 15.75)
+scale = Vector2(0.023, 0.00850001)
+texture = ExtResource("2_8583q")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_t8gp1")
+texture = ExtResource("3_fasrn")
 hframes = 8
-vframes = 12
-frame = 56
+frame = 6
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.5, 3)
+visible = false
+position = Vector2(0, 7)
 shape = SubResource("RectangleShape2D_dpmbe")
 
 [node name="Area2D" type="Area2D" parent="."]
+visible = false
 collision_layer = 16
-collision_mask = 268
+collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(0.5, 3)
-shape = SubResource("RectangleShape2D_gqqyq")
+position = Vector2(0, 7)
+shape = SubResource("RectangleShape2D_lw5ja")
+
+[node name="Life" type="Container" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("4_2nmrw")
+
+[node name="HealthBar" type="Sprite2D" parent="Life"]
+position = Vector2(1.13687e-13, -16)
+scale = Vector2(2.81818, 2.25)
+texture = ExtResource("5_2boqu")
+vframes = 20
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 scale = Vector2(0.5, 0.5)
 color = Color(0.407843, 0, 0.407843, 1)
 energy = 0.5
-texture = ExtResource("2_24c6w")
+texture = ExtResource("2_8583q")
 
 [node name="ActivationBox" type="Area2D" parent="."]
 visible = false
@@ -122,65 +133,12 @@ libraries = {
 }
 
 [node name="Attack" type="Timer" parent="."]
-wait_time = 3.0
-one_shot = true
+wait_time = 2.5
 
-[node name="Life" type="Container" parent="."]
-offset_right = 40.0
-offset_bottom = 40.0
-script = ExtResource("4_lfjmj")
+[node name="Throw" type="Timer" parent="."]
+wait_time = 1.2
 
-[node name="Heart1" type="Sprite2D" parent="Life"]
-position = Vector2(-9, -19)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("5_sa036")
-hframes = 32
-vframes = 32
-frame = 530
-
-[node name="Heart2" type="Sprite2D" parent="Life"]
-position = Vector2(-2, -19)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("5_sa036")
-hframes = 32
-vframes = 32
-frame = 530
-
-[node name="Heart3" type="Sprite2D" parent="Life"]
-position = Vector2(5, -19)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("5_sa036")
-hframes = 32
-vframes = 32
-frame = 530
-
-[node name="Heart4" type="Sprite2D" parent="Life"]
-position = Vector2(12, -19)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("5_sa036")
-hframes = 32
-vframes = 32
-frame = 530
-
-[node name="Particles" type="CPUParticles2D" parent="."]
-emitting = false
-amount = 20
-lifetime = 0.2
-one_shot = true
-emission_shape = 1
-emission_sphere_radius = 20.0
-direction = Vector2(1, 200)
-spread = 166.68
-initial_velocity_min = 58.59
-initial_velocity_max = 68.69
-scale_amount_min = 2.0
-scale_amount_max = 3.0
-color = Color(0.917647, 1, 0, 1)
-
-[node name="DeathTimer" type="Timer" parent="."]
-wait_time = 0.4
-one_shot = true
-
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="area_entered" from="ActivationBox" to="." method="_on_activation_box_area_entered"]
 [connection signal="timeout" from="Attack" to="." method="_on_attack_timeout"]
-[connection signal="timeout" from="DeathTimer" to="." method="_on_death_timer_timeout"]
+[connection signal="timeout" from="Throw" to="." method="_on_throw_timeout"]

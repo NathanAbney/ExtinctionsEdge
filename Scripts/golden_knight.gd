@@ -14,7 +14,7 @@ func _ready():
 
 func _physics_process(delta):
 	if dash_active:
-		velocity = direction.normalized() * 300
+		velocity = direction.normalized() * 400
 		move_and_slide()
 		if is_on_wall():
 			if !hurt:
