@@ -54,6 +54,7 @@ func _on_timer_timeout():
 		fire.velocity = global_position.direction_to(player.global_position) * 250
 
 func die():
+	Global.coins = Global.coins + 1
 	$Area2D.queue_free()
 	$CollisionShape2D.queue_free()
 	$Life.queue_free()

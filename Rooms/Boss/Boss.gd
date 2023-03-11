@@ -13,6 +13,10 @@ func _on_player_1_dead():
 	get_tree().paused = true
 
 func next_level():
+	if !Global.boss_rush:
+		Global.coins = Global.coins + 20
+	else:
+		Global.coins = Global.coins + 5
 	$Player1/TransitionPlayer.play("Fade_out")
 	$Timer.start()
 

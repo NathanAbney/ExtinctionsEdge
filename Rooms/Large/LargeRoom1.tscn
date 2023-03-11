@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://iplfwjqi3ppk" path="res://Scenes/sorcerer.tscn" id="7_ayfla"]
 [ext_resource type="PackedScene" uid="uid://ccxvl0403b63" path="res://Scenes/ghoul.tscn" id="8_5yuq0"]
 [ext_resource type="PackedScene" uid="uid://bdereg22dgaaq" path="res://Scenes/Chest.tscn" id="9_moanv"]
-[ext_resource type="PackedScene" uid="uid://d2c4opv7ri7jt" path="res://Scenes/golden_knight.tscn" id="11_8xc3e"]
+[ext_resource type="PackedScene" uid="uid://b50wns0oep88w" path="res://Scenes/golden_knight.tscn" id="11_8xc3e"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sxuaj"]
 texture = ExtResource("1_m51mi")

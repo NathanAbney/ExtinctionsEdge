@@ -37,6 +37,7 @@ func _on_activation_area_area_entered(area):
 	activated = true
 
 func die():
+	Global.coins = Global.coins + 1
 	$Area2D.queue_free()
 	$CollisionShape2D.queue_free()
 	$Life.queue_free()

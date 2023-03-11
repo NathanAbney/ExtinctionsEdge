@@ -15,7 +15,6 @@ func _ready():
 	$Fade.visible = true
 	$TransitionPlayer.play("Fade_In")
 	sethealth(Global.health)
-	sethealth(6)
 	if Global.dino != null:
 		$Sprite2D.texture = Global.dino
 	if Global.hat < 5:
