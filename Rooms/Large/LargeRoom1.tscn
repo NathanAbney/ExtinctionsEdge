@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://b1jsme7ko4phn"]
+[gd_scene load_steps=18 format=3 uid="uid://b1jsme7ko4phn"]
 
 [ext_resource type="Texture2D" uid="uid://dqtveq4llwknv" path="res://Sprites/0x72_DungeonTilesetII_v1.4.png" id="1_m51mi"]
 [ext_resource type="Script" path="res://Rooms/room.gd" id="1_sy44s"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://ccxvl0403b63" path="res://Scenes/ghoul.tscn" id="8_5yuq0"]
 [ext_resource type="PackedScene" uid="uid://bdereg22dgaaq" path="res://Scenes/Chest.tscn" id="9_moanv"]
 [ext_resource type="PackedScene" uid="uid://b50wns0oep88w" path="res://Scenes/golden_knight.tscn" id="11_8xc3e"]
+[ext_resource type="PackedScene" uid="uid://cridh3ucbugqb" path="res://Scenes/Thief.tscn" id="12_nycce"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sxuaj"]
 texture = ExtResource("1_m51mi")
@@ -2741,7 +2742,7 @@ layer_3/z_index = 0
 layer_3/tile_data = PackedInt32Array(1310774, 983040, 16, 1376310, 983040, 16, 1441846, 983040, 16, 1507382, 983040, 16, 1572918, 983040, 16, 1638454, 983040, 16, 1703990, 983040, 16, 1769526, 983040, 16, 1835062, 983040, 16, 1900598, 983040, 16, 1900599, 983040, 16, 1900600, 983040, 16, 1900601, 983040, 16, 1900602, 983040, 16, 1900603, 983040, 16, 1900604, 983040, 16, 1900605, 983040, 16, 1900606, 983040, 16, 1900607, 983040, 16, 1835071, 983040, 16, 1769535, 983040, 16, 1703999, 983040, 16, 1638463, 983040, 16, 1572927, 983040, 16, 1507391, 983040, 16, 1441855, 983040, 16, 1376319, 983040, 16, 1310783, 983040, 16, 1310782, 983040, 16, 1310781, 983040, 16, 1310780, 983040, 16, 1310779, 983040, 16, 1310778, 983040, 16, 1310777, 983040, 16, 1310776, 983040, 16, 1310775, 983040, 16)
 
 [node name="Player1" parent="." groups=["player"] instance=ExtResource("2_m752j")]
-position = Vector2(-384, 213)
+position = Vector2(-354, 208)
 
 [node name="Darken" type="CanvasModulate" parent="."]
 color = Color(0.294118, 0.294118, 0.294118, 1)
@@ -2760,10 +2761,10 @@ position = Vector2(280, 358)
 [node name="Monsters" type="Node" parent="."]
 
 [node name="Goblin" parent="Monsters" instance=ExtResource("6_q53i7")]
-position = Vector2(-181, 119)
+position = Vector2(-182, 138)
 
 [node name="Goblin2" parent="Monsters" instance=ExtResource("6_q53i7")]
-position = Vector2(-159, 119)
+position = Vector2(-157, 137)
 
 [node name="Goblin3" parent="Monsters" instance=ExtResource("6_q53i7")]
 position = Vector2(837, 323)
@@ -2866,6 +2867,21 @@ position = Vector2(1618, 204)
 
 [node name="Golden Knight" parent="Monsters" instance=ExtResource("11_8xc3e")]
 position = Vector2(106, -412)
+
+[node name="Thief" parent="Monsters" instance=ExtResource("12_nycce")]
+position = Vector2(-413, 205)
+
+[node name="Thief2" parent="Monsters" instance=ExtResource("12_nycce")]
+position = Vector2(-168, 113)
+
+[node name="Thief3" parent="Monsters" instance=ExtResource("12_nycce")]
+position = Vector2(-224, -106)
+
+[node name="Thief4" parent="Monsters" instance=ExtResource("12_nycce")]
+position = Vector2(1155, 79)
+
+[node name="Thief5" parent="Monsters" instance=ExtResource("12_nycce")]
+position = Vector2(1320, 381)
 
 [node name="Traps" type="Node" parent="."]
 
