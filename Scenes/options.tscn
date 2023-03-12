@@ -1,0 +1,95 @@
+[gd_scene load_steps=4 format=3 uid="uid://bwsp0nvj6jtwk"]
+
+[ext_resource type="Material" uid="uid://vwprmsgn4vg8" path="res://ExcludeCanvas.tres" id="1_lmx4r"]
+[ext_resource type="FontFile" uid="uid://d2naa1ovvhg1t" path="res://monogram.ttf" id="2_5tlvf"]
+
+[sub_resource type="Theme" id="Theme_w7158"]
+default_font = ExtResource("2_5tlvf")
+
+[node name="Options" type="Control"]
+visible = false
+material = ExtResource("1_lmx4r")
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -8.56003
+offset_right = 8.56003
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+metadata/_edit_use_anchors_ = true
+
+[node name="OptionPanel" type="VBoxContainer" parent="."]
+material = ExtResource("1_lmx4r")
+layout_mode = 0
+offset_left = 601.0
+offset_top = 905.0
+offset_right = 724.0
+offset_bottom = 1017.0
+size_flags_vertical = 4
+theme = SubResource("Theme_w7158")
+alignment = 1
+
+[node name="MasterVol" type="RichTextLabel" parent="OptionPanel"]
+clip_contents = false
+layout_mode = 2
+size_flags_vertical = 8
+text = " Master Volume
+"
+fit_content = true
+tab_size = 2
+
+[node name="MVol" type="HSlider" parent="OptionPanel/MasterVol"]
+modulate = Color(0, 0.72549, 0.882353, 1)
+layout_mode = 2
+anchor_right = 1.0
+anchor_bottom = 3.308
+offset_top = 17.0
+offset_right = -1.0
+offset_bottom = -3.004
+focus_neighbor_left = NodePath("../../Back")
+focus_neighbor_top = NodePath("../../Back")
+focus_neighbor_right = NodePath("../../Fullscreen")
+focus_neighbor_bottom = NodePath("../../Fullscreen")
+focus_next = NodePath("../../Fullscreen")
+focus_previous = NodePath("../../Back")
+
+[node name="Fullscreen" type="CheckButton" parent="OptionPanel"]
+layout_mode = 2
+size_flags_vertical = 10
+size_flags_stretch_ratio = 10.0
+focus_neighbor_left = NodePath("../MasterVol/MVol")
+focus_neighbor_top = NodePath("../MasterVol/MVol")
+focus_neighbor_right = NodePath("../Code")
+focus_neighbor_bottom = NodePath("../Code")
+focus_next = NodePath("../Code")
+focus_previous = NodePath("../MasterVol/MVol")
+text = "Fullscreen"
+
+[node name="Code" type="LineEdit" parent="OptionPanel"]
+layout_mode = 2
+size_flags_vertical = 10
+focus_neighbor_left = NodePath("../Fullscreen")
+focus_neighbor_top = NodePath("../Fullscreen")
+focus_neighbor_right = NodePath("../Back")
+focus_neighbor_bottom = NodePath("../Back")
+focus_next = NodePath("../Back")
+focus_previous = NodePath("../Fullscreen")
+placeholder_text = "Enter Code"
+alignment = 1
+caret_blink = true
+
+[node name="Back" type="Button" parent="OptionPanel"]
+layout_mode = 2
+size_flags_vertical = 8
+focus_neighbor_left = NodePath("../Code")
+focus_neighbor_top = NodePath("../Code")
+focus_neighbor_right = NodePath("../MasterVol/MVol")
+focus_neighbor_bottom = NodePath("../MasterVol/MVol")
+focus_next = NodePath("../MasterVol/MVol")
+focus_previous = NodePath("../Code")
+text = "Back"

@@ -76,12 +76,12 @@ func _on_code_text_submitted(new_text):
 	if new_text == "BARNEY":
 		Global.dino = ImageTexture.create_from_image(Image.load_from_file("res://Sprites/DinoSprites - purp.png"))
 		$Options/OptionPanel/Code.clear()
-	if new_text == "WEENIEHUT":
+	elif new_text == "WEENIEHUT":
 		$StartMenu/Menu/Dinos/BlueDino.disabled = false
 		$StartMenu/Menu/Dinos/RedDino.disabled = false
 		$StartMenu/Menu/Dinos/YellowDino.disabled = false
 		$Options/OptionPanel/Code.clear()
-	if new_text == "GENES1S":
+	elif new_text == "GENES1S":
 		Global.god_mode = true
 		$Options/OptionPanel/Code.clear()
 
