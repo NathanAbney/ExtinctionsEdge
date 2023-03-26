@@ -39,7 +39,7 @@ func attack(move : int):
 		dash_active = true
 		target = player.global_position
 	if move == 1:
-		for i in range(5):
+		for i in range(3):
 			var summon = preload("res://Scenes/mushroom_medium.tscn").instantiate()
 			get_parent().add_child(summon)
 			summon.position.x = global_position.x + rng.randf_range(5,100)

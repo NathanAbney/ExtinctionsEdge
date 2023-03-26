@@ -1,15 +1,14 @@
-[gd_scene load_steps=13 format=3 uid="uid://c7cbu6137ruph"]
+[gd_scene load_steps=12 format=3 uid="uid://c7cbu6137ruph"]
 
-[ext_resource type="Script" path="res://Rooms/Room1.gd" id="1_yftfx"]
-[ext_resource type="Texture2D" uid="uid://dqtveq4llwknv" path="res://Sprites/0x72_DungeonTilesetII_v1.4.png" id="2_dxeaf"]
-[ext_resource type="PackedScene" uid="uid://ctxnlmnyr30mm" path="res://Scenes/player_1.tscn" id="3_rgild"]
-[ext_resource type="PackedScene" uid="uid://buawbm3ybmojk" path="res://Scenes/stairs.tscn" id="4_aqmk7"]
-[ext_resource type="PackedScene" path="res://Scenes/potion.tscn" id="5_alew1"]
-[ext_resource type="PackedScene" uid="uid://bmtonylm38np2" path="res://Scenes/coin.tscn" id="5_cbrq0"]
-[ext_resource type="Shader" path="res://Shaders/Fog.gdshader" id="6_fgn4u"]
+[ext_resource type="Texture2D" uid="uid://dqtveq4llwknv" path="res://Sprites/0x72_DungeonTilesetII_v1.4.png" id="1_735oh"]
+[ext_resource type="Script" path="res://Rooms/room.gd" id="1_qa0a0"]
+[ext_resource type="PackedScene" uid="uid://ctxnlmnyr30mm" path="res://Scenes/player_1.tscn" id="2_dni8a"]
+[ext_resource type="PackedScene" uid="uid://buawbm3ybmojk" path="res://Scenes/stairs.tscn" id="3_5txom"]
+[ext_resource type="PackedScene" uid="uid://bmtonylm38np2" path="res://Scenes/coin.tscn" id="4_86s3f"]
+[ext_resource type="Shader" path="res://Shaders/Fog.gdshader" id="5_2548x"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sxuaj"]
-texture = ExtResource("2_dxeaf")
+texture = ExtResource("1_735oh")
 1:0/0 = 0
 1:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 1:0/0/physics_layer_0/angular_velocity = 0.0
@@ -1629,7 +1628,7 @@ seamless = true
 noise = SubResource("FastNoiseLite_xq2yv")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xq6tv"]
-shader = ExtResource("6_fgn4u")
+shader = ExtResource("5_2548x")
 shader_parameter/octaves = 4
 shader_parameter/starting_amplitude = 0.5
 shader_parameter/starting_frequency = 1.0
@@ -1639,7 +1638,7 @@ shader_parameter/fog_color = Vector4(0, 0, 0, 0.8)
 shader_parameter/noise = SubResource("NoiseTexture2D_dufi0")
 
 [node name="Room1" type="Node2D"]
-script = ExtResource("1_yftfx")
+script = ExtResource("1_qa0a0")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 z_index = -6
@@ -1662,7 +1661,7 @@ layer_1/modulate = Color(1, 1, 1, 1)
 layer_1/y_sort_enabled = false
 layer_1/y_sort_origin = -1
 layer_1/z_index = 0
-layer_1/tile_data = PackedInt32Array(-35, 131072, 8, -34, 65536, 1, -33, 65536, 1, -32, 65536, 1, -31, 65536, 1, -30, 65536, 1, -29, 65536, 1, -28, 65536, 1, -27, 65536, 1, -26, 65536, 1, -25, 65536, 1, -24, 65536, 1, -23, 65536, 1, -22, 196608, 8, -65571, 131072, 7, -65570, 65536, 0, -65569, 65536, 0, -65568, 65536, 0, -65567, 65536, 0, -65566, 65536, 0, -65565, 65536, 0, -65564, 65536, 0, -65563, 65536, 0, -65562, 65536, 0, -65561, 65536, 0, -65560, 65536, 0, -65559, 65536, 0, -65558, 196608, 7, 65501, 65536, 8, 131037, 65536, 8, 196573, 65536, 8, 262109, 65536, 8, 327645, 65536, 8, 393181, 65536, 8, 458717, 327680, 8, 65514, 0, 8, 131050, 0, 8, 196586, 0, 8, 262122, 0, 8, 327658, 0, 8, 393194, 0, 8, 458730, 262144, 8, 458718, 262144, 10, 458719, 262144, 10, 458720, 262144, 10, 458721, 262144, 10, 458722, 262144, 10, 458723, 262144, 10, 458724, 262144, 10, 458725, 262144, 10, 458726, 262144, 10, 458727, 262144, 10, 458728, 262144, 10, 458729, 262144, 10, 524253, 131072, 10, 524254, 131072, 10, 524255, 131072, 10, 524256, 131072, 10, 524257, 131072, 10, 524258, 131072, 10, 524259, 131072, 10, 524260, 131072, 10, 524261, 131072, 10, 524262, 131072, 10, 524263, 131072, 10, 524264, 131072, 10, 524265, 131072, 10, 524266, 131072, 10)
+layer_1/tile_data = PackedInt32Array(-34, 65536, 1, -33, 65536, 1, -32, 65536, 1, -31, 65536, 1, -30, 65536, 1, -29, 65536, 1, -28, 65536, 1, -27, 65536, 1, -26, 65536, 1, -25, 65536, 1, -24, 65536, 1, -23, 65536, 1, -65571, 131072, 7, -65570, 65536, 0, -65569, 65536, 0, -65568, 65536, 0, -65567, 65536, 0, -65566, 65536, 0, -65565, 65536, 0, -65564, 65536, 0, -65563, 65536, 0, -65562, 65536, 0, -65561, 65536, 0, -65560, 65536, 0, -65559, 65536, 0, -65558, 196608, 7, 458717, 262144, 10, 458718, 262144, 10, 458719, 262144, 10, 458720, 262144, 10, 458721, 262144, 10, 458722, 262144, 10, 458723, 262144, 10, 458724, 262144, 10, 458725, 262144, 10, 458726, 262144, 10, 458727, 262144, 10, 458728, 262144, 10, 458729, 262144, 10, 524253, 131072, 10, 524254, 131072, 10, 524255, 131072, 10, 524256, 131072, 10, 524257, 131072, 10, 524258, 131072, 10, 524259, 131072, 10, 524260, 131072, 10, 524261, 131072, 10, 524262, 131072, 10, 524263, 131072, 10, 524264, 131072, 10, 524265, 131072, 10, 524266, 131072, 10, 458716, 0, 8, 393180, 0, 8, 327644, 0, 8, 262108, 0, 8, 196572, 0, 8, 131036, 0, 8, 65500, 0, 8, -36, 0, 8, 524252, 0, 9, 458730, 327680, 10, 524267, 65536, 9, 458731, 65536, 8, 393195, 65536, 8, 327659, 65536, 8, 262123, 65536, 8, 196587, 65536, 8, 131051, 65536, 8, 65515, 65536, 8, -21, 65536, 8, -65557, 65536, 7, -65572, 0, 7, -35, 131072, 10, -22, 131072, 10)
 layer_2/name = "Overlay"
 layer_2/enabled = true
 layer_2/modulate = Color(1, 1, 1, 1)
@@ -1671,25 +1670,22 @@ layer_2/y_sort_origin = 0
 layer_2/z_index = 1
 layer_2/tile_data = PackedInt32Array()
 
-[node name="Player1" parent="." groups=["player"] instance=ExtResource("3_rgild")]
+[node name="Player1" parent="." groups=["player"] instance=ExtResource("2_dni8a")]
 position = Vector2(-536, 22)
 
 [node name="Darken" type="CanvasModulate" parent="."]
 color = Color(0.294118, 0.294118, 0.294118, 1)
 
-[node name="Stairs" parent="." instance=ExtResource("4_aqmk7")]
+[node name="Stairs" parent="." instance=ExtResource("3_5txom")]
 position = Vector2(-360, 88)
 
 [node name="Items" type="Node" parent="."]
 
-[node name="Coin" parent="Items" instance=ExtResource("5_cbrq0")]
+[node name="Coin" parent="Items" instance=ExtResource("4_86s3f")]
 position = Vector2(-392, 87)
 
-[node name="Coin2" parent="Items" instance=ExtResource("5_cbrq0")]
+[node name="Coin2" parent="Items" instance=ExtResource("4_86s3f")]
 position = Vector2(-376, 87)
-
-[node name="Potion" parent="Items" instance=ExtResource("5_alew1")]
-position = Vector2(-360, 24)
 
 [node name="Monsters" type="Node" parent="."]
 

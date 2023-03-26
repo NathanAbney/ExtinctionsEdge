@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://dcjilvt1lr07w"]
+[gd_scene load_steps=28 format=3 uid="uid://dcjilvt1lr07w"]
 
 [ext_resource type="Script" path="res://Scripts/Menu.gd" id="1_dt8ef"]
 [ext_resource type="Texture2D" uid="uid://dqtveq4llwknv" path="res://Sprites/0x72_DungeonTilesetII_v1.4.png" id="1_mk1wo"]
@@ -15,7 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://du50v7dr0cdm6" path="res://Sprites/BlueSelected.png" id="9_cri6e"]
 [ext_resource type="Texture2D" uid="uid://cs2kul7k21e7a" path="res://Sprites/YellowSelected.png" id="11_lsnyx"]
 [ext_resource type="Texture2D" uid="uid://ba3morynwmjy8" path="res://Sprites/GreenSelected.png" id="13_6lrpx"]
-[ext_resource type="Script" path="res://Scenes/Hat Selection.gd" id="16_5kcqx"]
+[ext_resource type="Script" path="res://Scripts/Hat Selection.gd" id="16_kas8l"]
 [ext_resource type="Texture2D" uid="uid://dcdl7j7lj8tp2" path="res://Sprites/HatsTest.png" id="16_pdrt0"]
 
 [sub_resource type="Curve2D" id="Curve2D_v6ljx"]
@@ -1638,6 +1638,8 @@ physics_layer_0/collision_layer = 258
 physics_layer_0/collision_mask = 17
 sources/0 = SubResource("TileSetAtlasSource_sxuaj")
 
+[sub_resource type="Theme" id="Theme_uh6ip"]
+
 [sub_resource type="Theme" id="Theme_coavw"]
 default_font = ExtResource("5_qoess")
 
@@ -1735,19 +1737,19 @@ texture = ExtResource("3_0kby7")
 position = Vector2(650, 937)
 
 [node name="Menu" type="Control" parent="."]
+custom_minimum_size = Vector2(0.116, 0)
 layout_mode = 3
 anchors_preset = 0
-offset_left = 616.0
-offset_top = 1006.0
-offset_right = 684.0
-offset_bottom = 1006.0
+offset_right = 68.0
+theme = SubResource("Theme_uh6ip")
 
 [node name="Box" type="VBoxContainer" parent="Menu"]
 material = ExtResource("3_6ree2")
 layout_mode = 0
-offset_top = -100.0
-offset_right = 68.0
-offset_bottom = -4.0
+offset_left = 615.0
+offset_top = 900.0
+offset_right = 683.0
+offset_bottom = 1021.0
 size_flags_vertical = 4
 alignment = 1
 
@@ -1765,6 +1767,22 @@ theme_override_colors/font_color = Color(0.627451, 0.627451, 0.627451, 1)
 theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
 action_mode = 0
 text = "Start Game"
+flat = true
+
+[node name="Boss Rush" type="Button" parent="Menu/Box"]
+material = ExtResource("3_6ree2")
+layout_mode = 2
+focus_neighbor_left = NodePath("../Exit")
+focus_neighbor_top = NodePath("../Exit")
+focus_neighbor_right = NodePath("../Options")
+focus_neighbor_bottom = NodePath("../Options")
+focus_next = NodePath("../Options")
+focus_previous = NodePath("../Exit")
+theme = SubResource("Theme_coavw")
+theme_override_colors/font_color = Color(0.627451, 0.627451, 0.627451, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+action_mode = 0
+text = "Boss Rush"
 flat = true
 
 [node name="Options" type="Button" parent="Menu/Box"]
@@ -1816,7 +1834,7 @@ text = "Exit"
 flat = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Menu"]
-position = Vector2(132, 15)
+position = Vector2(756, 1015)
 scale = Vector2(0.5, 0.5)
 
 [node name="Discord" type="TextureButton" parent="Menu/Sprite2D"]
@@ -1921,7 +1939,7 @@ offset_left = -120.0
 offset_top = 1.0
 offset_right = -80.0
 offset_bottom = 51.0
-script = ExtResource("16_5kcqx")
+script = ExtResource("16_kas8l")
 
 [node name="Last" type="Button" parent="StartMenu/Hat Selection"]
 material = ExtResource("3_6ree2")
@@ -1941,7 +1959,7 @@ layout_mode = 2
 position = Vector2(20, 0)
 scale = Vector2(1.843, 1.843)
 texture = ExtResource("16_pdrt0")
-hframes = 4
+hframes = 5
 
 [node name="Next" type="Button" parent="StartMenu/Hat Selection"]
 material = ExtResource("3_6ree2")
@@ -2059,6 +2077,7 @@ focus_previous = NodePath("../Code")
 text = "Back"
 
 [connection signal="pressed" from="Menu/Box/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="Menu/Box/Boss Rush" to="." method="_on_boss_rush_pressed"]
 [connection signal="pressed" from="Menu/Box/Options" to="." method="_on_options_pressed"]
 [connection signal="pressed" from="Menu/Box/Credits" to="." method="_on_credits_pressed"]
 [connection signal="pressed" from="Menu/Box/Exit" to="." method="_on_exit_pressed"]

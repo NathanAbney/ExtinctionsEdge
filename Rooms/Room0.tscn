@@ -1,30 +1,10 @@
-[gd_scene load_steps=11 format=3]
+[gd_scene load_steps=11 format=3 uid="uid://bv1e747olpeaa"]
 
+[ext_resource type="Script" path="res://Rooms/room.gd" id="1_wy5la"]
 [ext_resource type="Texture2D" uid="uid://dqtveq4llwknv" path="res://Sprites/0x72_DungeonTilesetII_v1.4.png" id="2_xkoyr"]
 [ext_resource type="PackedScene" uid="uid://ctxnlmnyr30mm" path="res://Scenes/player_1.tscn" id="3_6pgvl"]
 [ext_resource type="PackedScene" uid="uid://buawbm3ybmojk" path="res://Scenes/stairs.tscn" id="4_iccoa"]
 [ext_resource type="Shader" path="res://Shaders/Fog.gdshader" id="4_ren4q"]
-
-[sub_resource type="GDScript" id="GDScript_52s8u"]
-script/source = "extends Node2D
-
-var rng = RandomNumberGenerator.new()
-
-func _on_player_1_dead():
-	get_tree().change_scene_to_file(\"res://Scenes/game_over.tscn\")
-
-func next_level():
-	$Player1/TransitionPlayer.play(\"Fade_out\")
-	$Timer.start()
-
-func _on_timer_timeout():
-	rng.randomize()
-	var room = rng.randi_range(0,1)
-	if room == 0:
-		get_tree().change_scene_to_file(\"res://Rooms/Room1.tscn\")
-	if room == 1:
-		get_tree().change_scene_to_file(\"res://Rooms/Room2.tscn\")
-"
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sxuaj"]
 texture = ExtResource("2_xkoyr")
@@ -2715,7 +2695,7 @@ shader_parameter/fog_color = Vector4(0, 0, 0, 0.8)
 shader_parameter/noise = SubResource("NoiseTexture2D_val7s")
 
 [node name="Room0" type="Node2D"]
-script = SubResource("GDScript_52s8u")
+script = ExtResource("1_wy5la")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 z_index = -6

@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 var rng = RandomNumberGenerator.new()
-var speed = 1
+var speed = 1.4
 var target: Vector2 = Vector2.ZERO
 var player = null
 var health = 2
@@ -37,6 +37,7 @@ func _on_activation_area_area_entered(area):
 	activated = true
 
 func die():
+	Global.coins = Global.coins + 1
 	$Area2D.queue_free()
 	$CollisionShape2D.queue_free()
 	$Life.queue_free()

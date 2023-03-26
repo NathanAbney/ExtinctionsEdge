@@ -1,11 +1,12 @@
 extends CharacterBody2D
 
-var speed = 1.1
+var speed = 1.5
 var target: Vector2 = Vector2.ZERO
 var player = null
 var health = 2
 var hurt = false
 var activated = false
+var invincible = false
 
 func _ready():
 	if get_tree().has_group("player"):
@@ -22,12 +23,13 @@ func _physics_process(delta):
 		move_and_collide(velocity)
 
 func _on_area_2d_area_entered(area):
-	$Hurt.start()
-	hurt = true
-	health = health - 1
-	$Life.update(health)
-	if health == 0:
-		die()
+	if !invincible:
+		$Hurt.start()
+		hurt = true
+		health = health - 1
+		$Life.update(health)
+		if health == 0:
+			die()
 
 func _on_hurt_timeout():
 	hurt = false
@@ -35,7 +37,11 @@ func _on_hurt_timeout():
 func _on_activation_area_area_entered(area):
 	activated = true
 
+func active():
+	activated = true
+
 func die():
+	Global.coins = Global.coins + 1
 	$Area2D.queue_free()
 	$CollisionShape2D.queue_free()
 	$Life.queue_free()
@@ -46,3 +52,16 @@ func die():
 
 func _on_death_timer_timeout():
 	queue_free()
+
+func invinc():
+	invincible = true
+	$Invincible.start()
+	$Sprite2D.modulate = Color("#ffbd00a8")
+	set_scale(Vector2(3,3))
+	speed = 1.7
+
+func _on_invincible_timeout():
+	set_scale(Vector2(1,1))
+	invincible = false
+	$Sprite2D.modulate = Color("#ffffff")
+	speed = 1.5

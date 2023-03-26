@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-var speed = 50
+var speed = 60
 var target: Vector2 = Vector2.ZERO
 var player = null
 

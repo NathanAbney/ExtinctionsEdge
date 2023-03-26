@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@export var move_speed : float = 80
+@export var move_speed : float = 110
 @export var health : int = 6
 @export var hurt = false
 @export var noshoot = false
@@ -76,8 +76,15 @@ func shoot():
 	var bullet = preload("res://Scenes/fire.tscn").instantiate()
 	get_parent().add_child(bullet)
 	bullet.position = $Wand/Sprite2D/Marker2D.global_position
-	bullet.velocity.x = (get_global_mouse_position().x - bullet.position.x) * 2
-	bullet.velocity.y = (get_global_mouse_position().y- bullet.position.y) * 2
+	var x = global_position.direction_to(get_global_mouse_position()).x
+	var y = global_position.direction_to(get_global_mouse_position()).y
+	var slope = (x/y) / 100
+	if x/y < 0:
+		slope = -slope
+	var direction = Vector2.ZERO
+	direction.x = x * slope
+	direction.y = y * slope
+	bullet.velocity = direction.normalized() * 200
 	bullet.z_index = -1
 
 func shoot2():
@@ -96,12 +103,11 @@ func sethealth(new : int):
 	$Life.update(health)
 
 func speedboost():
-	move_speed = 120
+	move_speed = 140
 	$Speed.start()
 
 func _on_speed_timeout():
-	print("reset")
-	move_speed = 80
+	move_speed = 110
 
 func pause():
 	noshoot = true

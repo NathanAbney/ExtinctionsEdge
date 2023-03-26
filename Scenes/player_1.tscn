@@ -299,7 +299,7 @@ _data = {
 }
 
 [node name="Player1" type="CharacterBody2D"]
-collision_mask = 130
+collision_mask = 146
 script = ExtResource("1_8jlmc")
 
 [node name="Wand" type="Node2D" parent="."]
@@ -336,12 +336,11 @@ hframes = 24
 frame = 4
 
 [node name="Hat" type="Sprite2D" parent="."]
-visible = false
 position = Vector2(-5, -10)
 rotation = -0.20944
 scale = Vector2(1.014, 1.014)
 texture = ExtResource("5_2irjk")
-hframes = 4
+hframes = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 3)
