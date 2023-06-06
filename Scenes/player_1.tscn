@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://ctxnlmnyr30mm"]
+[gd_scene load_steps=41 format=3 uid="uid://ctxnlmnyr30mm"]
 
 [ext_resource type="Script" path="res://Scripts/player_1.gd" id="1_8jlmc"]
 [ext_resource type="Texture2D" uid="uid://lp8dg4vhphcr" path="res://Sprites/DinoSprites - vita.png" id="1_yguhk"]
@@ -6,7 +6,9 @@
 [ext_resource type="Script" path="res://Scripts/Life.gd" id="4_fs4sy"]
 [ext_resource type="Texture2D" uid="uid://g0l75fq6raog" path="res://Sprites/HatsTest.png" id="5_2irjk"]
 [ext_resource type="Texture2D" uid="uid://bjeghg8gb06c0" path="res://Sprites/Light.png" id="5_k6vjt"]
+[ext_resource type="Material" uid="uid://vwprmsgn4vg8" path="res://ExcludeCanvas.tres" id="7_n3ubw"]
 [ext_resource type="AudioStream" uid="uid://3p268x4r2ccc" path="res://Audio/Sounds/step.wav" id="7_w1xtl"]
+[ext_resource type="FontFile" uid="uid://d2naa1ovvhg1t" path="res://monogram.ttf" id="8_0pqoi"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cgv08"]
 radius = 4.12311
@@ -207,6 +209,48 @@ transitions = ["walk", "stop_walk", SubResource("AnimationNodeStateMachineTransi
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t7uql"]
 size = Vector2(15.0065, 14.8717)
+
+[sub_resource type="Animation" id="Animation_4ieih"]
+resource_name = "Idle"
+length = 0.64
+loop_mode = 2
+step = 0.63
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [2212, 2215, 2214]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.63),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_kif41"]
+length = 0.001
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yougx"]
+_data = {
+"Idle": SubResource("Animation_4ieih"),
+"RESET": SubResource("Animation_kif41")
+}
+
+[sub_resource type="Theme" id="Theme_xpvpg"]
+default_font = ExtResource("8_0pqoi")
 
 [sub_resource type="Animation" id="Animation_k67k3"]
 resource_name = "Fade_In"
@@ -423,6 +467,38 @@ position = Vector2(-2, 0)
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("5_k6vjt")
 
+[node name="CanvasLayer" type="CanvasLayer" parent="Camera2D"]
+scale = Vector2(0.5, 0.5)
+transform = Transform2D(0.5, 0, 0, 0.5, 0, 0)
+
+[node name="Sprite2D2" type="Sprite2D" parent="Camera2D/CanvasLayer"]
+process_mode = 3
+position = Vector2(580, 341)
+scale = Vector2(2, 2)
+texture = ExtResource("3_mi1fe")
+hframes = 64
+vframes = 64
+frame = 2212
+
+[node name="AnimationTree2" type="AnimationPlayer" parent="Camera2D/CanvasLayer"]
+process_mode = 3
+autoplay = "Idle"
+libraries = {
+"": SubResource("AnimationLibrary_yougx")
+}
+
+[node name="CoinAmount" type="Label" parent="Camera2D/CanvasLayer"]
+process_mode = 3
+material = ExtResource("7_n3ubw")
+offset_left = 591.0
+offset_top = 332.0
+offset_right = 627.0
+offset_bottom = 348.0
+scale = Vector2(1.65754, 1.51575)
+theme = SubResource("Theme_xpvpg")
+theme_override_colors/font_color = Color(0.627451, 0.627451, 0.627451, 1)
+uppercase = true
+
 [node name="Fade" type="ColorRect" parent="."]
 offset_left = -892.0
 offset_top = -508.0
@@ -459,7 +535,7 @@ one_shot = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Timer"]
 stream = ExtResource("7_w1xtl")
-volume_db = 4.685
+volume_db = 7.496
 bus = &"Sound"
 
 [connection signal="timeout" from="Hurt" to="." method="_on_hurt_timeout"]

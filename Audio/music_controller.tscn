@@ -4,9 +4,12 @@
 [ext_resource type="AudioStream" uid="uid://dvwe5i6kytkr8" path="res://Audio/Songs/Exploration.ogg" id="2_s3eh7"]
 
 [node name="MusicController" type="Node"]
+process_mode = 3
 script = ExtResource("1_tnxrv")
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
+process_mode = 3
 stream = ExtResource("2_s3eh7")
 
 [node name="Sound" type="AudioStreamPlayer" parent="."]
+process_mode = 3

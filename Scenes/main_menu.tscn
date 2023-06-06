@@ -1747,7 +1747,7 @@ focus_next = NodePath("../Menu/Box/Options")
 focus_previous = NodePath("../Menu/Box/Exit")
 theme = SubResource("Theme_coavw")
 theme_override_colors/font_color = Color(0.627451, 0.627451, 0.627451, 1)
-text = "ALPHA"
+text = "BETA"
 uppercase = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
