@@ -10,14 +10,19 @@ config_version=5
 
 [application]
 
-config/name="Dino Dungeon"
+config/name="Extinctions Edge"
 run/main_scene="res://Scenes/main_menu.tscn"
 config/features=PackedStringArray("4.0", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="res://Icon.png"
+
+[audio]
+
+buses/default_bus_layout="res://Audio/default_bus_layout.tres"
 
 [autoload]
 
 Global="*res://Global.gd"
+MusicController="*res://Audio/music_controller.tscn"
 
 [display]
 
