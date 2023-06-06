@@ -46,6 +46,7 @@ func _on_timer_timeout():
 	else:
 		y = -10
 	if activated:
+		$Sound.play()
 		var fire = preload("res://Scenes/fire.tscn").instantiate()
 		get_parent().add_child(fire)
 		fire.set_collision_mask_value(2, true)

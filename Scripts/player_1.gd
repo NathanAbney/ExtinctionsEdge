@@ -17,11 +17,12 @@ func _ready():
 	sethealth(Global.health)
 	if Global.dino != null:
 		$Sprite2D.texture = Global.dino
-	if Global.hat < 5:
+	if Global.hat < 10:
 		$Hat.visible = true
 		$Hat.frame = Global.hat
 
 func _physics_process(_delta):
+	$Camera2D/CanvasLayer/CoinAmount.text = str(Global.coins)
 	if (!hurt):
 		var input_direction = Vector2(
 			Input.get_action_strength("right") - Input.get_action_strength("left"),
@@ -34,6 +35,10 @@ func _physics_process(_delta):
 			velocity = Vector2.ZERO
 		
 		if velocity != Vector2.ZERO:
+			if $Timer.time_left <= 0:
+				$Timer/AudioStreamPlayer.pitch_scale = randf_range(0.4,1.6)
+				$Timer/AudioStreamPlayer.play()
+				$Timer.start(0.3)
 			state_machine.travel("walk")
 			if velocity.x > 0:
 				$Sprite2D.flip_h = false;
@@ -67,7 +72,10 @@ func take_damage():
 	health = health - 1
 	$Life.update(health)
 	if health == 0:
+		MusicController.play_music(3)
 		emit_signal("dead")
+	else:
+		MusicController.play_sound(9)
 
 func _on_hurt_timeout():
 	hurt = false
@@ -75,6 +83,7 @@ func _on_hurt_timeout():
 func shoot():
 	var bullet = preload("res://Scenes/fire.tscn").instantiate()
 	get_parent().add_child(bullet)
+	MusicController.play_sound(2)
 	bullet.position = $Wand/Sprite2D/Marker2D.global_position
 	var x = global_position.direction_to(get_global_mouse_position()).x
 	var y = global_position.direction_to(get_global_mouse_position()).y
@@ -91,6 +100,7 @@ func shoot2():
 	noshoot2 = true
 	var bullet = preload("res://Scenes/earth_move.tscn").instantiate()
 	get_parent().add_child(bullet)
+	MusicController.play_sound(4)
 	bullet.position = global_position
 	$"Shoot Timer 2".start()
 
@@ -125,4 +135,5 @@ func _on_shoot_timer_timeout():
 
 func _on_shoot_timer_2_timeout():
 	$Regain.emitting = true
+	MusicController.play_sound(3)
 	noshoot2 = false

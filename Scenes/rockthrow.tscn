@@ -1,0 +1,65 @@
+[gd_scene load_steps=6 format=3 uid="uid://bc7lfnf7ksg1u"]
+
+[ext_resource type="Script" path="res://Scripts/potionattack.gd" id="1_m5f0x"]
+[ext_resource type="Texture2D" uid="uid://olofe4nfgk68" path="res://Sprites/Enchanted Forest Characters with animations.png" id="2_0qfrj"]
+[ext_resource type="Texture2D" uid="uid://bjeghg8gb06c0" path="res://Sprites/Light.png" id="3_wum58"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_45qgo"]
+radius = 45.0
+height = 90.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4orsv"]
+radius = 32.0
+height = 64.0
+
+[node name="Rockthrow" type="CharacterBody2D"]
+scale = Vector2(0.2, 0.2)
+collision_layer = 4
+collision_mask = 3
+script = ExtResource("1_m5f0x")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-20, 5)
+scale = Vector2(7.55892, 7.28437)
+texture = ExtResource("2_0qfrj")
+hframes = 34
+vframes = 32
+frame = 931
+
+[node name="PointLight2D" type="PointLight2D" parent="Sprite2D"]
+visible = false
+scale = Vector2(0.4, 0.4)
+color = Color(1, 0.976471, 0.0666667, 1)
+energy = 0.6
+texture = ExtResource("3_wum58")
+
+[node name="Particles" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 20
+lifetime = 0.2
+one_shot = true
+emission_shape = 1
+emission_sphere_radius = 20.0
+direction = Vector2(1, 200)
+spread = 166.68
+initial_velocity_min = 200.0
+initial_velocity_max = 200.0
+color = Color(0.376471, 0.2, 0.0745098, 1)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.4
+one_shot = true
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 283
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CapsuleShape2D_45qgo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(1.25, 1.25)
+shape = SubResource("CapsuleShape2D_4orsv")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

@@ -16,7 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://cs2kul7k21e7a" path="res://Sprites/YellowSelected.png" id="11_lsnyx"]
 [ext_resource type="Texture2D" uid="uid://ba3morynwmjy8" path="res://Sprites/GreenSelected.png" id="13_6lrpx"]
 [ext_resource type="Script" path="res://Scripts/Hat Selection.gd" id="16_kas8l"]
-[ext_resource type="Texture2D" uid="uid://dcdl7j7lj8tp2" path="res://Sprites/HatsTest.png" id="16_pdrt0"]
+[ext_resource type="Texture2D" uid="uid://g0l75fq6raog" path="res://Sprites/HatsTest.png" id="16_pdrt0"]
 
 [sub_resource type="Curve2D" id="Curve2D_v6ljx"]
 _data = {
@@ -1638,10 +1638,10 @@ physics_layer_0/collision_layer = 258
 physics_layer_0/collision_mask = 17
 sources/0 = SubResource("TileSetAtlasSource_sxuaj")
 
-[sub_resource type="Theme" id="Theme_uh6ip"]
-
 [sub_resource type="Theme" id="Theme_coavw"]
 default_font = ExtResource("5_qoess")
+
+[sub_resource type="Theme" id="Theme_uh6ip"]
 
 [sub_resource type="Theme" id="Theme_81lmk"]
 
@@ -1692,9 +1692,9 @@ script = ExtResource("1_dt8ef")
 curve = SubResource("Curve2D_v6ljx")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
-position = Vector2(1329.08, 1780.11)
+position = Vector2(1390.18, 1874.9)
 rotation = 0.901947
-progress = 736.586
+progress = 849.358
 rotates = false
 
 [node name="Tilemap" type="TileMap" parent="Path2D/PathFollow2D"]
@@ -1732,6 +1732,23 @@ color = Color(0, 0, 0, 0.454902)
 position = Vector2(652, 885)
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("3_0kby7")
+
+[node name="Start2" type="Label" parent="."]
+material = ExtResource("3_6ree2")
+offset_left = 772.0
+offset_top = 1010.0
+offset_right = 840.0
+offset_bottom = 1031.0
+focus_neighbor_left = NodePath("../Menu/Box/Exit")
+focus_neighbor_top = NodePath("../Menu/Box/Exit")
+focus_neighbor_right = NodePath("../Menu/Box/Options")
+focus_neighbor_bottom = NodePath("../Menu/Box/Options")
+focus_next = NodePath("../Menu/Box/Options")
+focus_previous = NodePath("../Menu/Box/Exit")
+theme = SubResource("Theme_coavw")
+theme_override_colors/font_color = Color(0.627451, 0.627451, 0.627451, 1)
+text = "BETA"
+uppercase = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(650, 937)
@@ -1959,7 +1976,7 @@ layout_mode = 2
 position = Vector2(20, 0)
 scale = Vector2(1.843, 1.843)
 texture = ExtResource("16_pdrt0")
-hframes = 5
+hframes = 10
 
 [node name="Next" type="Button" parent="StartMenu/Hat Selection"]
 material = ExtResource("3_6ree2")
@@ -2076,6 +2093,59 @@ focus_next = NodePath("../MasterVol/MVol")
 focus_previous = NodePath("../Code")
 text = "Back"
 
+[node name="Credits" type="Control" parent="."]
+visible = false
+material = ExtResource("3_6ree2")
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -8.56003
+offset_right = 8.56003
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+metadata/_edit_use_anchors_ = true
+
+[node name="Credits" type="VBoxContainer" parent="Credits"]
+material = ExtResource("3_6ree2")
+layout_mode = 0
+offset_left = 600.56
+offset_top = 901.0
+offset_right = 723.56
+offset_bottom = 1018.0
+size_flags_vertical = 4
+theme = SubResource("Theme_w7158")
+alignment = 1
+
+[node name="Credits" type="RichTextLabel" parent="Credits/Credits"]
+clip_contents = false
+layout_mode = 2
+size_flags_vertical = 8
+text = "Programmers:
+- Nathan Abney
+- Mason Flannery
+
+Music:
+ - Nathan Abney"
+fit_content = true
+scroll_active = false
+tab_size = 0
+
+[node name="Back" type="Button" parent="Credits/Credits"]
+layout_mode = 2
+size_flags_vertical = 8
+focus_neighbor_left = NodePath("../Code")
+focus_neighbor_top = NodePath("../Code")
+focus_neighbor_right = NodePath("../MasterVol/MVol")
+focus_neighbor_bottom = NodePath("../MasterVol/MVol")
+focus_next = NodePath("../MasterVol/MVol")
+focus_previous = NodePath("../Code")
+text = "Back"
+
 [connection signal="pressed" from="Menu/Box/Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="Menu/Box/Boss Rush" to="." method="_on_boss_rush_pressed"]
 [connection signal="pressed" from="Menu/Box/Options" to="." method="_on_options_pressed"]
@@ -2094,3 +2164,4 @@ text = "Back"
 [connection signal="toggled" from="Options/OptionPanel/Fullscreen" to="." method="_on_fullscreen_toggled"]
 [connection signal="text_submitted" from="Options/OptionPanel/Code" to="." method="_on_code_text_submitted"]
 [connection signal="pressed" from="Options/OptionPanel/Back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="Credits/Credits/Back" to="." method="_on_back_pressed"]
