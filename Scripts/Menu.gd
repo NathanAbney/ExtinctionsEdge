@@ -7,9 +7,7 @@ func _ready():
 	$StartMenu/Menu/Dinos/BlueDino.disabled = true
 	$StartMenu/Menu/Dinos/RedDino.disabled = true
 	$StartMenu/Menu/Dinos/YellowDino.disabled = true
-	
-	#grab focus of the start button
-	$Menu/Box/Start.grab_focus()
+	Global.hat = 0
 
 func _on_start_pressed():
 	$Menu.visible = false
@@ -27,10 +25,10 @@ func _physics_process(delta):
 func _on_options_pressed():
 	$Options.visible = true
 	$Menu.visible = false
-	pass # Options go here
 
 func _on_credits_pressed():
-	pass # Credits will go here
+	$Menu.visible = false
+	$Credits.visible = true
 
 func _on_exit_pressed():
 	get_tree().quit()
@@ -59,13 +57,17 @@ func _on_begin_pressed():
 
 func _on_fade_timer_timeout():
 	if !Global.boss_rush:
+		MusicController.play_music(1)
 		get_tree().change_scene_to_file("res://Rooms/Small/SmallRoom1.tscn")
 	else:
-		get_tree().change_scene_to_file("res://Rooms/Boss/Boss1.tscn")
+		MusicController.play_music(2)
+		get_tree().change_scene_to_file("res://Rooms/Boss/Boss4.tscn")
 
 func _on_back_pressed():
 	if $Options.visible:
 		$Options.visible = false
+	if $Credits.visible:
+		$Credits.visible = false
 	if $StartMenu.visible:
 		$StartMenu.visible = false
 	$Menu.visible = true

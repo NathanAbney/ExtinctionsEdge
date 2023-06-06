@@ -63,7 +63,7 @@ vframes = 8
 [node name="PointLight2D" type="PointLight2D" parent="Sprite2D"]
 scale = Vector2(0.4, 0.4)
 color = Color(1, 0.976471, 0.0666667, 1)
-energy = 0.6
+energy = 0.3
 texture = ExtResource("3_llbej")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

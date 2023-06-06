@@ -9,6 +9,7 @@ func _on_area_2d_area_entered(area):
 		open()
 
 func open():
+	MusicController.play_sound(7)
 	for i in range(3):
 		rng.randomize()
 		var loot = randi_range(0,5)
@@ -20,14 +21,14 @@ func open():
 		if loot == 5:
 			item = preload("res://Scenes/potion2.tscn").instantiate()
 		get_parent().add_child(item)
-		item.position.x = global_position.x + rng.randi_range(-15,15)
+		item.position.x = global_position.x + rng.randi_range(-25,25)
 		if item.position.x < 0:
-			clamp(-15,-10,item.position.x)
+			clamp(-25,-20,item.position.x)
 		if item.position.x > 0:
-			clamp(10,15,item.position.x)
-		item.position.x = global_position.x + rng.randi_range(-15,15)
+			clamp(20,25,item.position.x)
+		item.position.y = global_position.y + rng.randi_range(-25,25)
 		if item.position.y < 0:
-			clamp(-15,-10,item.position.y)
+			clamp(-25,-20,item.position.y)
 		if item.position.y > 0:
-			clamp(10,15,item.position.y)
+			clamp(20,25,item.position.y)
 	opened = true
