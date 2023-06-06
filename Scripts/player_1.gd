@@ -22,6 +22,7 @@ func _ready():
 		$Hat.frame = Global.hat
 
 func _physics_process(_delta):
+	$Camera2D/CanvasLayer/CoinAmount.text = str(Global.coins)
 	if (!hurt):
 		var input_direction = Vector2(
 			Input.get_action_strength("right") - Input.get_action_strength("left"),
@@ -71,7 +72,10 @@ func take_damage():
 	health = health - 1
 	$Life.update(health)
 	if health == 0:
+		MusicController.play_music(3)
 		emit_signal("dead")
+	else:
+		MusicController.play_sound(9)
 
 func _on_hurt_timeout():
 	hurt = false

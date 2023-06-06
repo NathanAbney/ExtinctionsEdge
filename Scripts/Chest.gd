@@ -12,13 +12,13 @@ func open():
 	MusicController.play_sound(7)
 	for i in range(3):
 		rng.randomize()
-		var loot = randi_range(0,5)
+		var loot = randi_range(0,100)
 		var item
-		if loot == 0 or loot == 1 or loot == 2 or loot == 3:
+		if loot < 90:
 			item = preload("res://Scenes/coin.tscn").instantiate()
-		if loot == 4:
+		if loot >= 90 && loot < 95:
 			item = preload("res://Scenes/potion.tscn").instantiate()
-		if loot == 5:
+		if loot >= 95 && loot < 100:
 			item = preload("res://Scenes/potion2.tscn").instantiate()
 		get_parent().add_child(item)
 		item.position.x = global_position.x + rng.randi_range(-25,25)
