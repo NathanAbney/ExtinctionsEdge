@@ -218,7 +218,7 @@ step = 0.63
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/path = NodePath("Sprite2D2:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -230,7 +230,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:flip_h")
+tracks/1/path = NodePath("Sprite2D2:flip_h")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -476,9 +476,10 @@ process_mode = 3
 position = Vector2(580, 341)
 scale = Vector2(2, 2)
 texture = ExtResource("3_mi1fe")
+flip_h = true
 hframes = 64
 vframes = 64
-frame = 2212
+frame = 2215
 
 [node name="AnimationTree2" type="AnimationPlayer" parent="Camera2D/CanvasLayer"]
 process_mode = 3
@@ -497,6 +498,34 @@ offset_bottom = 348.0
 scale = Vector2(1.65754, 1.51575)
 theme = SubResource("Theme_xpvpg")
 theme_override_colors/font_color = Color(0.627451, 0.627451, 0.627451, 1)
+uppercase = true
+
+[node name="WaveCounter" type="Label" parent="Camera2D/CanvasLayer"]
+process_mode = 3
+visible = false
+material = ExtResource("7_n3ubw")
+offset_left = 10.0
+offset_top = 304.0
+offset_right = 180.0
+offset_bottom = 379.0
+scale = Vector2(2.51399, 2.1855)
+theme = SubResource("Theme_xpvpg")
+theme_override_colors/font_color = Color(0.627451, 0.627451, 0.627451, 1)
+text = "Wave:"
+uppercase = true
+
+[node name="EnemyCounter" type="Label" parent="Camera2D/CanvasLayer"]
+process_mode = 3
+visible = false
+material = ExtResource("7_n3ubw")
+offset_left = 10.0
+offset_top = 334.0
+offset_right = 180.0
+offset_bottom = 409.0
+scale = Vector2(1.75956, 1.61425)
+theme = SubResource("Theme_xpvpg")
+theme_override_colors/font_color = Color(0.627451, 0.627451, 0.627451, 1)
+text = "Remaining: "
 uppercase = true
 
 [node name="Fade" type="ColorRect" parent="."]

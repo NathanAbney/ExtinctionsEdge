@@ -23,6 +23,7 @@ buses/default_bus_layout="res://Audio/default_bus_layout.tres"
 
 Global="*res://Global.gd"
 MusicController="*res://Audio/music_controller.tscn"
+TimeTrack="*res://TimeTrack.tscn"
 
 [display]
 

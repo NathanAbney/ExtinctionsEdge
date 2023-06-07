@@ -1,11 +1,14 @@
 extends Node2D
 var bought = false
 var inArea = false
+var price = 40
+
+func ready():
+	$"Coin Amount".text = "" + str(price)
 
 func _physics_process(delta):
 	if (Input.is_action_just_pressed("buy") and !bought and inArea):
-		print("Pressed")
-		if (Global.coins < 30):
+		if (Global.coins < price):
 			MusicController.play_sound(11)
 		else:
 			purchase()
@@ -25,6 +28,6 @@ func purchase():
 	bought = true
 	$Sprite2D.visible = false
 	$"Coin Amount".visible = false
-	Global.coins = Global.coins - 30
+	Global.coins = Global.coins - price
 	get_parent().get_parent().get_child(2).sethealth(6)
 	MusicController.play_sound(10)

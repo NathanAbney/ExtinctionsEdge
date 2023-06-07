@@ -5,6 +5,7 @@ var target: Vector2 = Vector2.ZERO
 var player = null
 var health = 2
 var hurt = false
+signal enemyDead
 
 func _ready():
 	if get_tree().has_group("player"):
@@ -13,10 +14,11 @@ func _ready():
 	$Timer.start()
 
 func _physics_process(delta):
-	if player.global_position.x > global_position.x:
-		$Sprite2D.flip_h = false
-	else:
-		$Sprite2D.flip_h = true
+	if (is_instance_valid(self) && is_instance_valid(player)):
+		if player.global_position.x > global_position.x:
+			$Sprite2D.flip_h = false
+		else:
+			$Sprite2D.flip_h = true
 
 func check_route():
 	if global_position.distance_to(target) <= 500:
@@ -53,6 +55,7 @@ func _on_timer_timeout():
 	fire.velocity = global_position.direction_to(player.global_position) * 250
 
 func die():
+	emit_signal("enemyDead")
 	Global.coins = Global.coins + 1
 	$Area2D.queue_free()
 	$CollisionShape2D.queue_free()

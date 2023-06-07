@@ -2,6 +2,7 @@ extends Node2D
 
 func _ready():
 	Global.current_level = Global.current_level + 1
+	$Player1.health = Global.health
 
 func _on_player_1_dead():
 	var menu = preload("res://Scenes/game_over.tscn").instantiate()
@@ -16,12 +17,13 @@ func next_level():
 	if !Global.boss_rush:
 		Global.coins = Global.coins + 20
 	else:
-		Global.coins = Global.coins + 5
+		Global.coins = Global.coins + 20
 	$Player1/TransitionPlayer.play("Fade_out")
 	$Timer.start()
 
 func _on_timer_timeout():
 	if !Global.boss_rush:
+		Global.game_beat = true
 		get_tree().change_scene_to_file("res://Scenes/main_menu.tscn")
 	else:
 		Global.change_next_level()

@@ -7,6 +7,7 @@ var health = 2
 var hurt = false
 var activated = false
 var invincible = false
+signal enemyDead
 
 func _ready():
 	if get_tree().has_group("player"):
@@ -15,12 +16,13 @@ func _ready():
 
 func _physics_process(delta):
 	if !hurt and activated:
-		velocity = global_position.direction_to(player.global_position) * speed
-		if player.global_position.x > global_position.x:
-			$Sprite2D.flip_h = false
-		else:
-			$Sprite2D.flip_h = true
-		move_and_collide(velocity)
+		if(is_instance_valid(self) && is_instance_valid(player)):
+			velocity = global_position.direction_to(player.global_position) * speed
+			if player.global_position.x > global_position.x:
+				$Sprite2D.flip_h = false
+			else:
+				$Sprite2D.flip_h = true
+			move_and_collide(velocity)
 
 func _on_area_2d_area_entered(area):
 	if !invincible:
@@ -41,6 +43,7 @@ func active():
 	activated = true
 
 func die():
+	emit_signal("enemyDead")
 	Global.coins = Global.coins + 1
 	$Area2D.queue_free()
 	$CollisionShape2D.queue_free()

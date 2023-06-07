@@ -66,6 +66,7 @@ func _physics_process(_delta):
 	$Wand.look_at(get_global_mouse_position())
 
 func take_damage():
+	Global.no_hit = false
 	$Hurt.start()
 	hurt = true
 	state_machine.travel("damage")
