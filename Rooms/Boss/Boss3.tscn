@@ -2704,7 +2704,7 @@ shader_parameter/velocity = Vector2(0.005, 0.005)
 shader_parameter/fog_color = Vector4(0, 0, 0, 1)
 shader_parameter/noise = SubResource("NoiseTexture2D_rijhl")
 
-[node name="Mushroom Boss Room" type="Node2D"]
+[node name="Alchemist Boss Room" type="Node2D"]
 script = ExtResource("1_mmivu")
 
 [node name="ColorRect" type="ColorRect" parent="."]

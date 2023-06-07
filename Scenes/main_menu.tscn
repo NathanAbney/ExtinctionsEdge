@@ -2093,6 +2093,50 @@ focus_next = NodePath("../MasterVol/MVol")
 focus_previous = NodePath("../Code")
 text = "Back"
 
+[node name="Stat" type="Button" parent="Options"]
+layout_mode = 0
+offset_left = 760.56
+offset_top = 859.0
+offset_right = 805.56
+offset_bottom = 890.0
+scale = Vector2(0.499948, 0.505143)
+size_flags_vertical = 8
+focus_neighbor_left = NodePath("../Code")
+focus_neighbor_top = NodePath("../Code")
+focus_neighbor_right = NodePath("../MasterVol/MVol")
+focus_neighbor_bottom = NodePath("../MasterVol/MVol")
+focus_next = NodePath("../MasterVol/MVol")
+focus_previous = NodePath("../Code")
+text = "View Stats"
+
+[node name="Wins" type="RichTextLabel" parent="Options"]
+visible = false
+clip_contents = false
+layout_mode = 2
+offset_left = 763.56
+offset_top = 877.0
+offset_right = 886.56
+offset_bottom = 923.0
+scale = Vector2(0.335593, 0.333766)
+size_flags_vertical = 8
+text = "Wins:"
+fit_content = true
+tab_size = 2
+
+[node name="Record" type="RichTextLabel" parent="Options"]
+visible = false
+clip_contents = false
+layout_mode = 2
+offset_left = 763.56
+offset_top = 884.0
+offset_right = 886.56
+offset_bottom = 930.0
+scale = Vector2(0.335593, 0.333766)
+size_flags_vertical = 8
+text = "Best Time:"
+fit_content = true
+tab_size = 2
+
 [node name="Credits" type="Control" parent="."]
 visible = false
 material = ExtResource("3_6ree2")
@@ -2164,4 +2208,5 @@ text = "Back"
 [connection signal="toggled" from="Options/OptionPanel/Fullscreen" to="." method="_on_fullscreen_toggled"]
 [connection signal="text_submitted" from="Options/OptionPanel/Code" to="." method="_on_code_text_submitted"]
 [connection signal="pressed" from="Options/OptionPanel/Back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="Options/Stat" to="." method="_on_stat_pressed"]
 [connection signal="pressed" from="Credits/Credits/Back" to="." method="_on_back_pressed"]

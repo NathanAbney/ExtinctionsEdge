@@ -17,9 +17,10 @@ func _on_player_1_dead():
 	get_tree().paused = true
 
 func next_level():
+	Global.health = $Player1.health
 	$Player1/TransitionPlayer.play("Fade_out")
+	Global.change_next_level()
 	$Timer.start()
 
 func _on_timer_timeout():
-	Global.change_next_level()
 	get_tree().change_scene_to_file(Global.next_level)

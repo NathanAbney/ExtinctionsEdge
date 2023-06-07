@@ -2700,7 +2700,7 @@ shader_parameter/velocity = Vector2(0.01, 0.01)
 shader_parameter/fog_color = Vector4(0, 0, 0, 0.8)
 shader_parameter/noise = SubResource("NoiseTexture2D_val7s")
 
-[node name="Room7" type="Node2D"]
+[node name="LargeRoom1" type="Node2D"]
 script = ExtResource("1_sy44s")
 
 [node name="ColorRect" type="ColorRect" parent="."]
