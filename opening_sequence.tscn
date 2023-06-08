@@ -1,18 +1,13 @@
-[gd_scene load_steps=16 format=3 uid="uid://q2cf8yxmgjpt"]
+[gd_scene load_steps=14 format=3 uid="uid://uh35wqujtnc3"]
 
-[ext_resource type="Texture2D" uid="uid://dqtveq4llwknv" path="res://Sprites/0x72_DungeonTilesetII_v1.4.png" id="1_cpp5a"]
-[ext_resource type="Script" path="res://Rooms/room.gd" id="1_yjfmx"]
-[ext_resource type="PackedScene" uid="uid://ctxnlmnyr30mm" path="res://Scenes/player_1.tscn" id="2_77out"]
-[ext_resource type="PackedScene" uid="uid://buawbm3ybmojk" path="res://Scenes/stairs.tscn" id="3_w64cq"]
-[ext_resource type="PackedScene" uid="uid://bdereg22dgaaq" path="res://Scenes/Chest.tscn" id="4_nn2c2"]
-[ext_resource type="PackedScene" uid="uid://bmtonylm38np2" path="res://Scenes/coin.tscn" id="5_rdgnv"]
-[ext_resource type="PackedScene" uid="uid://ccxvl0403b63" path="res://Scenes/ghoul.tscn" id="6_fju6l"]
-[ext_resource type="PackedScene" uid="uid://dj8nnvfwbnqk1" path="res://Scenes/mushroom_medium.tscn" id="7_008dc"]
-[ext_resource type="PackedScene" uid="uid://d1r2t1dehb5lb" path="res://Scenes/mushroom_spawner.tscn" id="8_wa5wq"]
-[ext_resource type="Shader" path="res://Shaders/Fog.gdshader" id="9_i2d3e"]
+[ext_resource type="Script" path="res://opening_sequence.gd" id="1_05i5f"]
+[ext_resource type="Texture2D" uid="uid://dqtveq4llwknv" path="res://Sprites/0x72_DungeonTilesetII_v1.4.png" id="1_gtfp0"]
+[ext_resource type="Shader" path="res://Shaders/Fog.gdshader" id="2_2cinu"]
+[ext_resource type="Texture2D" uid="uid://bjeghg8gb06c0" path="res://Sprites/Light.png" id="4_is25x"]
+[ext_resource type="Texture2D" uid="uid://v0dimw0ql5rr" path="res://Sprites/Costellae Studios 4.png" id="5_i5oe3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_s75x2"]
-texture = ExtResource("1_cpp5a")
+texture = ExtResource("1_gtfp0")
 1:0/0 = 0
 1:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 1:0/0/physics_layer_0/angular_velocity = 0.0
@@ -2677,20 +2672,20 @@ texture = ExtResource("1_cpp5a")
 15:16/0/physics_layer_1/angular_velocity = 0.0
 15:16/0/physics_layer_1/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
-[sub_resource type="TileSet" id="TileSet_n25lq"]
+[sub_resource type="TileSet" id="TileSet_67hdn"]
 physics_layer_0/collision_layer = 258
 physics_layer_0/collision_mask = 17
 physics_layer_1/collision_layer = 128
 sources/0 = SubResource("TileSetAtlasSource_s75x2")
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_0md6o"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_hhtuc"]
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_val7s"]
 seamless = true
-noise = SubResource("FastNoiseLite_0md6o")
+noise = SubResource("FastNoiseLite_hhtuc")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_5cgsm"]
-shader = ExtResource("9_i2d3e")
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_y8bkt"]
+shader = ExtResource("2_2cinu")
 shader_parameter/octaves = 4
 shader_parameter/starting_amplitude = 0.5
 shader_parameter/starting_frequency = 1.0
@@ -2699,8 +2694,141 @@ shader_parameter/velocity = Vector2(0.01, 0.01)
 shader_parameter/fog_color = Vector4(0, 0, 0, 0.8)
 shader_parameter/noise = SubResource("NoiseTexture2D_val7s")
 
-[node name="Room6" type="Node2D"]
-script = ExtResource("1_yjfmx")
+[sub_resource type="Animation" id="Animation_wqvwo"]
+resource_name = "Fade_In"
+length = 10.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Fade:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PointLight2D:enabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Fade:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(8),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ColorRect:z_index")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [-6, 6]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Sprite2D:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(-0.1, 8.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.1, 0.1), Vector2(0.2, 0.2)]
+}
+
+[sub_resource type="Animation" id="Animation_52whb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Fade:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PointLight2D:enabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Fade:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ColorRect:z_index")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [-6]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Sprite2D:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.1, 0.1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cc2uh"]
+_data = {
+"Fade_In": SubResource("Animation_wqvwo"),
+"RESET": SubResource("Animation_52whb")
+}
+
+[node name="Opening Sequence" type="Node2D"]
+script = ExtResource("1_05i5f")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 z_index = -6
@@ -2710,9 +2838,15 @@ offset_right = 5284.0
 offset_bottom = 4240.0
 color = Color(0, 0, 0, 1)
 
+[node name="Darken" type="CanvasModulate" parent="."]
+color = Color(0.239216, 0.239216, 0.239216, 1)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)
+
 [node name="Tilemap" type="TileMap" parent="."]
 z_index = -3
-tile_set = SubResource("TileSet_n25lq")
+tile_set = SubResource("TileSet_67hdn")
 format = 2
 layer_0/name = "Ground"
 layer_0/z_index = -1
@@ -2739,81 +2873,42 @@ layer_3/y_sort_origin = 0
 layer_3/z_index = 0
 layer_3/tile_data = PackedInt32Array()
 
-[node name="Player1" parent="." groups=["player"] instance=ExtResource("2_77out")]
-position = Vector2(9, -21)
-
-[node name="Darken" type="CanvasModulate" parent="."]
-color = Color(0.294118, 0.294118, 0.294118, 1)
-
-[node name="Stairs" parent="." instance=ExtResource("3_w64cq")]
-position = Vector2(744, -8)
-
-[node name="Items" type="Node" parent="."]
-
-[node name="Chest" parent="Items" instance=ExtResource("4_nn2c2")]
-position = Vector2(376, 87)
-
-[node name="Coin" parent="Items" instance=ExtResource("5_rdgnv")]
-position = Vector2(-24, 122)
-
-[node name="Coin2" parent="Items" instance=ExtResource("5_rdgnv")]
-position = Vector2(152, 169)
-
-[node name="Coin3" parent="Items" instance=ExtResource("5_rdgnv")]
-position = Vector2(-120, 185)
-
-[node name="Coin4" parent="Items" instance=ExtResource("5_rdgnv")]
-position = Vector2(-184, -279)
-
-[node name="Coin5" parent="Items" instance=ExtResource("5_rdgnv")]
-position = Vector2(40, -346)
-
-[node name="Coin6" parent="Items" instance=ExtResource("5_rdgnv")]
-position = Vector2(232, -7)
-
-[node name="Coin7" parent="Items" instance=ExtResource("5_rdgnv")]
-position = Vector2(616, -7)
-
-[node name="Monsters" type="Node" parent="."]
-
-[node name="Ghoul" parent="Monsters" instance=ExtResource("6_fju6l")]
-position = Vector2(-516, 301)
-
-[node name="Ghoul3" parent="Monsters" instance=ExtResource("6_fju6l")]
-position = Vector2(1075, 373)
-
-[node name="Ghoul5" parent="Monsters" instance=ExtResource("6_fju6l")]
-position = Vector2(473, -310)
-
-[node name="Ghoul7" parent="Monsters" instance=ExtResource("6_fju6l")]
-position = Vector2(-483, -651)
-
-[node name="Mushroom_Medium" parent="Monsters" instance=ExtResource("7_008dc")]
-position = Vector2(423, 93)
-
-[node name="Mushroom_Medium2" parent="Monsters" instance=ExtResource("7_008dc")]
-position = Vector2(-152, 206)
-
-[node name="Mushroom_Medium3" parent="Monsters" instance=ExtResource("7_008dc")]
-position = Vector2(184, -290)
-
-[node name="Mushroom Spawner" parent="Monsters" instance=ExtResource("8_wa5wq")]
-position = Vector2(743, 22)
-
-[node name="Traps" type="Node" parent="."]
-
-[node name="Timer" type="Timer" parent="."]
-wait_time = 0.2
-one_shot = true
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("5_i5oe3")
 
 [node name="Fog" type="ColorRect" parent="."]
-material = SubResource("ShaderMaterial_5cgsm")
-offset_left = -876.0
-offset_top = -678.0
-offset_right = -830.0
-offset_bottom = -629.0
-scale = Vector2(43.299, 29.8098)
+material = SubResource("ShaderMaterial_y8bkt")
+offset_left = -1102.0
+offset_top = -378.0
+offset_right = -1056.0
+offset_bottom = -329.0
+scale = Vector2(43.299, 18.6759)
 color = Color(1, 1, 1, 0.141176)
 
-[connection signal="dead" from="Player1" to="." method="_on_player_1_dead"]
+[node name="Fade" type="ColorRect" parent="."]
+offset_left = -527.0
+offset_top = -291.0
+offset_right = -487.0
+offset_bottom = -251.0
+scale = Vector2(94.5655, 28.1104)
+color = Color(0, 0, 0, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "Fade_In"
+libraries = {
+"": SubResource("AnimationLibrary_cc2uh")
+}
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(-2, 0)
+scale = Vector2(0.2, 0.2)
+enabled = false
+texture = ExtResource("4_is25x")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 9.0
+one_shot = true
+autostart = true
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

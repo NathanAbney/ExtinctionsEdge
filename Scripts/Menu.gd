@@ -5,6 +5,7 @@ var RedUnlocked = false
 var YellowUnlocked = false
 var wins : int = 0
 var record : float = 9999.99
+var username
 
 func load_user_data():
 	var config = ConfigFile.new()
@@ -21,6 +22,8 @@ func load_user_data():
 		$Options/Wins.text = "Wins: " + str(wins)
 		var record = config.get_value("Stats","Record",9999.99)
 		$Options/Record.text = "Record: " + str(record)
+		username = config.get_value("Stats","Name","false")
+		print(config.get_value("Stats","Name","false"))
 
 func create_save():
 	var config = ConfigFile.new()
@@ -29,6 +32,7 @@ func create_save():
 	config.set_value("Characters","YellowDino",false)
 	config.set_value("Stats","Wins",0)
 	config.set_value("Stats","Record",99999.99)
+	config.set_value("Stats","Name","Dino" + str(randi_range(10000,99999)))
 	var error = config.save("user://character_unlock.cfg")
 	if error == OK:
 		print("Save data created successfully!")
@@ -69,6 +73,7 @@ func delete_save():
 	update_save()
 
 func _ready():
+	Global.cheat_song = false
 	Global.coins = 0
 	TimeTrack.stop_clock()
 	MusicController.stop_music()
@@ -173,6 +178,9 @@ func _on_code_text_submitted(new_text):
 		$StartMenu/Menu/Dinos/BlueDino.disabled = !BlueUnlocked
 		$StartMenu/Menu/Dinos/RedDino.disabled = !RedUnlocked
 		$StartMenu/Menu/Dinos/YellowDino.disabled = !YellowUnlocked
+	if new_text == "EDGEOFEXTINCTION":
+		MusicController.play_music(5)
+		Global.cheat_song = true
 
 	$Options/OptionPanel/Code.clear()
 

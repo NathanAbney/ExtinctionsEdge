@@ -4,8 +4,9 @@ var music = load("res://Audio/Songs/Exploration.ogg") # Track 1 = Exploration mu
 var boss = load("res://Audio/Songs/Boss3.ogg") # Track 2 = Boss Fight music
 var death = load("res://Audio/Songs/Death.ogg") # Track 3 = Death music
 var wave = load("res://Audio/Songs/Wave.ogg") # Track 4 = Wave music
+var song1 = load("res://Audio/Songs/Song1.ogg") # Track 5 = Edge Of Extinction
 
-var songs = [music, boss, death, wave]
+var songs = [music, boss, death, wave, song1]
 
 var coin = load("res://Audio/Sounds/coin.wav") # Sound 1 = Coin
 var shoot = load("res://Audio/Sounds/shoot.wav") # Sound 2 = Shoot
@@ -22,9 +23,10 @@ var deny = load("res://Audio/Sounds/deny.wav") # Sound 11 = deny
 var sounds = [coin, shoot, regain, bubble, heal, speed, open, step, hurt, buy, deny]
 
 func play_music(song : int):
-	$Music.stream = songs[song - 1]
-	$Music.bus = "Music"
-	$Music.play()
+	if !Global.cheat_song:
+		$Music.stream = songs[song - 1]
+		$Music.bus = "Music"
+		$Music.play()
 
 func stop_music():
 	$Music.stop()
