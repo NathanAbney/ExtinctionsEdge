@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-var speed = 1
+var speed = 1.5
 var target: Vector2 = Vector2.ZERO
 var player = null
 var health = 2
@@ -10,9 +10,6 @@ var invincible = false
 signal enemyDead
 
 func _ready():
-	$Sprite2D.modulate.a = 0
-	$Shadow.modulate.a = 0
-	$Life/Heart1.modulate.a = 0
 	if get_tree().has_group("player"):
 		player = get_tree().get_nodes_in_group("player")[0]
 	var target = player.global_position
@@ -20,13 +17,10 @@ func _ready():
 func _physics_process(delta):
 	if !hurt and activated:
 		if(is_instance_valid(self) && is_instance_valid(player)):
-			velocity = global_position.direction_to(player.global_position) * speed
 			if player.global_position.x > global_position.x:
 				$Sprite2D.flip_h = false
 			else:
 				$Sprite2D.flip_h = true
-			change_opacity()
-			move_and_collide(velocity)
 
 func _on_area_2d_area_entered(area):
 	if !invincible:
@@ -48,6 +42,16 @@ func active():
 
 func die():
 	emit_signal("enemyDead")
+	Global.coins = Global.coins + 1
+	$Area2D.queue_free()
+	$CollisionShape2D.queue_free()
+	$Life.queue_free()
+	$Sprite2D.visible = false
+	$Shadow.visible = false
+	$Particles.emitting = true
+	$DeathTimer.start()
+
+func _on_death_timer_timeout():
 	queue_free()
 
 func invinc():
@@ -62,15 +66,3 @@ func _on_invincible_timeout():
 	invincible = false
 	$Sprite2D.modulate = Color("#ffffff")
 	speed = 1.5
-
-
-func _on_steal_area_body_entered(body):
-	print("Stolen")
-	Global.coins = Global.coins - 1
-
-func change_opacity():
-	var opacity = 1 - ((global_position - player.global_position).length() / 100)
-	opacity = clamp(opacity, 0, 1)
-	$Sprite2D.modulate.a = opacity
-	$Shadow.modulate.a = opacity
-	$Life/Heart1.modulate.a = opacity
