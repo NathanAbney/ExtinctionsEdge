@@ -11,6 +11,10 @@ func _ready():
 	MusicController.play_music(4)
 
 func _on_player_1_dead():
+	var node_count = self.get_child_count()
+	for i in range(node_count):
+		var child_node = self.get_child(i)
+		child_node.free()
 	var menu = preload("res://Scenes/game_over.tscn").instantiate()
 	menu.scale.x = 1.25
 	menu.scale.y = 1.25

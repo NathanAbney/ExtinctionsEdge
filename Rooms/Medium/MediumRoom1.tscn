@@ -2688,7 +2688,7 @@ sources/0 = SubResource("TileSetAtlasSource_sxuaj")
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_0md6o"]
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_val7s"]
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_wtnax"]
 seamless = true
 noise = SubResource("FastNoiseLite_0md6o")
 
@@ -2700,7 +2700,7 @@ shader_parameter/starting_frequency = 1.0
 shader_parameter/shift = -0.189
 shader_parameter/velocity = Vector2(0.01, 0.01)
 shader_parameter/fog_color = Vector4(0, 0, 0, 0.8)
-shader_parameter/noise = SubResource("NoiseTexture2D_val7s")
+shader_parameter/noise = SubResource("NoiseTexture2D_wtnax")
 
 [node name="Room5" type="Node2D"]
 script = ExtResource("1_mrxhd")
