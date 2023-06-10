@@ -2839,7 +2839,7 @@ offset_bottom = 4240.0
 color = Color(0, 0, 0, 1)
 
 [node name="Darken" type="CanvasModulate" parent="."]
-color = Color(0.239216, 0.239216, 0.239216, 1)
+color = Color(0.121569, 0.121569, 0.121569, 1)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2, 2)
@@ -2907,7 +2907,7 @@ enabled = false
 texture = ExtResource("4_is25x")
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 9.0
+wait_time = 11.0
 one_shot = true
 autostart = true
 
