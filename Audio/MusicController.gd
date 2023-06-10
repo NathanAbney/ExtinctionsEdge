@@ -5,8 +5,9 @@ var boss = load("res://Audio/Songs/Boss3.ogg") # Track 2 = Boss Fight music
 var death = load("res://Audio/Songs/Death.ogg") # Track 3 = Death music
 var wave = load("res://Audio/Songs/Wave.ogg") # Track 4 = Wave music
 var song1 = load("res://Audio/Songs/Song1.ogg") # Track 5 = Edge Of Extinction
+var intro = load("res://Audio/Songs/Intro.ogg") # Track 6 = Costellae Intro
 
-var songs = [music, boss, death, wave, song1]
+var songs = [music, boss, death, wave, song1, intro]
 
 var coin = load("res://Audio/Sounds/coin.wav") # Sound 1 = Coin
 var shoot = load("res://Audio/Sounds/shoot.wav") # Sound 2 = Shoot
