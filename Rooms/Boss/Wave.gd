@@ -27,7 +27,7 @@ func wave_completed():
 	else:
 		var wavepower = wave * wave + 3
 		while(wavepower > 0):
-			var enemy = randi_range(1,4)
+			var enemy = randi_range(1,5)
 			rng.randomize
 			var spawnx = rng.randf_range(-200,200)
 			var spawny = rng.randf_range(-200,200)
@@ -64,6 +64,14 @@ func wave_completed():
 					wavepower = wavepower - 8
 					remaining += 1
 					summon.activate()
+				elif (enemy == 5 && wavepower >= 6):
+					var summon = preload("res://Scenes/goblin_masked.tscn").instantiate()
+					get_parent().add_child(summon)
+					summon.enemyDead.connect(enemyDefeated)
+					summon.global_position = enemyPos
+					wavepower = wavepower - 6
+					remaining += 1
+					summon.activated = true
 	$Player1/Camera2D/CanvasLayer/WaveCounter.text = "Wave: " + str(wave)
 	$Player1/Camera2D/CanvasLayer/EnemyCounter.text = "Remaining: " + str(remaining)
 func completed():

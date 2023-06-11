@@ -36,11 +36,13 @@ func change_next_level():
 			elif room == 2:
 				next_level = "res://Rooms/Medium/MediumRoom2.tscn"
 		if current_level == 5: # Large rooms
-			var room = rng.randi_range(1,2)
+			var room = rng.randi_range(1,3)
 			if room == 1:
 				next_level = "res://Rooms/Large/LargeRoom2.tscn"
 			elif room == 2:
 				next_level = "res://Rooms/Large/LargeRoom1.tscn"
+			elif room == 3:
+				next_level = "res://Rooms/Large/LargeRoom3.tscn"
 		if current_level == 6: # Wave battle\
 			next_level = "res://Rooms/Boss/Wave.tscn"
 		if current_level == 7: # Boss rooms

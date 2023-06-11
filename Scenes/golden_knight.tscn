@@ -109,7 +109,6 @@ energy = 0.5
 texture = ExtResource("2_24c6w")
 
 [node name="ActivationBox" type="Area2D" parent="."]
-visible = false
 collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ActivationBox"]
