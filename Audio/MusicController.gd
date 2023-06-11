@@ -6,8 +6,10 @@ var death = load("res://Audio/Songs/Death.ogg") # Track 3 = Death music
 var wave = load("res://Audio/Songs/Wave.ogg") # Track 4 = Wave music
 var song1 = load("res://Audio/Songs/Song1.ogg") # Track 5 = Edge Of Extinction
 var intro = load("res://Audio/Songs/Intro.ogg") # Track 6 = Costellae Intro
+var tut = load("res://Audio/Songs/tutorial.ogg") # Track 7 = Tutorial song
+var menu = load("res://Audio/Songs/menu.ogg") # Track 8 = Menu song
 
-var songs = [music, boss, death, wave, song1, intro]
+var songs = [music, boss, death, wave, song1, intro, tut, menu]
 
 var coin = load("res://Audio/Sounds/coin.wav") # Sound 1 = Coin
 var shoot = load("res://Audio/Sounds/shoot.wav") # Sound 2 = Shoot
@@ -20,8 +22,11 @@ var step = load("res://Audio/Sounds/step.wav") # Sound 8 = Step
 var hurt = load("res://Audio/Sounds/hurt.wav") # Sound 9 = Hurt
 var buy = load("res://Audio/Sounds/purchase.wav") # Sound 10 = Buy
 var deny = load("res://Audio/Sounds/deny.wav") # Sound 11 = deny
+var select = load("res://Audio/Sounds/Retro4.ogg") # Sound 12 = select
+var back = load("res://Audio/Sounds/Retro11.ogg") # Sound 13 = back
+var valid = load("res://Audio/Sounds/Retro8.ogg") # Sound 14 = valid
 
-var sounds = [coin, shoot, regain, bubble, heal, speed, open, step, hurt, buy, deny]
+var sounds = [coin, shoot, regain, bubble, heal, speed, open, step, hurt, buy, deny, select, back, valid]
 
 func play_music(song : int):
 	if !Global.cheat_song:

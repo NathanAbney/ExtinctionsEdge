@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://msyjcrm4gf6m"]
+[gd_scene load_steps=25 format=3 uid="uid://msyjcrm4gf6m"]
 
 [ext_resource type="Script" path="res://Rooms/Tutorial.gd" id="1_dlvlm"]
 [ext_resource type="Texture2D" uid="uid://dqtveq4llwknv" path="res://Sprites/0x72_DungeonTilesetII_v1.4.png" id="2_k3nkr"]
@@ -4319,7 +4319,45 @@ shader_parameter/noise = SubResource("NoiseTexture2D_dufi0")
 [sub_resource type="Theme" id="Theme_jikbu"]
 default_font = ExtResource("8_j3xum")
 
+[sub_resource type="Animation" id="Animation_4jd4m"]
+resource_name = "Fade_in"
+length = 8.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Welcome:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 4, 7, 8),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_8f8mf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Welcome:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_d0gm8"]
+_data = {
+"Fade_in": SubResource("Animation_4jd4m"),
+"RESET": SubResource("Animation_8f8mf")
+}
+
 [node name="Tutorial Room" type="Node2D"]
+position = Vector2(-2, 0)
 script = ExtResource("1_dlvlm")
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -4409,7 +4447,7 @@ position = Vector2(-280, -391)
 position = Vector2(-200, -391)
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 0.2
+wait_time = 10.0
 one_shot = true
 
 [node name="Fog" type="ColorRect" parent="."]
@@ -4420,6 +4458,28 @@ offset_right = -921.0
 offset_bottom = -479.0
 scale = Vector2(43.299, 18.6759)
 color = Color(1, 1, 1, 0.141176)
+
+[node name="Welcome" type="Label" parent="."]
+modulate = Color(1, 1, 1, 0)
+z_index = 16
+material = ExtResource("7_f0cq3")
+offset_left = 627.0
+offset_top = -426.0
+offset_right = 747.0
+offset_bottom = -394.0
+scale = Vector2(2.00837, 1.99025)
+focus_neighbor_left = NodePath("../Menu/Box/Exit")
+focus_neighbor_top = NodePath("../Menu/Box/Exit")
+focus_neighbor_right = NodePath("../Menu/Box/Options")
+focus_neighbor_bottom = NodePath("../Menu/Box/Options")
+focus_next = NodePath("../Menu/Box/Options")
+focus_previous = NodePath("../Menu/Box/Exit")
+theme = SubResource("Theme_jikbu")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "Welcome to
+Extinction's Edge"
+horizontal_alignment = 1
+uppercase = true
 
 [node name="Design" type="Node" parent="."]
 
@@ -4569,5 +4629,13 @@ position = Vector2(494, -255)
 [node name="Goblin2" parent="." instance=ExtResource("13_ee6no")]
 position = Vector2(700, -201)
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_d0gm8")
+}
+
+[node name="Timer2" type="Timer" parent="."]
+
 [connection signal="dead" from="Player1" to="." method="_on_player_1_dead"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
