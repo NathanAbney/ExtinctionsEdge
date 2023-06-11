@@ -11,10 +11,6 @@ func _ready():
 	MusicController.play_music(4)
 
 func _on_player_1_dead():
-	var node_count = self.get_child_count()
-	for i in range(node_count):
-		var child_node = self.get_child(i)
-		child_node.free()
 	var menu = preload("res://Scenes/game_over.tscn").instantiate()
 	menu.scale.x = 1.25
 	menu.scale.y = 1.25
@@ -35,7 +31,7 @@ func wave_completed():
 			var spawnx = rng.randf_range(-200,200)
 			var spawny = rng.randf_range(-200,200)
 			var enemyPos = Vector2(spawnx,spawny)
-			if enemyPos.distance_to($Player1.global_position) >= 40:
+			if enemyPos.distance_to($Player1.global_position) >= 50:
 				if (enemy == 1 && wavepower >= 1):
 					var summon = preload("res://Scenes/goblin.tscn").instantiate()
 					get_parent().add_child(summon)
@@ -43,6 +39,7 @@ func wave_completed():
 					summon.global_position = enemyPos
 					wavepower = wavepower - 1
 					remaining += 1
+					summon.activated = true
 				elif (enemy == 2 && wavepower >= 2):
 					var summon = preload("res://Scenes/Thief.tscn").instantiate()
 					get_parent().add_child(summon)
@@ -50,6 +47,7 @@ func wave_completed():
 					summon.global_position = enemyPos
 					wavepower = wavepower - 2
 					remaining += 1
+					summon.activated = true
 				elif (enemy == 3 && wavepower >= 3):
 					var summon = preload("res://Scenes/sorcerer.tscn").instantiate()
 					get_parent().add_child(summon)
@@ -64,9 +62,11 @@ func wave_completed():
 					summon.global_position = enemyPos
 					wavepower = wavepower - 8
 					remaining += 1
+					summon.activate()
 	$Player1/Camera2D/CanvasLayer/WaveCounter.text = "Wave: " + str(wave)
 	$Player1/Camera2D/CanvasLayer/EnemyCounter.text = "Remaining: " + str(remaining)
 func completed():
+	$Player1/Camera2D/CanvasLayer/EnemyCounter.visible = false
 	$Player1/Camera2D/CanvasLayer/WaveCounter.visible = false
 	$Door.queue_free()
 

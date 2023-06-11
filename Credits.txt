@@ -6,8 +6,10 @@ https://arks.itch.io/dino-characters
 https://codemanu.itch.io/pixelart-effect-pack
 https://greenpixels.itch.io/pixel-art-asset-3
 
-Audio:
+Sound Effects:
 https://leohpaz.itch.io/rpg-essentials-sfx-free
+https://leohpaz.itch.io/minifantasy-dungeon-sfx-pack
+https://ellr.itch.io/universal-ui-soundpack
 
 Font:
 https://datagoblin.itch.io/monogram
