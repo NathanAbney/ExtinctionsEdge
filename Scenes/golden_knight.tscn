@@ -131,14 +131,6 @@ offset_bottom = 40.0
 script = ExtResource("4_lfjmj")
 
 [node name="Heart1" type="Sprite2D" parent="Life"]
-position = Vector2(-9, -19)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("5_sa036")
-hframes = 32
-vframes = 32
-frame = 530
-
-[node name="Heart2" type="Sprite2D" parent="Life"]
 position = Vector2(-2, -19)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("5_sa036")
@@ -146,16 +138,8 @@ hframes = 32
 vframes = 32
 frame = 530
 
-[node name="Heart3" type="Sprite2D" parent="Life"]
+[node name="Heart2" type="Sprite2D" parent="Life"]
 position = Vector2(5, -19)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("5_sa036")
-hframes = 32
-vframes = 32
-frame = 530
-
-[node name="Heart4" type="Sprite2D" parent="Life"]
-position = Vector2(12, -19)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("5_sa036")
 hframes = 32

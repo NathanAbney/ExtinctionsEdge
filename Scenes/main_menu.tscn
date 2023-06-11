@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://dcjilvt1lr07w"]
+[gd_scene load_steps=31 format=3 uid="uid://dcjilvt1lr07w"]
 
 [ext_resource type="Script" path="res://Scripts/Menu.gd" id="1_dt8ef"]
 [ext_resource type="Texture2D" uid="uid://dqtveq4llwknv" path="res://Sprites/0x72_DungeonTilesetII_v1.4.png" id="1_mk1wo"]
@@ -1685,6 +1685,66 @@ _data = {
 [sub_resource type="Theme" id="Theme_w7158"]
 default_font = ExtResource("5_qoess")
 
+[sub_resource type="Animation" id="Animation_atxri"]
+resource_name = "Fade_in"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_jlr6j"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_c7gex"]
+_data = {
+"Fade_in": SubResource("Animation_atxri"),
+"RESET": SubResource("Animation_jlr6j")
+}
+
 [node name="Main Menu" type="Node2D"]
 script = ExtResource("1_dt8ef")
 
@@ -2056,6 +2116,9 @@ focus_neighbor_right = NodePath("../../Fullscreen")
 focus_neighbor_bottom = NodePath("../../Fullscreen")
 focus_next = NodePath("../../Fullscreen")
 focus_previous = NodePath("../../Back")
+max_value = 1.0
+step = 0.01
+value = 0.8
 
 [node name="Fullscreen" type="CheckButton" parent="Options/OptionPanel"]
 layout_mode = 2
@@ -2191,6 +2254,21 @@ focus_next = NodePath("../MasterVol/MVol")
 focus_previous = NodePath("../Code")
 text = "Back"
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Fade2")
+libraries = {
+"": SubResource("AnimationLibrary_c7gex")
+}
+
+[node name="Fade2" type="ColorRect" parent="."]
+visible = false
+offset_left = 257.0
+offset_top = 647.0
+offset_right = 297.0
+offset_bottom = 687.0
+scale = Vector2(21.8073, 16.9243)
+color = Color(0, 0, 0, 1)
+
 [connection signal="pressed" from="Menu/Box/Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="Menu/Box/Boss Rush" to="." method="_on_boss_rush_pressed"]
 [connection signal="pressed" from="Menu/Box/Options" to="." method="_on_options_pressed"]
@@ -2206,6 +2284,8 @@ text = "Back"
 [connection signal="pressed" from="StartMenu/Hat Selection/Last" to="StartMenu/Hat Selection" method="_on_last_pressed"]
 [connection signal="pressed" from="StartMenu/Hat Selection/Next" to="StartMenu/Hat Selection" method="_on_next_pressed"]
 [connection signal="timeout" from="FadeTimer" to="." method="_on_fade_timer_timeout"]
+[connection signal="drag_ended" from="Options/OptionPanel/MasterVol/MVol" to="." method="_on_m_vol_drag_ended"]
+[connection signal="value_changed" from="Options/OptionPanel/MasterVol/MVol" to="." method="_on_m_vol_value_changed"]
 [connection signal="toggled" from="Options/OptionPanel/Fullscreen" to="." method="_on_fullscreen_toggled"]
 [connection signal="text_submitted" from="Options/OptionPanel/Code" to="." method="_on_code_text_submitted"]
 [connection signal="pressed" from="Options/OptionPanel/Back" to="." method="_on_back_pressed"]

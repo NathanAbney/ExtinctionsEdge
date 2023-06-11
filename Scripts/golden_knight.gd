@@ -3,10 +3,11 @@ extends CharacterBody2D
 var speed = 5000
 var target: Vector2 = Vector2.ZERO
 var player = null
-var health = 8
+var health = 4
 var dash_active = false
 var direction: Vector2
 var hurt = false
+var activated = false
 signal enemyDead
 
 func _ready():
@@ -44,7 +45,11 @@ func attack():
 		dash_active = true
 
 func _on_activation_box_area_entered(area):
-	if !dash_active:
+	activate()
+
+func activate():
+	if !activated && !dash_active:
+		activated = true
 		$Timer.start()
 
 func _on_attack_timeout():
