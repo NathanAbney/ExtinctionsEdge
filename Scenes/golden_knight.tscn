@@ -1,8 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://b50wns0oep88w"]
+[gd_scene load_steps=14 format=3 uid="uid://b50wns0oep88w"]
 
 [ext_resource type="Script" path="res://Scripts/golden_knight.gd" id="1_h14s4"]
 [ext_resource type="Texture2D" uid="uid://bjeghg8gb06c0" path="res://Sprites/Light.png" id="2_24c6w"]
 [ext_resource type="Texture2D" uid="uid://q8lk5x6hqbgf" path="res://Sprites/aeQmEd.png" id="2_t8gp1"]
+[ext_resource type="Texture2D" uid="uid://g0l75fq6raog" path="res://Sprites/HatsTest.png" id="4_2w2yg"]
 [ext_resource type="Script" path="res://Scripts/LifeGoldenKnight.gd" id="4_lfjmj"]
 [ext_resource type="Texture2D" uid="uid://dqtveq4llwknv" path="res://Sprites/0x72_DungeonTilesetII_v1.4.png" id="5_sa036"]
 
@@ -124,6 +125,12 @@ libraries = {
 [node name="Attack" type="Timer" parent="."]
 wait_time = 3.0
 one_shot = true
+
+[node name="Hat" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(2, -16)
+texture = ExtResource("4_2w2yg")
+hframes = 15
 
 [node name="Life" type="Container" parent="."]
 offset_right = 40.0

@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://dlc520ltm6mfy"]
+[gd_scene load_steps=12 format=3 uid="uid://dlc520ltm6mfy"]
 
 [ext_resource type="Script" path="res://Scripts/sorcererminion.gd" id="1_noi86"]
 [ext_resource type="Texture2D" uid="uid://bjeghg8gb06c0" path="res://Sprites/Light.png" id="2_pw0r5"]
 [ext_resource type="Texture2D" uid="uid://dqtveq4llwknv" path="res://Sprites/0x72_DungeonTilesetII_v1.4.png" id="3_0aq4g"]
 [ext_resource type="Script" path="res://Scripts/Life2.gd" id="4_5sfag"]
+[ext_resource type="Texture2D" uid="uid://g0l75fq6raog" path="res://Sprites/HatsTest.png" id="4_lldvp"]
 [ext_resource type="AudioStream" uid="uid://ck8ehklnx2i5x" path="res://Audio/Sounds/shoot.wav" id="5_5okrt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dpmbe"]
@@ -79,6 +80,12 @@ collision_mask = 12
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(0, 8)
 shape = SubResource("RectangleShape2D_lw5ja")
+
+[node name="Hat" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, -4)
+texture = ExtResource("4_lldvp")
+hframes = 15
 
 [node name="Life" type="Container" parent="."]
 visible = false

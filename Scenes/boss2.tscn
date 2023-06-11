@@ -1,9 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://bcd0ywoya4f65"]
+[gd_scene load_steps=14 format=3 uid="uid://bcd0ywoya4f65"]
 
 [ext_resource type="Script" path="res://Scripts/boss2.gd" id="1_v7o46"]
 [ext_resource type="Texture2D" uid="uid://olofe4nfgk68" path="res://Sprites/Enchanted Forest Characters with animations.png" id="2_1ic38"]
 [ext_resource type="Texture2D" uid="uid://bjeghg8gb06c0" path="res://Sprites/Light.png" id="2_e8v0v"]
 [ext_resource type="Script" path="res://Scripts/MushroomLife.gd" id="4_6hkb4"]
+[ext_resource type="Texture2D" uid="uid://g0l75fq6raog" path="res://Sprites/HatsTest.png" id="4_qs51n"]
 [ext_resource type="Texture2D" uid="uid://wshs4jur2tgo" path="res://Sprites/HealthBar20.png" id="5_44rtb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dpmbe"]
@@ -99,6 +100,13 @@ collision_mask = 4
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(0.5, 3)
 shape = SubResource("RectangleShape2D_lw5ja")
+
+[node name="Hat" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(1, -16)
+scale = Vector2(2, 2)
+texture = ExtResource("4_qs51n")
+hframes = 15
 
 [node name="Life" type="Container" parent="."]
 offset_right = 40.0

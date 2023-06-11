@@ -3,7 +3,7 @@ extends CharacterBody2D
 var speed = 1.5
 var target: Vector2 = Vector2.ZERO
 var player = null
-var health = 2
+var health = 8
 var hurt = false
 var activated = false
 var invincible = false
@@ -17,7 +17,7 @@ func _ready():
 	var target = player.global_position
 
 func _physics_process(delta):
-	if !hurt and activated and !Global.frozen:
+	if activated and !Global.frozen:
 		if(is_instance_valid(self) && is_instance_valid(player)):
 			velocity = global_position.direction_to(player.global_position) * speed
 			if player.global_position.x > global_position.x:
@@ -46,7 +46,6 @@ func active():
 
 func die():
 	emit_signal("enemyDead")
-	Global.coins = Global.coins + 1
 	$Hat.queue_free()
 	$Area2D.queue_free()
 	$CollisionShape2D.queue_free()

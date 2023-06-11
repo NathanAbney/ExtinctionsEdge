@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://ccxvl0403b63"]
+[gd_scene load_steps=6 format=3 uid="uid://ccxvl0403b63"]
 
 [ext_resource type="Script" path="res://Scripts/ghoul.gd" id="1_1ub7i"]
 [ext_resource type="Texture2D" uid="uid://bjeghg8gb06c0" path="res://Sprites/Light.png" id="2_fqcct"]
 [ext_resource type="Texture2D" uid="uid://dqtveq4llwknv" path="res://Sprites/0x72_DungeonTilesetII_v1.4.png" id="3_urq52"]
+[ext_resource type="Texture2D" uid="uid://g0l75fq6raog" path="res://Sprites/HatsTest.png" id="4_ow51t"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dpmbe"]
 size = Vector2(11, 15)
@@ -34,3 +35,8 @@ collision_layer = 64
 position = Vector2(0.5, 4.5)
 rotation = 0.0349066
 shape = SubResource("RectangleShape2D_dpmbe")
+
+[node name="Hat" type="Sprite2D" parent="."]
+position = Vector2(1, -6)
+texture = ExtResource("4_ow51t")
+hframes = 15

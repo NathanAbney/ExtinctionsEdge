@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://ovmoaawrclfn"]
+[gd_scene load_steps=11 format=3 uid="uid://ovmoaawrclfn"]
 
 [ext_resource type="Script" path="res://Scripts/mushroom_tiny.gd" id="1_nkq36"]
 [ext_resource type="Texture2D" uid="uid://bjeghg8gb06c0" path="res://Sprites/Light.png" id="2_ei5pj"]
 [ext_resource type="Texture2D" uid="uid://olofe4nfgk68" path="res://Sprites/Enchanted Forest Characters with animations.png" id="3_3mjb3"]
+[ext_resource type="Texture2D" uid="uid://g0l75fq6raog" path="res://Sprites/HatsTest.png" id="4_uc5vp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dpmbe"]
 size = Vector2(6, 6)
@@ -123,6 +124,13 @@ color = Color(0.992157, 1, 0.815686, 1)
 [node name="DeathTimer" type="Timer" parent="."]
 wait_time = 0.4
 one_shot = true
+
+[node name="Hat" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, -5)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("4_uc5vp")
+hframes = 15
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="area_entered" from="ActivationArea" to="." method="_on_activation_area_area_entered"]

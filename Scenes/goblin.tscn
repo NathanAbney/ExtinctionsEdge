@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://cr7uabtswvwym"]
+[gd_scene load_steps=12 format=3 uid="uid://cr7uabtswvwym"]
 
 [ext_resource type="Script" path="res://Scripts/goblin.gd" id="1_da5vg"]
 [ext_resource type="Texture2D" uid="uid://dqtveq4llwknv" path="res://Sprites/0x72_DungeonTilesetII_v1.4.png" id="1_l1uj8"]
 [ext_resource type="Texture2D" uid="uid://bjeghg8gb06c0" path="res://Sprites/Light.png" id="2_w21nf"]
 [ext_resource type="Script" path="res://Scripts/Life2.gd" id="3_35834"]
+[ext_resource type="Texture2D" uid="uid://g0l75fq6raog" path="res://Sprites/HatsTest.png" id="5_755ku"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0s85l"]
 radius = 5.0
@@ -83,6 +84,12 @@ collision_mask = 268
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(1, 7.5)
 shape = SubResource("RectangleShape2D_lw5ja")
+
+[node name="Hat" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(1, -4)
+texture = ExtResource("5_755ku")
+hframes = 15
 
 [node name="Life" type="Container" parent="."]
 offset_right = 40.0

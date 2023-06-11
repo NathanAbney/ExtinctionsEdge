@@ -11,6 +11,8 @@ var active = false;
 var throw = 10
 
 func _ready():
+	if Global.enemy_hats:
+		$Hat.visible = true
 	if get_tree().has_group("player"):
 		player = get_tree().get_nodes_in_group("player")[0]
 

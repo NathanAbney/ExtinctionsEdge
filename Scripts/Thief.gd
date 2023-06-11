@@ -10,7 +10,10 @@ var invincible = false
 signal enemyDead
 
 func _ready():
+	if Global.enemy_hats:
+		$Hat.visible = true
 	$Sprite2D.modulate.a = 0
+	$Hat.modulate.a = 0
 	$Shadow.modulate.a = 0
 	$Life/Heart1.modulate.a = 0
 	if get_tree().has_group("player"):
@@ -18,7 +21,7 @@ func _ready():
 	var target = player.global_position
 
 func _physics_process(delta):
-	if !hurt and activated:
+	if !hurt and activated and !Global.frozen:
 		if(is_instance_valid(self) && is_instance_valid(player)):
 			velocity = global_position.direction_to(player.global_position) * speed
 			if player.global_position.x > global_position.x:
@@ -72,5 +75,6 @@ func change_opacity():
 	var opacity = 1 - ((global_position - player.global_position).length() / 100)
 	opacity = clamp(opacity, 0, 1)
 	$Sprite2D.modulate.a = opacity
+	$Hat.modulate.a = opacity
 	$Shadow.modulate.a = opacity
 	$Life/Heart1.modulate.a = opacity

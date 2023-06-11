@@ -12,6 +12,8 @@ var no_hit : bool = false
 var game_beat : bool = false
 var boss_rush_beaten : bool = false
 var cheat_song : bool = false
+var frozen : bool = false
+var enemy_hats : bool = false
 
 func change_next_level():
 	var rng = RandomNumberGenerator.new()
@@ -62,3 +64,4 @@ func change_next_level():
 		elif current_level == 4:
 			boss_rush_beaten = true
 			next_level = "res://Scenes/main_menu.tscn"
+	frozen = false

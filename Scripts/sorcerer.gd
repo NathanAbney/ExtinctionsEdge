@@ -8,6 +8,8 @@ var hurt = false
 signal enemyDead
 
 func _ready():
+	if Global.enemy_hats:
+		$Hat.visible = true
 	if get_tree().has_group("player"):
 		player = get_tree().get_nodes_in_group("player")[0]
 	var target = player.global_position
@@ -36,27 +38,29 @@ func _on_hurt_timeout():
 	hurt = false
 
 func _on_timer_timeout():
-	var h
-	var y
-	if(player.global_position.x > global_position.x):
-		h = 10
-	else:
-		h = -10
-	if(player.global_position.y > global_position.y):
-		y = 10
-	else:
-		y = -10
-	$Sound.play()
-	var fire = preload("res://Scenes/fire.tscn").instantiate()
-	get_parent().add_child(fire)
-	fire.set_collision_mask_value(2, true)
-	fire.position.x = global_position.x + h
-	fire.position.y = global_position.y + y
-	fire.velocity = global_position.direction_to(player.global_position) * 250
+	if !Global.frozen:
+		var h
+		var y
+		if(player.global_position.x > global_position.x):
+			h = 10
+		else:
+			h = -10
+		if(player.global_position.y > global_position.y):
+			y = 10
+		else:
+			y = -10
+		$Sound.play()
+		var fire = preload("res://Scenes/fire.tscn").instantiate()
+		get_parent().add_child(fire)
+		fire.set_collision_mask_value(2, true)
+		fire.position.x = global_position.x + h
+		fire.position.y = global_position.y + y
+		fire.velocity = global_position.direction_to(player.global_position) * 250
 
 func die():
 	emit_signal("enemyDead")
 	Global.coins = Global.coins + 1
+	$Hat.queue_free()
 	$Area2D.queue_free()
 	$CollisionShape2D.queue_free()
 	$Life.queue_free()

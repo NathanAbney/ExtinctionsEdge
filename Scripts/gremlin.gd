@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-var speed = 2.5
+var speed = 2.17
 var target: Vector2 = Vector2.ZERO
 var player = null
 var health = 2
@@ -8,13 +8,15 @@ var hurt = false
 var activated = false
 
 func _ready():
+	if Global.enemy_hats:
+		$Hat.visible = true
 	if get_tree().has_group("player"):
 		player = get_tree().get_nodes_in_group("player")[0]
 	var target = player.global_position
 
 func _physics_process(delta):
 	check_route()
-	if !hurt and activated:
+	if !hurt and activated and !Global.frozen:
 		velocity = global_position.direction_to(target) * speed
 		if velocity.x < 0:
 			$Sprite2D.flip_h = true
@@ -33,6 +35,7 @@ func _on_activation_area_area_entered(area):
 	activated = true
 
 func die():
+	$Hat.queue_free()
 	$Area2D.queue_free()
 	$CollisionShape2D.queue_free()
 	$Sprite2D.visible = false

@@ -137,21 +137,21 @@ func _on_exit_pressed():
 func _on_red_dino_pressed():
 	if $StartMenu/Menu/Dinos/RedDino.disabled == false:
 		MusicController.play_sound(14)
-		Global.dino = ImageTexture.create_from_image(Image.load_from_file("res://Sprites/DinoSprites - mort.png"))
+		Global.dino = preload("res://Sprites/DinoSprites - mort.png")
 
 func _on_blue_dino_pressed():
 	if $StartMenu/Menu/Dinos/BlueDino.disabled == false:
 		MusicController.play_sound(14)
-		Global.dino = ImageTexture.create_from_image(Image.load_from_file("res://Sprites/DinoSprites - doux.png"))
+		Global.dino = preload("res://Sprites/DinoSprites - doux.png")
 
 func _on_yellow_dino_pressed():
 	if $StartMenu/Menu/Dinos/YellowDino.disabled == false:
 		MusicController.play_sound(14)
-		Global.dino = ImageTexture.create_from_image(Image.load_from_file("res://Sprites/DinoSprites - tard.png"))
+		Global.dino = preload("res://Sprites/DinoSprites - tard.png")
 
 func _on_green_dino_pressed():
 	MusicController.play_sound(14)
-	Global.dino = ImageTexture.create_from_image(Image.load_from_file("res://Sprites/DinoSprites - vita.png"))
+	Global.dino = preload("res://Sprites/DinoSprites - vita.png")
 
 func _on_begin_pressed():
 	MusicController.play_sound(14)
@@ -204,7 +204,7 @@ func _on_discord_pressed():
 func _on_code_text_submitted(new_text):
 	if new_text == "BARNEY":
 		MusicController.play_sound(14)
-		Global.dino = ImageTexture.create_from_image(Image.load_from_file("res://Sprites/DinoSprites - purp.png"))
+		Global.dino = preload("res://Sprites/DinoSprites - purp.png")
 	if new_text == "WEENIEHUT":
 		MusicController.play_sound(14)
 		$StartMenu/Menu/Dinos/BlueDino.disabled = false
@@ -225,6 +225,9 @@ func _on_code_text_submitted(new_text):
 		MusicController.play_sound(14)
 		MusicController.play_music(5)
 		Global.cheat_song = true
+	if new_text == "ENEMYSWAG":
+		MusicController.play_sound(14)
+		Global.enemy_hats = true
 
 	$Options/OptionPanel/Code.clear()
 

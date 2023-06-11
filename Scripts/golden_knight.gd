@@ -11,11 +11,13 @@ var activated = false
 signal enemyDead
 
 func _ready():
+	if Global.enemy_hats:
+		$Hat.visible = true
 	if get_tree().has_group("player"):
 		player = get_tree().get_nodes_in_group("player")[0]
 
 func _physics_process(delta):
-	if dash_active:
+	if dash_active and !Global.frozen:
 		if(is_instance_valid(self) && is_instance_valid(player)):
 			velocity = direction.normalized() * 400
 			move_and_slide()
@@ -33,7 +35,7 @@ func _physics_process(delta):
 
 func attack():
 	hurt = false
-	if(is_instance_valid(self) && is_instance_valid(player)):
+	if(is_instance_valid(self) && is_instance_valid(player) && !Global.frozen):
 		var x = global_position.direction_to(player.global_position).x
 		var y = global_position.direction_to(player.global_position).y
 		var slope = (x/y) / 100
@@ -58,6 +60,7 @@ func _on_attack_timeout():
 
 func die():
 	emit_signal("enemyDead")
+	$Hat.queue_free()
 	$CollisionShape2D.queue_free()
 	$Area2D.queue_free()
 	$Life.queue_free()

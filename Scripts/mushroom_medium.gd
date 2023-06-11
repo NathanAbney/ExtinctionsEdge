@@ -9,12 +9,14 @@ var hurt = false
 var activated = false
 
 func _ready():
+	if Global.enemy_hats:
+		$Hat.visible = true
 	if get_tree().has_group("player"):
 		player = get_tree().get_nodes_in_group("player")[0]
 	var target = player.global_position
 
 func _physics_process(delta):
-	if !hurt and activated:
+	if !hurt and activated and !Global.frozen:
 		velocity = global_position.direction_to(player.global_position) * speed
 		if player.global_position.x > global_position.x:
 			$Sprite2D.flip_h = false
@@ -38,6 +40,7 @@ func _on_activation_area_area_entered(area):
 
 func die():
 	Global.coins = Global.coins + 1
+	$Hat.queue_free()
 	$Area2D.queue_free()
 	$CollisionShape2D.queue_free()
 	$Life.queue_free()

@@ -2036,7 +2036,7 @@ layout_mode = 2
 position = Vector2(20, 0)
 scale = Vector2(1.843, 1.843)
 texture = ExtResource("16_pdrt0")
-hframes = 10
+hframes = 15
 
 [node name="Next" type="Button" parent="StartMenu/Hat Selection"]
 material = ExtResource("3_6ree2")

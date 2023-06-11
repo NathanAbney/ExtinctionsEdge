@@ -13,6 +13,8 @@ func _ready():
 	$Timer.start()
 
 func _physics_process(delta):
+	if Global.enemy_hats:
+		$Hat.visible = true
 	if player.global_position.x > global_position.x:
 		$Sprite2D.flip_h = false
 	else:
@@ -26,25 +28,27 @@ func _on_hurt_timeout():
 	hurt = false
 
 func _on_timer_timeout():
-	var h
-	var y
-	if(player.global_position.x > global_position.x):
-		h = 10
-	else:
-		h = -10
-	if(player.global_position.y > global_position.y):
-		y = 10
-	else:
-		y = -10
-	$Sound.play()
-	var fire = preload("res://Scenes/fire.tscn").instantiate()
-	get_parent().add_child(fire)
-	fire.set_collision_mask_value(2, true)
-	fire.position.x = global_position.x + h
-	fire.position.y = global_position.y + y
-	fire.velocity = global_position.direction_to(player.global_position) * 250
+	if !Global.frozen:
+		var h
+		var y
+		if(player.global_position.x > global_position.x):
+			h = 10
+		else:
+			h = -10
+		if(player.global_position.y > global_position.y):
+			y = 10
+		else:
+			y = -10
+		$Sound.play()
+		var fire = preload("res://Scenes/fire.tscn").instantiate()
+		get_parent().add_child(fire)
+		fire.set_collision_mask_value(2, true)
+		fire.position.x = global_position.x + h
+		fire.position.y = global_position.y + y
+		fire.velocity = global_position.direction_to(player.global_position) * 250
 
 func die():
+	$Hat.queue_free()
 	$Area2D.queue_free()
 	$CollisionShape2D.queue_free()
 	$Life.queue_free()

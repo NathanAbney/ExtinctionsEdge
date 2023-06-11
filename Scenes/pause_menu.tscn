@@ -11,6 +11,7 @@ default_font = ExtResource("3_ms6lp")
 process_mode = 3
 position = Vector2(-247, -161)
 scale = Vector2(1.25, 1.25)
+script = ExtResource("1_xtgqx")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_left = -127.0
@@ -27,7 +28,6 @@ offset_top = 85.0
 offset_right = 174.0
 offset_bottom = 176.0
 alignment = 1
-script = ExtResource("1_xtgqx")
 
 [node name="Start2" type="Label" parent="Pause"]
 process_mode = 3
@@ -70,6 +70,6 @@ theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
 action_mode = 0
 text = "Exit"
 
-[connection signal="pressed" from="Pause/Start" to="Pause" method="_on_start_pressed"]
-[connection signal="pressed" from="Pause/Options" to="Pause" method="_on_options_pressed"]
-[connection signal="pressed" from="Pause/Exit" to="Pause" method="_on_exit_pressed"]
+[connection signal="pressed" from="Pause/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="Pause/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="Pause/Exit" to="." method="_on_exit_pressed"]

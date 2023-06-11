@@ -17,7 +17,7 @@ func _ready():
 	sethealth(Global.health)
 	if Global.dino != null:
 		$Sprite2D.texture = Global.dino
-	if Global.hat < 10:
+	if Global.hat < 15:
 		$Hat.visible = true
 		$Hat.frame = Global.hat
 
@@ -138,3 +138,10 @@ func _on_shoot_timer_2_timeout():
 	$Regain.emitting = true
 	MusicController.play_sound(3)
 	noshoot2 = false
+
+func freeze():
+	$Freeze.start(8)
+
+func _on_freeze_timeout():
+	MusicController.play_sound(16)
+	Global.frozen = false

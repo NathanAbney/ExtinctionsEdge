@@ -14,21 +14,22 @@ func open():
 		rng.randomize()
 		var loot = randi_range(0,100)
 		var item
-		if loot < 90:
+		if loot < 85:
 			item = preload("res://Scenes/coin.tscn").instantiate()
+		if loot >= 85 && loot < 90:
+			item = preload("res://Scenes/potion3.tscn").instantiate()
 		if loot >= 90 && loot < 95:
 			item = preload("res://Scenes/potion.tscn").instantiate()
-		if loot >= 95 && loot < 100:
+		if loot >= 95 && loot < 101:
 			item = preload("res://Scenes/potion2.tscn").instantiate()
 		get_parent().add_child(item)
-		item.position.x = global_position.x + rng.randi_range(-25,25)
-		if item.position.x < 0:
-			clamp(-25,-20,item.position.x)
-		if item.position.x > 0:
-			clamp(20,25,item.position.x)
-		item.position.y = global_position.y + rng.randi_range(-25,25)
-		if item.position.y < 0:
-			clamp(-25,-20,item.position.y)
-		if item.position.y > 0:
-			clamp(20,25,item.position.y)
+		var spawnX = rng.randi_range(-25, 25)
+		var spawnY = rng.randi_range(-25, 25)
+		var distance = Vector2(spawnX, spawnY).length()
+		while distance < 10:
+			spawnX = rng.randi_range(-25, 25)
+			spawnY = rng.randi_range(-25, 25)
+			distance = Vector2(spawnX, spawnY).length()
+		item.position.x = global_position.x + spawnX
+		item.position.y = global_position.y + spawnY
 	opened = true
