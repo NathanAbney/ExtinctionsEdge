@@ -17,7 +17,9 @@ func _ready():
 	var target = player.global_position
 
 func _physics_process(delta):
-	if activated and !Global.frozen:
+	if activated and !Global.frozen and health > 0:
+		$axe.rotate(0.06)
+		$axe2.rotate(0.06)
 		if(is_instance_valid(self) && is_instance_valid(player)):
 			velocity = global_position.direction_to(player.global_position) * speed
 			if player.global_position.x > global_position.x:
@@ -46,6 +48,8 @@ func active():
 
 func die():
 	emit_signal("enemyDead")
+	$axe.queue_free()
+	$axe2.queue_free()
 	$Hat.queue_free()
 	$Area2D.queue_free()
 	$CollisionShape2D.queue_free()

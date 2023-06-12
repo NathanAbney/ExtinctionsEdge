@@ -37,6 +37,7 @@ rotation = 0.0349066
 shape = SubResource("RectangleShape2D_dpmbe")
 
 [node name="Hat" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(1, -6)
 texture = ExtResource("4_ow51t")
 hframes = 15
