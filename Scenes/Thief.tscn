@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cridh3ucbugqb"]
+[gd_scene load_steps=15 format=3 uid="uid://cridh3ucbugqb"]
 
 [ext_resource type="Script" path="res://Scripts/Thief.gd" id="1_y84kv"]
 [ext_resource type="Texture2D" uid="uid://bjeghg8gb06c0" path="res://Sprites/Light.png" id="2_yoj4y"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://olofe4nfgk68" path="res://Sprites/Enchanted Forest Characters with animations.png" id="3_uw6if"]
 [ext_resource type="Script" path="res://Scripts/Life2.gd" id="4_bjhfs"]
 [ext_resource type="Texture2D" uid="uid://g0l75fq6raog" path="res://Sprites/HatsTest.png" id="4_lo6qj"]
+[ext_resource type="Script" path="res://Scripts/AnimationPlayer.gd" id="7_tbiim"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0s85l"]
 radius = 5.0
@@ -118,6 +119,11 @@ autoplay = "Walking"
 libraries = {
 "": SubResource("AnimationLibrary_2ian5")
 }
+script = ExtResource("7_tbiim")
+
+[node name="Timer" type="Timer" parent="AnimationPlayer"]
+wait_time = 8.0
+one_shot = true
 
 [node name="ActivationArea" type="Area2D" parent="." groups=["enemy"]]
 position = Vector2(1, 0)

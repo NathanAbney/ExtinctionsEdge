@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://d1y63wu1jqybv"]
+[gd_scene load_steps=13 format=3 uid="uid://d1y63wu1jqybv"]
 
 [ext_resource type="Script" path="res://Scripts/goblin_masked.gd" id="1_756jt"]
 [ext_resource type="Texture2D" uid="uid://bjeghg8gb06c0" path="res://Sprites/Light.png" id="2_vgrri"]
 [ext_resource type="Texture2D" uid="uid://dqtveq4llwknv" path="res://Sprites/0x72_DungeonTilesetII_v1.4.png" id="3_6i5o6"]
 [ext_resource type="Script" path="res://Scripts/LifeMaskedGoblin.gd" id="4_rb5o4"]
 [ext_resource type="Texture2D" uid="uid://g0l75fq6raog" path="res://Sprites/HatsTest.png" id="4_rjksu"]
+[ext_resource type="Script" path="res://Scripts/AnimationPlayer.gd" id="6_clsf7"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0s85l"]
 radius = 5.0
@@ -141,6 +142,11 @@ autoplay = "Walking"
 libraries = {
 "": SubResource("AnimationLibrary_2ian5")
 }
+script = ExtResource("6_clsf7")
+
+[node name="Timer" type="Timer" parent="AnimationPlayer"]
+wait_time = 8.0
+one_shot = true
 
 [node name="ActivationArea" type="Area2D" parent="." groups=["enemy"]]
 collision_layer = 0

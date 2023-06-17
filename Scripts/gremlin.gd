@@ -23,6 +23,9 @@ func _physics_process(delta):
 		else:
 			$Sprite2D.flip_h = false
 		move_and_collide(velocity)
+	elif Global.frozen:
+		if !$AnimationPlayer.frozen:
+			$AnimationPlayer.freeze()
 
 func check_route():
 	if global_position.distance_to(target) <= 50000:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://b0dbqvpoy88jp"]
+[gd_scene load_steps=15 format=3 uid="uid://b0dbqvpoy88jp"]
 
 [ext_resource type="Script" path="res://Scripts/axeman.gd" id="1_se80e"]
 [ext_resource type="Texture2D" uid="uid://bjeghg8gb06c0" path="res://Sprites/Light.png" id="2_8obgf"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dqtveq4llwknv" path="res://Sprites/0x72_DungeonTilesetII_v1.4.png" id="3_kewce"]
 [ext_resource type="Texture2D" uid="uid://g0l75fq6raog" path="res://Sprites/HatsTest.png" id="4_75t3o"]
 [ext_resource type="Script" path="res://Scripts/LifeMaskedGoblin.gd" id="5_5er4f"]
+[ext_resource type="Script" path="res://Scripts/AnimationPlayer.gd" id="7_hw5ip"]
 [ext_resource type="PackedScene" uid="uid://bvd1nodmnstg1" path="res://Scenes/axe.tscn" id="7_lkm2d"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0s85l"]
@@ -142,6 +143,11 @@ autoplay = "Walking"
 libraries = {
 "": SubResource("AnimationLibrary_2ian5")
 }
+script = ExtResource("7_hw5ip")
+
+[node name="Timer" type="Timer" parent="AnimationPlayer"]
+wait_time = 8.0
+one_shot = true
 
 [node name="ActivationArea" type="Area2D" parent="." groups=["enemy"]]
 visible = false

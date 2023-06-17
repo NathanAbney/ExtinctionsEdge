@@ -30,6 +30,9 @@ func _physics_process(delta):
 				$Sprite2D.flip_h = true
 			change_opacity()
 			move_and_collide(velocity)
+	elif Global.frozen:
+		if !$AnimationPlayer.frozen:
+			$AnimationPlayer.freeze()
 
 func _on_area_2d_area_entered(area):
 	if !invincible:

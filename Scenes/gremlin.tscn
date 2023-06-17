@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://cd4ar3jmgtrg8"]
+[gd_scene load_steps=12 format=3 uid="uid://cd4ar3jmgtrg8"]
 
 [ext_resource type="Script" path="res://Scripts/gremlin.gd" id="1_e47li"]
 [ext_resource type="Texture2D" uid="uid://dqtveq4llwknv" path="res://Sprites/0x72_DungeonTilesetII_v1.4.png" id="2_fyy3x"]
 [ext_resource type="Texture2D" uid="uid://bjeghg8gb06c0" path="res://Sprites/Light.png" id="2_g6fcx"]
+[ext_resource type="Script" path="res://Scripts/AnimationPlayer.gd" id="4_1x5py"]
 [ext_resource type="Texture2D" uid="uid://g0l75fq6raog" path="res://Sprites/HatsTest.png" id="4_a076b"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dpmbe"]
@@ -100,6 +101,11 @@ autoplay = "walking"
 libraries = {
 "": SubResource("AnimationLibrary_2ian5")
 }
+script = ExtResource("4_1x5py")
+
+[node name="Timer" type="Timer" parent="AnimationPlayer"]
+wait_time = 8.0
+one_shot = true
 
 [node name="ActivationArea" type="Area2D" parent="."]
 visible = false

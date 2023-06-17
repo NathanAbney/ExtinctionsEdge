@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://ovmoaawrclfn"]
+[gd_scene load_steps=12 format=3 uid="uid://ovmoaawrclfn"]
 
 [ext_resource type="Script" path="res://Scripts/mushroom_tiny.gd" id="1_nkq36"]
 [ext_resource type="Texture2D" uid="uid://bjeghg8gb06c0" path="res://Sprites/Light.png" id="2_ei5pj"]
 [ext_resource type="Texture2D" uid="uid://olofe4nfgk68" path="res://Sprites/Enchanted Forest Characters with animations.png" id="3_3mjb3"]
+[ext_resource type="Script" path="res://Scripts/AnimationPlayer.gd" id="4_apbrp"]
 [ext_resource type="Texture2D" uid="uid://g0l75fq6raog" path="res://Sprites/HatsTest.png" id="4_uc5vp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dpmbe"]
@@ -100,6 +101,11 @@ autoplay = "walking"
 libraries = {
 "": SubResource("AnimationLibrary_2ian5")
 }
+script = ExtResource("4_apbrp")
+
+[node name="Timer" type="Timer" parent="AnimationPlayer"]
+wait_time = 8.0
+one_shot = true
 
 [node name="ActivationArea" type="Area2D" parent="."]
 visible = false

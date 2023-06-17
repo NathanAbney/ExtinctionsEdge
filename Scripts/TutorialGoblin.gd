@@ -17,6 +17,8 @@ func _ready():
 func _physics_process(delta):
 	if !hurt and activated:
 		if(is_instance_valid(self) && is_instance_valid(player)):
+			if Global.frozen && !$AnimationPlayer.frozen:
+				$AnimationPlayer.freeze()
 			if player.global_position.x > global_position.x:
 				$Sprite2D.flip_h = false
 			else:

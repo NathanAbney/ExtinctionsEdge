@@ -13,6 +13,8 @@ func _ready():
 	$Timer.start()
 
 func _physics_process(delta):
+	if Global.frozen && !$AnimationPlayer.frozen:
+		$AnimationPlayer.freeze()
 	if Global.enemy_hats:
 		$Hat.visible = true
 	if player.global_position.x > global_position.x:

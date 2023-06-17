@@ -32,6 +32,9 @@ func _physics_process(delta):
 				dash_active = false;
 				$AnimationPlayer.play("Idle")
 				$Attack.start()
+	elif Global.frozen:
+		if !$AnimationPlayer.frozen:
+			$AnimationPlayer.freeze()
 
 func attack():
 	hurt = false

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dlc520ltm6mfy"]
+[gd_scene load_steps=13 format=3 uid="uid://dlc520ltm6mfy"]
 
 [ext_resource type="Script" path="res://Scripts/sorcererminion.gd" id="1_noi86"]
 [ext_resource type="Texture2D" uid="uid://bjeghg8gb06c0" path="res://Sprites/Light.png" id="2_pw0r5"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://Scripts/Life2.gd" id="4_5sfag"]
 [ext_resource type="Texture2D" uid="uid://g0l75fq6raog" path="res://Sprites/HatsTest.png" id="4_lldvp"]
 [ext_resource type="AudioStream" uid="uid://ck8ehklnx2i5x" path="res://Audio/Sounds/shoot.wav" id="5_5okrt"]
+[ext_resource type="Script" path="res://Scripts/AnimationPlayer.gd" id="6_1e0j7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dpmbe"]
 size = Vector2(12, 16)
@@ -110,6 +111,11 @@ autoplay = "Walking"
 libraries = {
 "": SubResource("AnimationLibrary_2ian5")
 }
+script = ExtResource("6_1e0j7")
+
+[node name="Timer" type="Timer" parent="AnimationPlayer"]
+wait_time = 8.0
+one_shot = true
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 2.0
