@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-var speed = .8
+var speed = 1
 var target: Vector2 = Vector2.ZERO
 var player = null
 var health = 8
@@ -18,8 +18,8 @@ func _ready():
 
 func _physics_process(delta):
 	if activated and !Global.frozen and health > 0:
-		$axe.rotate(0.06)
-		$axe2.rotate(0.06)
+		$axe.rotate(0.04)
+		$axe2.rotate(0.04)
 		if(is_instance_valid(self) && is_instance_valid(player)):
 			velocity = global_position.direction_to(player.global_position) * speed
 			if player.global_position.x > global_position.x:

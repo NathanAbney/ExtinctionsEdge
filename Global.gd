@@ -20,7 +20,7 @@ func change_next_level():
 	rng.randomize()
 	if !boss_rush:
 		if (current_level == 1 or current_level == 3): # Small rooms
-			var room = rng.randi_range(1,4)
+			var room = rng.randi_range(1,5)
 			if room == 1:
 				next_level = "res://Rooms/Small/SmallRoom2.tscn"
 			elif room == 2:
@@ -29,6 +29,8 @@ func change_next_level():
 				next_level = "res://Rooms/Small/SmallRoom4.tscn"
 			elif room == 4:
 				next_level = "res://Rooms/Small/SmallRoom5.tscn"
+			elif room == 5:
+				next_level = "res://Rooms/Small/SmallRoom6.tscn"
 		if (current_level == 2 or current_level == 4): # Medium rooms
 			var room = rng.randi_range(1,2)
 			if room == 1:
