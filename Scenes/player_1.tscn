@@ -609,6 +609,7 @@ text = "Remaining: "
 uppercase = true
 
 [node name="CanvasLayer2" type="CanvasLayer" parent="Camera2D"]
+visible = false
 
 [node name="Victory" type="ColorRect" parent="Camera2D/CanvasLayer2"]
 modulate = Color(1, 1, 1, 0)
@@ -624,6 +625,7 @@ color = Color(0, 0, 0, 1)
 [node name="Text" type="Label" parent="Camera2D/CanvasLayer2/Victory"]
 process_mode = 3
 material = ExtResource("7_n3ubw")
+layout_mode = 0
 offset_left = 399.155
 offset_top = 239.244
 offset_right = 471.155
@@ -639,6 +641,7 @@ uppercase = true
 [node name="Exit" type="Button" parent="Camera2D/CanvasLayer2/Victory"]
 process_mode = 3
 material = ExtResource("7_n3ubw")
+layout_mode = 0
 offset_left = 478.986
 offset_top = 353.881
 offset_right = 540.986

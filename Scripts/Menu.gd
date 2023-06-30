@@ -95,6 +95,7 @@ func delete_save():
 func _ready():
 	MusicController.able = true
 	Global.cheat_song = false
+	Global.dark_mode = false
 	Global.coins = 0
 	TimeTrack.stop_clock()
 	MusicController.stop_music()

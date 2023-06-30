@@ -152,6 +152,7 @@ func win():
 	MusicController.play_music(5)
 	MusicController.able = false
 	$Camera2D/CanvasLayer.visible = false
+	$Camera2D/CanvasLayer2.visible = true
 	won = true
 	get_parent().get_node("Darken").visible = false
 	get_parent().get_node("Fog").visible = false
