@@ -7,6 +7,8 @@ func _ready():
 	$Player1.sethealth(6)
 	Global.coins = 50
 	MusicController.play_music(7)
+	if Global.dark_mode:
+		get_node("Darken").color = Color(0,0,0)
 
 func _on_player_1_dead():
 	$Player1.sethealth(6)

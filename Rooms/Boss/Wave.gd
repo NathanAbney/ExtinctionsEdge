@@ -9,6 +9,8 @@ func _ready():
 	print("Global health: " + str(Global.health))
 	Global.current_level = Global.current_level + 1
 	MusicController.play_music(4)
+	if Global.dark_mode:
+		get_node("Darken").color = Color(0,0,0)
 
 func _on_player_1_dead():
 	var menu = preload("res://Scenes/game_over.tscn").instantiate()

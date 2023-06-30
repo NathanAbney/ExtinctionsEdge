@@ -5,6 +5,7 @@ extends CharacterBody2D
 @export var hurt = false
 @export var noshoot = false
 @export var noshoot2 = false
+@export var won = false
 
 signal dead
 
@@ -23,7 +24,7 @@ func _ready():
 
 func _physics_process(_delta):
 	$Camera2D/CanvasLayer/CoinAmount.text = str(Global.coins)
-	if (!hurt):
+	if (!hurt && !won):
 		var input_direction = Vector2(
 			Input.get_action_strength("right") - Input.get_action_strength("left"),
 			Input.get_action_strength("down") - Input.get_action_strength("up")
@@ -66,17 +67,18 @@ func _physics_process(_delta):
 	$Wand.look_at(get_global_mouse_position())
 
 func take_damage():
-	Global.no_hit = false
-	$Hurt.start()
-	hurt = true
-	state_machine.travel("damage")
-	health = health - 1
-	$Life.update(health)
-	if health == 0:
-		MusicController.play_music(3)
-		emit_signal("dead")
-	else:
-		MusicController.play_sound(9)
+	if !won:
+		Global.no_hit = false
+		$Hurt.start()
+		hurt = true
+		state_machine.travel("damage")
+		health = health - 1
+		$Life.update(health)
+		if health == 0:
+			MusicController.play_music(3)
+			emit_signal("dead")
+		else:
+			MusicController.play_sound(9)
 
 func _on_hurt_timeout():
 	hurt = false
@@ -145,3 +147,19 @@ func freeze():
 func _on_freeze_timeout():
 	MusicController.play_sound(16)
 	Global.frozen = false
+
+func win():
+	MusicController.play_music(5)
+	MusicController.able = false
+	$Camera2D/CanvasLayer.visible = false
+	won = true
+	get_parent().get_node("Darken").visible = false
+	get_parent().get_node("Fog").visible = false
+	TimeTrack.stop_clock()
+	$Camera2D/PointLight2D.enabled = false
+	$TransitionPlayer.play("Win")
+	$Camera2D/CanvasLayer2/Victory/Exit.disabled = false
+	$Camera2D/CanvasLayer2/Victory/Text.text = "You Won! \n Total Time: " + str(floor(TimeTrack.time * 100) / 100)
+
+func _on_exit_pressed():
+	get_parent().get_tree().change_scene_to_file("res://Scenes/main_menu.tscn")

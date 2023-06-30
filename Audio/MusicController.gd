@@ -1,5 +1,7 @@
 extends Node
 
+var able = true
+
 var music = load("res://Audio/Songs/Exploration.ogg") # Track 1 = Exploration music
 var boss = load("res://Audio/Songs/Boss3.ogg") # Track 2 = Boss Fight music
 var death = load("res://Audio/Songs/Death.ogg") # Track 3 = Death music
@@ -40,8 +42,9 @@ func stop_music():
 	$Music.stop()
 
 func play_sound(sound : int):
-	var stream = AudioStreamPlayer.new()
-	stream.stream = sounds[sound - 1]
-	stream.bus = "Sound"
-	add_child(stream)
-	stream.play()
+	if able:
+		var stream = AudioStreamPlayer.new()
+		stream.stream = sounds[sound - 1]
+		stream.bus = "Sound"
+		add_child(stream)
+		stream.play()

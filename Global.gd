@@ -14,12 +14,14 @@ var boss_rush_beaten : bool = false
 var cheat_song : bool = false
 var frozen : bool = false
 var enemy_hats : bool = false
+var dark_mode : bool = false
 
 func change_next_level():
 	var rng = RandomNumberGenerator.new()
 	rng.randomize()
 	if !boss_rush:
 		if (current_level == 1 or current_level == 3): # Small rooms
+			current_level = 7
 			var room = rng.randi_range(1,5)
 			if room == 1:
 				next_level = "res://Rooms/Small/SmallRoom2.tscn"

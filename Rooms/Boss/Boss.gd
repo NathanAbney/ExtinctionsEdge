@@ -3,6 +3,8 @@ extends Node2D
 func _ready():
 	Global.current_level = Global.current_level + 1
 	$Player1.health = Global.health
+	if Global.dark_mode:
+		get_node("Darken").color = Color(0,0,0)
 
 func _on_player_1_dead():
 	var menu = preload("res://Scenes/game_over.tscn").instantiate()
@@ -24,7 +26,7 @@ func next_level():
 func _on_timer_timeout():
 	if !Global.boss_rush:
 		Global.game_beat = true
-		get_tree().change_scene_to_file("res://Scenes/main_menu.tscn")
+		$Player1.win()
 	else:
 		Global.change_next_level()
 		get_tree().change_scene_to_file(Global.next_level)

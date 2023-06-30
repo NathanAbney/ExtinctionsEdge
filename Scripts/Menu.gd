@@ -93,6 +93,7 @@ func delete_save():
 	update_save()
 
 func _ready():
+	MusicController.able = true
 	Global.cheat_song = false
 	Global.coins = 0
 	TimeTrack.stop_clock()
@@ -228,6 +229,9 @@ func _on_code_text_submitted(new_text):
 	if new_text == "ENEMYSWAG":
 		MusicController.play_sound(14)
 		Global.enemy_hats = true
+	if new_text == "DARKSCARYTIME":
+		MusicController.play_sound(14)
+		Global.dark_mode = true
 
 	$Options/OptionPanel/Code.clear()
 

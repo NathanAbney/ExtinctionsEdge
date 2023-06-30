@@ -6,6 +6,8 @@ func _ready():
 	Global.current_level = Global.current_level + 1
 	print("Level ", Global.current_level)
 	print(Global.next_level)
+	if Global.dark_mode:
+		get_node("Darken").color = Color(0,0,0)
 
 func _on_player_1_dead():
 	var menu = preload("res://Scenes/game_over.tscn").instantiate()
