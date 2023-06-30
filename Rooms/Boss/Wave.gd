@@ -11,7 +11,6 @@ func _ready():
 	MusicController.play_music(4)
 
 func _on_player_1_dead():
-	
 	var menu = preload("res://Scenes/game_over.tscn").instantiate()
 	menu.scale.x = 1.25
 	menu.scale.y = 1.25
@@ -35,7 +34,7 @@ func wave_completed():
 			if enemyPos.distance_to($Player1.global_position) >= 50:
 				if (enemy == 1 && wavepower >= 1):
 					var summon = preload("res://Scenes/goblin.tscn").instantiate()
-					get_parent().add_child(summon)
+					add_child(summon)
 					summon.enemyDead.connect(enemyDefeated)
 					summon.global_position = enemyPos
 					wavepower = wavepower - 1
@@ -43,7 +42,7 @@ func wave_completed():
 					summon.activated = true
 				elif (enemy == 2 && wavepower >= 2):
 					var summon = preload("res://Scenes/Thief.tscn").instantiate()
-					get_parent().add_child(summon)
+					add_child(summon)
 					summon.enemyDead.connect(enemyDefeated)
 					summon.global_position = enemyPos
 					wavepower = wavepower - 2
@@ -51,14 +50,14 @@ func wave_completed():
 					summon.activated = true
 				elif (enemy == 3 && wavepower >= 3):
 					var summon = preload("res://Scenes/sorcerer.tscn").instantiate()
-					get_parent().add_child(summon)
+					add_child(summon)
 					summon.enemyDead.connect(enemyDefeated)
 					summon.global_position = enemyPos
 					wavepower = wavepower - 3
 					remaining += 1
 				elif (enemy == 4 && wavepower >= 8):
 					var summon = preload("res://Scenes/golden_knight.tscn").instantiate()
-					get_parent().add_child(summon)
+					add_child(summon)
 					summon.enemyDead.connect(enemyDefeated)
 					summon.global_position = enemyPos
 					wavepower = wavepower - 8
@@ -66,7 +65,7 @@ func wave_completed():
 					summon.activate()
 				elif (enemy == 5 && wavepower >= 6):
 					var summon = preload("res://Scenes/goblin_masked.tscn").instantiate()
-					get_parent().add_child(summon)
+					add_child(summon)
 					summon.enemyDead.connect(enemyDefeated)
 					summon.global_position = enemyPos
 					wavepower = wavepower - 6
