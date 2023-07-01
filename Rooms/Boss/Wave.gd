@@ -117,3 +117,8 @@ func enemyDefeated():
 
 func _on_timer_2_timeout():
 	wave_completed()
+
+func _on_area_2d_2_area_entered(area):
+	if !$AudioStreamPlayer2D.playing:
+		$AudioStreamPlayer2D.play()
+		MusicController.stop_music()

@@ -2851,10 +2851,10 @@ one_shot = true
 
 [node name="Fog" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_5cgsm")
-offset_left = -1102.0
-offset_top = -670.0
-offset_right = -1036.0
-offset_bottom = -593.0
+offset_left = -1371.0
+offset_top = -226.0
+offset_right = -1305.0
+offset_bottom = -149.0
 scale = Vector2(43.299, 18.6759)
 color = Color(1, 1, 1, 0.141176)
 
