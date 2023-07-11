@@ -76,6 +76,7 @@ func wave_completed():
 	$Player1/Camera2D/CanvasLayer/WaveCounter.text = "Wave: " + str(wave)
 	$Player1/Camera2D/CanvasLayer/EnemyCounter.text = "Remaining: " + str(remaining)
 func completed():
+	MusicController.play_sound(17)
 	$Player1/Camera2D/CanvasLayer/EnemyCounter.visible = false
 	$Player1/Camera2D/CanvasLayer/WaveCounter.visible = false
 	$Door.queue_free()
@@ -114,6 +115,8 @@ func enemyDefeated():
 	$Player1/Camera2D/CanvasLayer/EnemyCounter.text = "Remaining: " + str(remaining)
 	if remaining == 0:
 		$Timer2.start()
+		if wave == 5:
+			MusicController.stop_music()
 
 func _on_timer_2_timeout():
 	wave_completed()

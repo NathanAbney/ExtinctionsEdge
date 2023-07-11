@@ -2740,7 +2740,7 @@ layer_3/z_index = 0
 layer_3/tile_data = PackedInt32Array()
 
 [node name="Player1" parent="." groups=["player"] instance=ExtResource("2_77out")]
-position = Vector2(9, -21)
+position = Vector2(-145, -265)
 
 [node name="Darken" type="CanvasModulate" parent="."]
 color = Color(0.294118, 0.294118, 0.294118, 1)
