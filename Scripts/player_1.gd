@@ -149,7 +149,7 @@ func _on_freeze_timeout():
 	Global.frozen = false
 
 func win():
-	MusicController.play_music(5)
+	MusicController.play_music(11)
 	MusicController.able = false
 	$Camera2D/CanvasLayer.visible = false
 	$Camera2D/CanvasLayer2.visible = true

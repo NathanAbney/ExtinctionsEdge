@@ -227,6 +227,14 @@ func _on_code_text_submitted(new_text):
 		MusicController.play_sound(14)
 		MusicController.play_music(5)
 		Global.cheat_song = true
+	if new_text == "DINOSAURSOUP":
+		MusicController.play_sound(14)
+		MusicController.play_music(9)
+		Global.cheat_song = true
+	if new_text == "CURSE":
+		MusicController.play_sound(14)
+		MusicController.play_music(10)
+		Global.cheat_song = true
 	if new_text == "ENEMYSWAG":
 		MusicController.play_sound(14)
 		Global.enemy_hats = true
