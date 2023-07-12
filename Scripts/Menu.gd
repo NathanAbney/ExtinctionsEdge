@@ -195,7 +195,6 @@ func _on_fullscreen_toggled(button_pressed):
 	else:
 		fullscreen = false
 		DisplayServer.window_set_mode(0)
-	print(fullscreen)
 
 func _on_discord_pressed():
 	MusicController.play_sound(14)
@@ -241,7 +240,11 @@ func _on_code_text_submitted(new_text):
 	if new_text == "DARKSCARYTIME":
 		MusicController.play_sound(14)
 		Global.dark_mode = true
-
+	if new_text == "SENDMENUDES":
+		MusicController.play_sound(14)
+		MusicController.play_music(3)
+		$MonkeySmirk.visible = true
+		$MonkeySmirk/Timer.start()
 	$Options/OptionPanel/Code.clear()
 
 func _on_stat_pressed():
@@ -251,3 +254,10 @@ func _on_stat_pressed():
 func _on_m_vol_value_changed(value):
 	volume = value
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), linear_to_db(volume))
+
+func _on_itch_pressed():
+	MusicController.play_sound(14)
+	OS.shell_open("https://costellae-studios.itch.io/")
+
+func _on_timer_timeout():
+	get_tree().quit()

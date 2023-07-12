@@ -1,10 +1,16 @@
-[gd_scene load_steps=5 format=3 uid="uid://hflpe2gjbrx2"]
+[gd_scene load_steps=7 format=3 uid="uid://hflpe2gjbrx2"]
 
 [ext_resource type="Script" path="res://Scripts/Pause.gd" id="1_xtgqx"]
 [ext_resource type="Material" uid="uid://vwprmsgn4vg8" path="res://ExcludeCanvas.tres" id="2_ada41"]
 [ext_resource type="FontFile" uid="uid://d2naa1ovvhg1t" path="res://monogram.ttf" id="3_ms6lp"]
 
 [sub_resource type="Theme" id="Theme_kown1"]
+default_font = ExtResource("3_ms6lp")
+
+[sub_resource type="Theme" id="Theme_6n75o"]
+default_font = ExtResource("3_ms6lp")
+
+[sub_resource type="Theme" id="Theme_c4xkp"]
 default_font = ExtResource("3_ms6lp")
 
 [node name="Pause" type="Node2D"]
@@ -70,6 +76,82 @@ theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
 action_mode = 0
 text = "Exit"
 
+[node name="OptionPanel" type="VBoxContainer" parent="."]
+material = ExtResource("2_ada41")
+offset_left = 185.6
+offset_top = 91.2
+offset_right = 308.6
+offset_bottom = 203.2
+scale = Vector2(0.680724, 0.680724)
+size_flags_vertical = 4
+theme = SubResource("Theme_6n75o")
+alignment = 1
+
+[node name="MasterVol" type="RichTextLabel" parent="OptionPanel"]
+clip_contents = false
+layout_mode = 2
+size_flags_vertical = 8
+text = " Master Volume
+"
+fit_content = true
+tab_size = 2
+
+[node name="MVol" type="HSlider" parent="OptionPanel/MasterVol"]
+modulate = Color(0, 0.72549, 0.882353, 1)
+layout_mode = 2
+anchor_right = 1.0
+anchor_bottom = 3.308
+offset_top = 17.0
+offset_right = -1.0
+offset_bottom = -3.004
+focus_neighbor_right = NodePath("../../Fullscreen")
+focus_neighbor_bottom = NodePath("../../Fullscreen")
+focus_next = NodePath("../../Fullscreen")
+max_value = 1.0
+step = 0.01
+value = 0.8
+
+[node name="Fullscreen" type="CheckButton" parent="OptionPanel"]
+layout_mode = 2
+size_flags_vertical = 10
+size_flags_stretch_ratio = 10.0
+focus_neighbor_left = NodePath("../MasterVol/MVol")
+focus_neighbor_top = NodePath("../MasterVol/MVol")
+focus_previous = NodePath("../MasterVol/MVol")
+button_pressed = true
+text = "Fullscreen"
+
+[node name="Start2" type="Label" parent="OptionPanel"]
+material = ExtResource("2_ada41")
+layout_mode = 2
+focus_neighbor_left = NodePath("../Menu/Box/Exit")
+focus_neighbor_top = NodePath("../Menu/Box/Exit")
+focus_neighbor_right = NodePath("../Menu/Box/Options")
+focus_neighbor_bottom = NodePath("../Menu/Box/Options")
+focus_next = NodePath("../Menu/Box/Options")
+focus_previous = NodePath("../Menu/Box/Exit")
+theme = SubResource("Theme_c4xkp")
+theme_override_colors/font_color = Color(0.627451, 0.627451, 0.627451, 1)
+text = "* options will not save if edited here"
+uppercase = true
+
+[node name="Start3" type="Label" parent="OptionPanel"]
+material = ExtResource("2_ada41")
+layout_mode = 2
+focus_neighbor_left = NodePath("../Menu/Box/Exit")
+focus_neighbor_top = NodePath("../Menu/Box/Exit")
+focus_neighbor_right = NodePath("../Menu/Box/Options")
+focus_neighbor_bottom = NodePath("../Menu/Box/Options")
+focus_next = NodePath("../Menu/Box/Options")
+focus_previous = NodePath("../Menu/Box/Exit")
+theme = SubResource("Theme_c4xkp")
+theme_override_colors/font_color = Color(0.627451, 0.627451, 0.627451, 1)
+text = "Edit in main menu to save settings"
+uppercase = true
+
 [connection signal="pressed" from="Pause/Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="Pause/Options" to="." method="_on_options_pressed"]
 [connection signal="pressed" from="Pause/Exit" to="." method="_on_exit_pressed"]
+[connection signal="drag_ended" from="OptionPanel/MasterVol/MVol" to="." method="_on_m_vol_drag_ended"]
+[connection signal="value_changed" from="OptionPanel/MasterVol/MVol" to="." method="_on_m_vol_value_changed"]
+[connection signal="toggled" from="OptionPanel/Fullscreen" to="." method="_on_fullscreen_toggled"]
