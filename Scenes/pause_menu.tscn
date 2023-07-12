@@ -15,6 +15,7 @@ default_font = ExtResource("3_ms6lp")
 
 [node name="Pause" type="Node2D"]
 process_mode = 3
+z_index = 10
 position = Vector2(-247, -161)
 scale = Vector2(1.25, 1.25)
 script = ExtResource("1_xtgqx")
@@ -77,6 +78,7 @@ action_mode = 0
 text = "Exit"
 
 [node name="OptionPanel" type="VBoxContainer" parent="."]
+visible = false
 material = ExtResource("2_ada41")
 offset_left = 185.6
 offset_top = 91.2

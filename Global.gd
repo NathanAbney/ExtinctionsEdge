@@ -16,44 +16,47 @@ var frozen : bool = false
 var enemy_hats : bool = false
 var dark_mode : bool = false
 
+# Setting up the room data
+
+var sr1 = "res://Rooms/Small/SmallRoom2.tscn"
+var sr2 = "res://Rooms/Small/SmallRoom3.tscn"
+var sr3 = "res://Rooms/Small/SmallRoom4.tscn"
+var sr4 = "res://Rooms/Small/SmallRoom5.tscn"
+var sr5 = "res://Rooms/Small/SmallRoom6.tscn"
+var sr6 = "res://Rooms/Small/GoldRoom.tscn"
+var sr7 = "res://Rooms/Small/TrapRoom.tscn"
+
+var small_rooms = [sr1, sr2, sr3, sr4, sr5, sr6, sr7]
+
+var mr1 = "res://Rooms/Medium/MediumRoom1.tscn"
+var mr2 = "res://Rooms/Medium/MediumRoom2.tscn"
+var mr3 = "res://Rooms/Medium/MediumRoom3.tscn"
+var mr4 = "res://Rooms/Medium/MediumRoom4.tscn"
+
+var med_rooms = [mr1, mr2, mr3, mr4]
+
+var lr1 = "res://Rooms/Large/LargeRoom1.tscn"
+var lr2 = "res://Rooms/Large/LargeRoom2.tscn"
+var lr3 = "res://Rooms/Large/LargeRoom3.tscn"
+var lr4 = "res://Rooms/Large/LargeRoom4.tscn"
+
+var large_rooms = [lr1, lr2, lr3, lr4]
+
+
+
 func change_next_level():
 	var rng = RandomNumberGenerator.new()
 	rng.randomize()
 	if !boss_rush:
 		if (current_level == 1 or current_level == 3): # Small rooms
-			var room = rng.randi_range(1,6)
-			if room == 1:
-				next_level = "res://Rooms/Small/SmallRoom2.tscn"
-			elif room == 2:
-				next_level = "res://Rooms/Small/SmallRoom3.tscn"
-			elif room == 3:
-				next_level = "res://Rooms/Small/SmallRoom4.tscn"
-			elif room == 4:
-				next_level = "res://Rooms/Small/SmallRoom5.tscn"
-			elif room == 5:
-				next_level = "res://Rooms/Small/SmallRoom6.tscn"
-			elif room == 6:
-				next_level = "res://Rooms/Small/GoldRoom.tscn"
+			var room = rng.randi_range(1,7)
+			next_level = small_rooms[room - 1]
 		if (current_level == 2 or current_level == 4): # Medium rooms
 			var room = rng.randi_range(1,4)
-			if room == 1:
-				next_level = "res://Rooms/Medium/MediumRoom1.tscn"
-			elif room == 2:
-				next_level = "res://Rooms/Medium/MediumRoom2.tscn"
-			elif room == 3:
-				next_level = "res://Rooms/Medium/MediumRoom3.tscn"
-			elif room == 4:
-				next_level == "res://Rooms/Medium/MediumRoom4.tscn"
+			next_level = med_rooms[room - 1]
 		if current_level == 5: # Large rooms
 			var room = rng.randi_range(1,4)
-			if room == 1:
-				next_level = "res://Rooms/Large/LargeRoom2.tscn"
-			elif room == 2:
-				next_level = "res://Rooms/Large/LargeRoom1.tscn"
-			elif room == 3:
-				next_level = "res://Rooms/Large/LargeRoom3.tscn"
-			elif room == 4:
-				next_level = "res://Rooms/Large/LargeRoom4.tscn"
+			next_level = large_rooms[room - 1]
 		if current_level == 6: # Wave battle
 			next_level = "res://Rooms/Boss/Wave.tscn"
 		if current_level == 7: # Boss rooms

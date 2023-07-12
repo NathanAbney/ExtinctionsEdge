@@ -22,9 +22,9 @@ func load_user_data():
 		BlueUnlocked = config.get_value("Characters","BlueDino",false)
 		RedUnlocked = config.get_value("Characters","RedDino",false)
 		YellowUnlocked = config.get_value("Characters","YellowDino",false)
-		var wins = config.get_value("Stats","Wins",0)
+		wins = config.get_value("Stats","Wins",0)
 		$Options/Wins.text = "Wins: " + str(wins)
-		var record = config.get_value("Stats","Record",9999.99)
+		record = config.get_value("Stats","Record",9999.99)
 		$Options/Record.text = "Record: " + str(record)
 		username = config.get_value("Stats","Name","false")
 		print(volume)
@@ -52,6 +52,7 @@ func create_save():
 		print("Failed to create save data")
 
 func update_save():
+	load_user_data()
 	var config = ConfigFile.new()
 	var error = config.load("user://character_unlock.cfg")
 	if error == OK:

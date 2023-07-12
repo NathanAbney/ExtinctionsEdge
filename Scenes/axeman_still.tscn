@@ -1,11 +1,9 @@
-[gd_scene load_steps=15 format=3 uid="uid://dohucvml5l3ys"]
+[gd_scene load_steps=13 format=3 uid="uid://dohucvml5l3ys"]
 
 [ext_resource type="Script" path="res://Scripts/axeman_still.gd" id="1_dmqts"]
 [ext_resource type="Texture2D" uid="uid://bspti263v2w0c" path="res://Sprites/Executioner.png" id="2_uaxps"]
 [ext_resource type="Texture2D" uid="uid://bjeghg8gb06c0" path="res://Sprites/Light.png" id="3_ghkxv"]
 [ext_resource type="Texture2D" uid="uid://g0l75fq6raog" path="res://Sprites/HatsTest.png" id="4_8g148"]
-[ext_resource type="Script" path="res://Scripts/LifeMaskedGoblin.gd" id="5_xgb6u"]
-[ext_resource type="Texture2D" uid="uid://dqtveq4llwknv" path="res://Sprites/0x72_DungeonTilesetII_v1.4.png" id="6_ggw1p"]
 [ext_resource type="Script" path="res://Scripts/AnimationPlayer.gd" id="7_e5u32"]
 [ext_resource type="PackedScene" uid="uid://bvd1nodmnstg1" path="res://Scenes/axe.tscn" id="8_6so5h"]
 
@@ -97,43 +95,6 @@ position = Vector2(3, -8)
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("4_8g148")
 hframes = 15
-
-[node name="Life" type="Container" parent="."]
-offset_right = 40.0
-offset_bottom = 40.0
-script = ExtResource("5_xgb6u")
-
-[node name="Heart1" type="Sprite2D" parent="Life"]
-position = Vector2(-9, -4)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("6_ggw1p")
-hframes = 32
-vframes = 32
-frame = 530
-
-[node name="Heart2" type="Sprite2D" parent="Life"]
-position = Vector2(-2, -4)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("6_ggw1p")
-hframes = 32
-vframes = 32
-frame = 530
-
-[node name="Heart3" type="Sprite2D" parent="Life"]
-position = Vector2(5, -4)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("6_ggw1p")
-hframes = 32
-vframes = 32
-frame = 530
-
-[node name="Heart4" type="Sprite2D" parent="Life"]
-position = Vector2(12, -4)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("6_ggw1p")
-hframes = 32
-vframes = 32
-frame = 530
 
 [node name="Hurt" type="Timer" parent="."]
 wait_time = 0.3
