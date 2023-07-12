@@ -149,18 +149,5 @@ func _on_freeze_timeout():
 	Global.frozen = false
 
 func win():
-	MusicController.play_music(11)
-	MusicController.able = false
-	$Camera2D/CanvasLayer.visible = false
-	$Camera2D/CanvasLayer2.visible = true
-	won = true
-	get_parent().get_node("Darken").visible = false
-	get_parent().get_node("Fog").visible = false
 	TimeTrack.stop_clock()
-	$Camera2D/PointLight2D.enabled = false
-	$TransitionPlayer.play("Win")
-	$Camera2D/CanvasLayer2/Victory/Exit.disabled = false
-	$Camera2D/CanvasLayer2/Victory/Text.text = "You Won! \n Total Time: " + str(floor(TimeTrack.time * 100) / 100)
-
-func _on_exit_pressed():
-	get_parent().get_tree().change_scene_to_file("res://Scenes/main_menu.tscn")
+	get_parent().get_tree().change_scene_to_file("res://Scenes/Victory.tscn")

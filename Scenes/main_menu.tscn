@@ -1639,10 +1639,11 @@ physics_layer_0/collision_layer = 258
 physics_layer_0/collision_mask = 17
 sources/0 = SubResource("TileSetAtlasSource_sxuaj")
 
+[sub_resource type="Theme" id="Theme_uh6ip"]
+
 [sub_resource type="Theme" id="Theme_coavw"]
 default_font = ExtResource("5_qoess")
-
-[sub_resource type="Theme" id="Theme_uh6ip"]
+default_font_size = 16
 
 [sub_resource type="Theme" id="Theme_81lmk"]
 
@@ -1793,23 +1794,6 @@ color = Color(0, 0, 0, 0.454902)
 position = Vector2(652, 885)
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("3_0kby7")
-
-[node name="Start2" type="Label" parent="."]
-material = ExtResource("3_6ree2")
-offset_left = 772.0
-offset_top = 1010.0
-offset_right = 840.0
-offset_bottom = 1031.0
-focus_neighbor_left = NodePath("../Menu/Box/Exit")
-focus_neighbor_top = NodePath("../Menu/Box/Exit")
-focus_neighbor_right = NodePath("../Menu/Box/Options")
-focus_neighbor_bottom = NodePath("../Menu/Box/Options")
-focus_next = NodePath("../Menu/Box/Options")
-focus_previous = NodePath("../Menu/Box/Exit")
-theme = SubResource("Theme_coavw")
-theme_override_colors/font_color = Color(0.627451, 0.627451, 0.627451, 1)
-text = "BETA"
-uppercase = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(650, 937)
@@ -2299,8 +2283,8 @@ one_shot = true
 [connection signal="pressed" from="Menu/Box/Options" to="." method="_on_options_pressed"]
 [connection signal="pressed" from="Menu/Box/Credits" to="." method="_on_credits_pressed"]
 [connection signal="pressed" from="Menu/Box/Exit" to="." method="_on_exit_pressed"]
-[connection signal="pressed" from="Menu/Sprite2D/Itch" to="." method="_on_itch_pressed"]
 [connection signal="pressed" from="Menu/Sprite2D/Itch" to="." method="_on_discord_pressed"]
+[connection signal="pressed" from="Menu/Sprite2D/Itch" to="." method="_on_itch_pressed"]
 [connection signal="pressed" from="Menu/Sprite2D/Discord" to="." method="_on_discord_pressed"]
 [connection signal="pressed" from="StartMenu/Menu/Dinos/RedDino" to="." method="_on_red_dino_pressed"]
 [connection signal="pressed" from="StartMenu/Menu/Dinos/BlueDino" to="." method="_on_blue_dino_pressed"]
