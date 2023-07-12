@@ -1,7 +1,7 @@
 extends Node2D
 var bought = false
 var inArea = false
-var price = 40
+var price = 50
 
 func ready():
 	$"Coin Amount".text = "" + str(price)

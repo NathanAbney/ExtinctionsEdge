@@ -32,8 +32,9 @@ var mr1 = "res://Rooms/Medium/MediumRoom1.tscn"
 var mr2 = "res://Rooms/Medium/MediumRoom2.tscn"
 var mr3 = "res://Rooms/Medium/MediumRoom3.tscn"
 var mr4 = "res://Rooms/Medium/MediumRoom4.tscn"
+var mr5 = "res://Rooms/Medium/MediumRoom5.tscn"
 
-var med_rooms = [mr1, mr2, mr3, mr4]
+var med_rooms = [mr1, mr2, mr3, mr4, mr5]
 
 var lr1 = "res://Rooms/Large/LargeRoom1.tscn"
 var lr2 = "res://Rooms/Large/LargeRoom2.tscn"
@@ -42,21 +43,19 @@ var lr4 = "res://Rooms/Large/LargeRoom4.tscn"
 
 var large_rooms = [lr1, lr2, lr3, lr4]
 
-
-
 func change_next_level():
 	var rng = RandomNumberGenerator.new()
 	rng.randomize()
 	if !boss_rush:
 		if (current_level == 1 or current_level == 3): # Small rooms
-			var room = rng.randi_range(1,7)
-			next_level = small_rooms[room - 1]
+			var room = rng.randi_range(0,small_rooms.size() - 1)
+			next_level = small_rooms[room]
 		if (current_level == 2 or current_level == 4): # Medium rooms
-			var room = rng.randi_range(1,4)
-			next_level = med_rooms[room - 1]
+			var room = rng.randi_range(0,med_rooms.size() - 1)
+			next_level = med_rooms[room]
 		if current_level == 5: # Large rooms
-			var room = rng.randi_range(1,4)
-			next_level = large_rooms[room - 1]
+			var room = rng.randi_range(0,large_rooms.size() - 1)
+			next_level = large_rooms[room]
 		if current_level == 6: # Wave battle
 			next_level = "res://Rooms/Boss/Wave.tscn"
 		if current_level == 7: # Boss rooms

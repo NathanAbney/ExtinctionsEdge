@@ -2753,7 +2753,7 @@ position = Vector2(-82, -220)
 color = Color(0.294118, 0.294118, 0.294118, 1)
 
 [node name="Stairs" parent="." instance=ExtResource("4_o0cr3")]
-position = Vector2(-111, -424)
+position = Vector2(-104, -424)
 
 [node name="Items" type="Node" parent="."]
 

@@ -49,6 +49,7 @@ func active():
 
 func die():
 	emit_signal("enemyDead")
+	Global.coins = Global.coins + 3
 	$Hat.queue_free()
 	$Area2D.queue_free()
 	$CollisionShape2D.queue_free()
