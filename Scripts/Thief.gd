@@ -75,7 +75,9 @@ func _on_steal_area_body_entered(body):
 	Global.coins = Global.coins - 1
 
 func change_opacity():
-	var opacity = 1 - ((global_position - player.global_position).length() / 100)
+	var distance = (global_position - player.global_position).length()
+	var visibilityDistance = 200.0  # Adjust this value to control the visibility distance
+	var opacity = 1.0 - (distance / visibilityDistance)
 	opacity = clamp(opacity, 0, 1)
 	$Sprite2D.modulate.a = opacity
 	$Hat.modulate.a = opacity
