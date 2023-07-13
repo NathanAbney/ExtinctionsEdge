@@ -68,7 +68,6 @@ scale = Vector2(0.024, 0.00400001)
 texture = ExtResource("2_vgrri")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(1, 1, 1, 0.658824)
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("3_6i5o6")
 hframes = 32

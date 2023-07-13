@@ -2,19 +2,21 @@ extends Node
 
 var able = true
 
-var music = load("res://Audio/Songs/Exploration.ogg") # Track 1 = Exploration music
-var boss = load("res://Audio/Songs/Boss3.ogg") # Track 2 = Boss Fight music
-var death = load("res://Audio/Songs/Death.ogg") # Track 3 = Death music
-var wave = load("res://Audio/Songs/Wave.ogg") # Track 4 = Wave music
+var music = load("res://Audio/Songs/Exploration.ogg") # Track 1 = Exploration
+var boss = load("res://Audio/Songs/Boss3.ogg") # Track 2 = Mushroom Battle
+var death = load("res://Audio/Songs/Death.ogg") # Track 3 = Game Over
+var wave = load("res://Audio/Songs/Wave.ogg") # Track 4 = Wave
 var song1 = load("res://Audio/Songs/Song1.ogg") # Track 5 = Edge Of Extinction
 var intro = load("res://Audio/Songs/Intro.ogg") # Track 6 = Costellae Intro
-var tut = load("res://Audio/Songs/tutorial.ogg") # Track 7 = Tutorial song
-var menu = load("res://Audio/Songs/menu.ogg") # Track 8 = Menu song
+var tut = load("res://Audio/Songs/tutorial.ogg") # Track 7 = Tutorial
+var menu = load("res://Audio/Songs/menu.ogg") # Track 8 = Menu
 var song2 = load("res://Audio/Songs/Song2.ogg") # Track 9 = Dinosaur Soup
 var song3 = load("res://Audio/Songs/Song3.ogg") # Track 10 = Curse
 var victory = load("res://Audio/Songs/Victory.ogg") # Track 11 = Victory Song
+var alchemist = load("res://Audio/Songs/Alchemist.ogg") # Track 12 = Alchemist Battle
+var wizard = load("res://Audio/Songs/Wizard.ogg") # Track 13 = Wizard Battle
 
-var songs = [music, boss, death, wave, song1, intro, tut, menu, song2, song3, victory]
+var songs = [music, boss, death, wave, song1, intro, tut, menu, song2, song3, victory, alchemist, wizard]
 
 var coin = load("res://Audio/Sounds/coin.wav") # Sound 1 = Coin
 var shoot = load("res://Audio/Sounds/shoot.wav") # Sound 2 = Shoot

@@ -23,5 +23,6 @@ func _on_timer_timeout():
 	$AnimationPlayer.play("Fade_in")
 
 func _on_animation_player_animation_finished(anim_name):
+	TimeTrack.time = 10000
 	if anim_name == "Fade_in":
 		get_tree().change_scene_to_file("res://Scenes/main_menu.tscn")

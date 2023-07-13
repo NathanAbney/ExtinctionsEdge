@@ -40,7 +40,7 @@ func create_save():
 	config.set_value("Characters","RedDino",false)
 	config.set_value("Characters","YellowDino",false)
 	config.set_value("Stats","Wins",0)
-	config.set_value("Stats","Record",99999.99)
+	config.set_value("Stats","Record",9999)
 	config.set_value("Stats","Name","Dino" + str(randi_range(10000,99999)))
 	config.set_value("Settings","Fullscreen",true)
 	config.set_value("Settings","Volume",0.8)
@@ -57,24 +57,24 @@ func update_save():
 	var error = config.load("user://character_unlock.cfg")
 	if error == OK:
 		print("Save data loaded successfully!")
-		if !Global.god_mode:
-			if Global.boss_rush_beaten:
-				print("Blue Dino Unlocked")
-				config.set_value("Characters","BlueDino",true)
-			if Global.no_hit && Global.game_beat:
-				print("Red Dino Unlocked")
-				config.set_value("Characters","RedDino",true)
-			if Global.game_beat:
-				print("Yellow Dino Unlocked")
-				config.set_value("Characters","YellowDino",true)
-				config.set_value("Stats","Wins", wins + 1)
-				if TimeTrack.time < record:
-					config.set_value("Stats","Record",TimeTrack.time)
-			var saveError = config.save("user://character_unlock.cfg")
-			if saveError != OK:
-				print("Failed to update save")
-		else:
-			create_save()
+		if Global.boss_rush_beaten:
+			print("Blue Dino Unlocked")
+			config.set_value("Characters","BlueDino",true)
+		if Global.no_hit && Global.game_beat:
+			print("Red Dino Unlocked")
+			config.set_value("Characters","RedDino",true)
+		if Global.game_beat:
+			print("Yellow Dino Unlocked")
+			config.set_value("Characters","YellowDino",true)
+			config.set_value("Stats","Wins", wins + 1)
+		if TimeTrack.time < record:
+			config.set_value("Stats","Record",TimeTrack.time)
+		TimeTrack.time = 0
+		var saveError = config.save("user://character_unlock.cfg")
+		if saveError != OK:
+			print("Failed to update save")
+	else:
+		create_save()
 	load_user_data()
 
 func update_settings():
@@ -173,7 +173,7 @@ func _on_fade_timer_timeout():
 		MusicController.play_music(1)
 		get_tree().change_scene_to_file("res://Rooms/Small/SmallRoom1.tscn")
 	else:
-		MusicController.play_music(2)
+		MusicController.play_music(12)
 		get_tree().change_scene_to_file("res://Rooms/Boss/Boss4.tscn")
 
 func _on_back_pressed():
@@ -246,6 +246,12 @@ func _on_code_text_submitted(new_text):
 		MusicController.play_music(3)
 		$MonkeySmirk.visible = true
 		$MonkeySmirk/Timer.start()
+		Global.boss_rush_beaten = false
+		create_save()
+		load_user_data()
+		$StartMenu/Menu/Dinos/BlueDino.disabled = !BlueUnlocked
+		$StartMenu/Menu/Dinos/RedDino.disabled = !RedUnlocked
+		$StartMenu/Menu/Dinos/YellowDino.disabled = !YellowUnlocked
 	$Options/OptionPanel/Code.clear()
 
 func _on_stat_pressed():

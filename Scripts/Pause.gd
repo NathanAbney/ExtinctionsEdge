@@ -9,6 +9,7 @@ func _on_options_pressed():
 
 func _on_exit_pressed():
 	get_parent().get_tree().paused = false
+	TimeTrack.time = 10000
 	get_tree().change_scene_to_file("res://Scenes/main_menu.tscn")
 
 func _on_fullscreen_toggled(button_pressed):

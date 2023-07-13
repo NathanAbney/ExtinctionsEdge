@@ -1,6 +1,7 @@
 extends Node2D
 
 func _ready():
+	TimeTrack.time = 10000
 	var config = ConfigFile.new()
 	var error = config.load("user://character_unlock.cfg")
 	if error == OK:
