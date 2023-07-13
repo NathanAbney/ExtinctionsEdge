@@ -59,7 +59,7 @@ func change_next_level():
 		if current_level == 6: # Wave battle
 			next_level = "res://Rooms/Boss/Wave.tscn"
 		if current_level == 7: # Boss rooms
-			var room = rng.randi_range(1,4)
+			var room = rng.randi_range(1,3)
 			MusicController.play_music(2)
 			if room == 1:
 				next_level = "res://Rooms/Boss/Boss1.tscn"
@@ -67,16 +67,12 @@ func change_next_level():
 				next_level = "res://Rooms/Boss/Boss2.tscn"
 			elif room == 3:
 				next_level = "res://Rooms/Boss/Boss3.tscn"
-			elif room == 4:
-				next_level = "res://Rooms/Boss/Boss4.tscn"
 	else:
 		if current_level == 1:
-			next_level = "res://Rooms/Boss/Boss3.tscn"
-		elif current_level == 2:
 			next_level = "res://Rooms/Boss/Boss2.tscn"
-		elif current_level == 3:
+		elif current_level == 2:
 				next_level = "res://Rooms/Boss/Boss1.tscn"
-		elif current_level == 4:
+		elif current_level == 3:
 			boss_rush_beaten = true
 			next_level = "res://Scenes/main_menu.tscn"
 	frozen = false

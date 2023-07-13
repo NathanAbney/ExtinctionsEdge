@@ -45,6 +45,14 @@ func attack():
 	$Attack.start()
 
 func _on_area_2d_area_entered(area):
+	if !active:
+		for i in range(get_parent().get_child_count()):
+			var random_child = get_parent().get_child(randi() % get_parent().get_child_count())
+			if random_child != self:
+				random_child.active()
+		active = true
+		$Attack.start()
+		$Throw.start()
 	health = health - 1
 	$Life.update(health)
 	if health == 0:
@@ -57,13 +65,14 @@ func _on_attack_timeout():
 
 func _on_activation_box_area_entered(area):
 	get_parent().get_parent().camera_zoom()
-	for i in range(get_parent().get_child_count()):
-		var random_child = get_parent().get_child(randi() % get_parent().get_child_count())
-		if random_child != self:
-			random_child.active()
-	active = true
-	$Attack.start()
-	$Throw.start()
+	if !active:
+		for i in range(get_parent().get_child_count()):
+			var random_child = get_parent().get_child(randi() % get_parent().get_child_count())
+			if random_child != self:
+				random_child.active()
+		active = true
+		$Attack.start()
+		$Throw.start()
 
 func _on_throw_timeout():
 	var h

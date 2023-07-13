@@ -1,6 +1,7 @@
 extends Node2D
 
 func _ready():
+	MusicController.play_music(11)
 	$CenterContainer/HBoxContainer/VBoxContainer/Text.text = "You Won! \n Total Time: " + str(floor(TimeTrack.time * 100) / 100)
 	if Global.dino != null:
 		if Global.dino == preload("res://Sprites/DinoSprites - doux.png"):

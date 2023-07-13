@@ -52,6 +52,10 @@ func attack(move : int):
 	$Attack.start()
 
 func _on_area_2d_area_entered(area):
+	if !active:
+		active = true
+		moveReady = false
+		$Attack.start(3)
 	health = health - 1
 	$Life.update(health)
 	if health == 0:
@@ -63,9 +67,10 @@ func _on_attack_timeout():
 
 func _on_activation_box_area_entered(area):
 	get_parent().get_parent().camera_zoom()
-	active = true
-	moveReady = false
-	$Attack.start(3)
+	if !active:
+		active = true
+		moveReady = false
+		$Attack.start(3)
 
 func _on_duplicate_timeout():
 	var summon = preload("res://Scenes/boss2Dud.tscn").instantiate()

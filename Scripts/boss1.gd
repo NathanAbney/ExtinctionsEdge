@@ -41,6 +41,8 @@ func attack(move : int):
 	moveReady = false
 
 func _on_area_2d_area_entered(area):
+	if !active:
+		active = true
 	$Hurt.start()
 	hurt = true
 	health = health - 1
@@ -73,4 +75,5 @@ func _on_flame_timer_timeout():
 
 func _on_activation_box_area_entered(area):
 	get_parent().get_parent().camera_zoom()
-	active = true
+	if !active:
+		active = true
