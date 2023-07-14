@@ -20,3 +20,6 @@ func _physics_process(delta):
 		else:
 			$Sprite2D.flip_h = false
 		move_and_slide()
+
+func active():
+	pass

@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://ctxnlmnyr30mm" path="res://Scenes/player_1.tscn" id="3_6751g"]
 [ext_resource type="PackedScene" uid="uid://buawbm3ybmojk" path="res://Scenes/stairs.tscn" id="4_5i2n8"]
 [ext_resource type="PackedScene" uid="uid://bmtonylm38np2" path="res://Scenes/coin.tscn" id="5_f56vj"]
-[ext_resource type="PackedScene" uid="uid://fry335qufqk5" path="res://Scenes/sorcereractivated.tscn" id="6_mprd0"]
+[ext_resource type="PackedScene" uid="uid://dlc520ltm6mfy" path="res://Scenes/sorcererminion.tscn" id="7_3t58r"]
 [ext_resource type="PackedScene" uid="uid://d1y63wu1jqybv" path="res://Scenes/goblin_masked.tscn" id="7_h76vf"]
 [ext_resource type="PackedScene" uid="uid://dohucvml5l3ys" path="res://Scenes/axeman_still.tscn" id="8_a8r6b"]
 [ext_resource type="Shader" path="res://Shaders/Fog.gdshader" id="9_yyshq"]
@@ -2778,8 +2778,8 @@ position = Vector2(310, 29)
 [node name="Axeman3" parent="Monsters" instance=ExtResource("8_a8r6b")]
 position = Vector2(198, 29)
 
-[node name="SorcererActivated" parent="Monsters" instance=ExtResource("6_mprd0")]
-position = Vector2(136, -215)
+[node name="SorcererMinion" parent="Monsters" instance=ExtResource("7_3t58r")]
+position = Vector2(136, -220)
 
 [node name="Goblin_Masked" parent="Monsters" instance=ExtResource("7_h76vf")]
 position = Vector2(551, -232)
@@ -2795,10 +2795,10 @@ one_shot = true
 
 [node name="Fog" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_5cgsm")
-offset_left = -876.0
-offset_top = -678.0
-offset_right = -830.0
-offset_bottom = -629.0
+offset_left = -875.0
+offset_top = -685.0
+offset_right = -829.0
+offset_bottom = -636.0
 scale = Vector2(43.299, 29.8098)
 color = Color(1, 1, 1, 0.141176)
 

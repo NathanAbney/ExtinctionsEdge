@@ -36,6 +36,9 @@ func attack():
 	if move == 0:
 		for i in range(6):
 			var summon = preload("res://Scenes/goblin.tscn").instantiate()
+			var c = rng.randi_range(0,10)
+			if c == 10:
+				summon = preload("res://Scenes/goblin_masked.tscn").instantiate()
 			get_parent().add_child(summon)
 			summon.position.x = global_position.x + rng.randf_range(-100,100)
 			summon.position.y = global_position.y + rng.randf_range(-100,100)  
@@ -65,6 +68,11 @@ func _on_attack_timeout():
 
 func _on_activation_box_area_entered(area):
 	get_parent().get_parent().camera_zoom()
+	for i in range(get_parent().get_child_count()):
+		var child = get_parent().get_child(i)
+		if !("Goblin" in child.name):
+			if child != self:
+				child.queue_free()
 	if !active:
 		for i in range(get_parent().get_child_count()):
 			var random_child = get_parent().get_child(randi() % get_parent().get_child_count())
