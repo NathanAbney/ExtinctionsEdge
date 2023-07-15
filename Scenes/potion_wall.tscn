@@ -95,6 +95,7 @@ script = ExtResource("1_f7rhv")
 
 [node name="Wall" type="Sprite2D" parent="."]
 z_index = -1
+z_as_relative = false
 texture = ExtResource("2_gampm")
 flip_h = true
 hframes = 32

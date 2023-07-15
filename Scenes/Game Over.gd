@@ -14,5 +14,5 @@ func _on_restart_pressed():
 		MusicController.play_music(1)
 		get_tree().change_scene_to_file("res://Rooms/Small/SmallRoom1.tscn")
 	else:
-		MusicController.play_music(2)
-		get_tree().change_scene_to_file("res://Rooms/Boss/Boss4.tscn")
+		MusicController.play_music(12)
+		get_tree().change_scene_to_file("res://Rooms/Boss/Boss3.tscn")

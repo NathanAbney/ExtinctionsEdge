@@ -2804,6 +2804,12 @@ position = Vector2(1193, -347)
 [node name="SorcererMinion14" parent="Monsters" instance=ExtResource("6_w7pgx")]
 position = Vector2(1272, -726)
 
+[node name="SorcererMinion15" parent="Monsters" instance=ExtResource("6_w7pgx")]
+position = Vector2(1788, -245)
+
+[node name="SorcererMinion12" parent="Monsters" instance=ExtResource("6_w7pgx")]
+position = Vector2(380, -638)
+
 [node name="Traps" type="Node" parent="."]
 
 [node name="Timer" type="Timer" parent="."]

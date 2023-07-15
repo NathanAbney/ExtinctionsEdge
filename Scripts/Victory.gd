@@ -2,10 +2,15 @@ extends Node2D
 
 func _ready():
 	MusicController.play_music(11)
-	$CenterContainer/HBoxContainer/VBoxContainer/Text.text = "You Won! \n Total Time: " + str(floor(TimeTrack.time * 100) / 100)
+	if Global.boss_rush_beaten:
+		$CenterContainer/HBoxContainer/VBoxContainer/Text.text = "You won boss rush! \n Good job!"
+	else:
+		$CenterContainer/HBoxContainer/VBoxContainer/Text.text = "You Won! \n Total Time: " + str(floor(TimeTrack.time * 100) / 100)
 	if Global.dino != null:
 		if Global.dino == preload("res://Sprites/DinoSprites - doux.png"):
 			$CenterContainer/HBoxContainer/TextureRect.texture = preload("res://Sprites/Blue.png")
+			if Global.hat == 7 && Global.QRActive:
+				$QR.visible = true
 		if Global.dino == preload("res://Sprites/DinoSprites - mort.png"):
 			$CenterContainer/HBoxContainer/TextureRect.texture = preload("res://Sprites/Red.png")
 		if Global.dino == preload("res://Sprites/DinoSprites - tard.png"):

@@ -1,0 +1,149 @@
+[gd_scene load_steps=9 format=3 uid="uid://qc4tuj6uexh6"]
+
+[ext_resource type="Script" path="res://Scenes/dialogue.gd" id="1_3f4ew"]
+[ext_resource type="Material" uid="uid://vwprmsgn4vg8" path="res://ExcludeCanvas.tres" id="1_bgyw6"]
+[ext_resource type="FontFile" uid="uid://d2naa1ovvhg1t" path="res://monogram.ttf" id="2_fp017"]
+
+[sub_resource type="Theme" id="Theme_lrhs1"]
+default_font = ExtResource("2_fp017")
+
+[sub_resource type="Animation" id="Animation_6jiri"]
+resource_name = "Fade_in"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera2D/CanvasLayer/?:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera2D/CanvasLayer/Start2:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_uxc7r"]
+resource_name = "Fade_out"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera2D/CanvasLayer/?:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera2D/CanvasLayer/Start2:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_o4u11"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera2D/CanvasLayer/?:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera2D/CanvasLayer/Start2:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_36gtp"]
+_data = {
+"Fade_in": SubResource("Animation_6jiri"),
+"Fade_out": SubResource("Animation_uxc7r"),
+"RESET": SubResource("Animation_o4u11")
+}
+
+[node name="Dialogue" type="Node2D"]
+script = ExtResource("1_3f4ew")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -356.0
+offset_top = -294.0
+offset_right = 375.0
+offset_bottom = 270.0
+color = Color(0, 0, 0, 1)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Camera2D"]
+
+[node name="?" type="Label" parent="Camera2D/CanvasLayer"]
+process_mode = 3
+modulate = Color(1, 1, 1, 0)
+material = ExtResource("1_bgyw6")
+offset_left = -11.0
+offset_top = 128.0
+offset_right = 61.0
+offset_bottom = 178.0
+theme = SubResource("Theme_lrhs1")
+theme_override_colors/font_color = Color(0.627451, 0.627451, 0.627451, 1)
+theme_override_font_sizes/font_size = 50
+text = "?:"
+horizontal_alignment = 1
+uppercase = true
+
+[node name="Start2" type="Label" parent="Camera2D/CanvasLayer"]
+process_mode = 3
+modulate = Color(1, 1, 1, 0)
+material = ExtResource("1_bgyw6")
+offset_left = 39.0
+offset_top = 137.0
+offset_right = 304.0
+offset_bottom = 169.0
+theme = SubResource("Theme_lrhs1")
+theme_override_colors/font_color = Color(0.627451, 0.627451, 0.627451, 1)
+text = "Aww yeah, baby, I'm ready for some dinosaur soup..."
+autowrap_mode = 2
+uppercase = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_36gtp")
+}
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

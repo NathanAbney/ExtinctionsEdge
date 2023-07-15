@@ -15,6 +15,8 @@ var cheat_song : bool = false
 var frozen : bool = false
 var enemy_hats : bool = false
 var dark_mode : bool = false
+var boss : int
+var QRActive : bool = false
 
 # Setting up the room data
 
@@ -60,15 +62,8 @@ func change_next_level():
 			next_level = "res://Rooms/Boss/Wave.tscn"
 		if current_level == 7: # Boss rooms
 			var room = rng.randi_range(1,3)
-			if room == 1:
-				MusicController.play_music(13)
-				next_level = "res://Rooms/Boss/Boss1.tscn"
-			elif room == 2:
-				MusicController.play_music(2)
-				next_level = "res://Rooms/Boss/Boss2.tscn"
-			elif room == 3:
-				MusicController.play_music(12)
-				next_level = "res://Rooms/Boss/Boss3.tscn"
+			boss = room
+			next_level = "res://Scenes/dialogue.tscn"
 	else:
 		if current_level == 1:
 			MusicController.play_music(2)
@@ -78,5 +73,5 @@ func change_next_level():
 			next_level = "res://Rooms/Boss/Boss1.tscn"
 		elif current_level == 3:
 			boss_rush_beaten = true
-			next_level = "res://Scenes/main_menu.tscn"
+			next_level = "res://Scenes/Victory.tscn"
 	frozen = false

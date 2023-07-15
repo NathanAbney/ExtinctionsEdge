@@ -36,40 +36,40 @@ func wave_completed():
 			if enemyPos.distance_to($Player1.global_position) >= 50:
 				if (enemy == 1 && wavepower >= 1):
 					var summon = preload("res://Scenes/goblin.tscn").instantiate()
+					summon.global_position = enemyPos
 					add_child(summon)
 					summon.enemyDead.connect(enemyDefeated)
-					summon.global_position = enemyPos
 					wavepower = wavepower - 1
 					remaining += 1
 					summon.activated = true
 				elif (enemy == 2 && wavepower >= 2):
 					var summon = preload("res://Scenes/Thief.tscn").instantiate()
+					summon.global_position = enemyPos
 					add_child(summon)
 					summon.enemyDead.connect(enemyDefeated)
-					summon.global_position = enemyPos
 					wavepower = wavepower - 2
 					remaining += 1
 					summon.activated = true
 				elif (enemy == 3 && wavepower >= 3):
 					var summon = preload("res://Scenes/sorcerer.tscn").instantiate()
+					summon.global_position = enemyPos
 					add_child(summon)
 					summon.enemyDead.connect(enemyDefeated)
-					summon.global_position = enemyPos
 					wavepower = wavepower - 3
 					remaining += 1
 				elif (enemy == 4 && wavepower >= 8):
 					var summon = preload("res://Scenes/golden_knight.tscn").instantiate()
+					summon.global_position = enemyPos
 					add_child(summon)
 					summon.enemyDead.connect(enemyDefeated)
-					summon.global_position = enemyPos
 					wavepower = wavepower - 8
 					remaining += 1
 					summon.activate()
 				elif (enemy == 5 && wavepower >= 6):
 					var summon = preload("res://Scenes/goblin_masked.tscn").instantiate()
+					summon.global_position = enemyPos
 					add_child(summon)
 					summon.enemyDead.connect(enemyDefeated)
-					summon.global_position = enemyPos
 					wavepower = wavepower - 6
 					remaining += 1
 					summon.activated = true

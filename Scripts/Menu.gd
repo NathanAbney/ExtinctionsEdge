@@ -98,6 +98,7 @@ func _ready():
 	Global.cheat_song = false
 	Global.dark_mode = false
 	Global.coins = 0
+	Global.boss_rush = false
 	TimeTrack.stop_clock()
 	MusicController.stop_music()
 	update_save()
@@ -174,7 +175,7 @@ func _on_fade_timer_timeout():
 		get_tree().change_scene_to_file("res://Rooms/Small/SmallRoom1.tscn")
 	else:
 		MusicController.play_music(12)
-		get_tree().change_scene_to_file("res://Rooms/Boss/Boss4.tscn")
+		get_tree().change_scene_to_file("res://Rooms/Boss/Boss3.tscn")
 
 func _on_back_pressed():
 	MusicController.play_sound(13)
@@ -241,9 +242,12 @@ func _on_code_text_submitted(new_text):
 	if new_text == "DARKSCARYTIME":
 		MusicController.play_sound(14)
 		Global.dark_mode = true
+	if new_text == "NATHANSCODE":
+		MusicController.play_sound(5)
+		Global.QRActive = true
 	if new_text == "SENDMENUDES":
 		MusicController.play_sound(14)
-		MusicController.play_music(3)
+		MusicController.play_music(13)
 		$MonkeySmirk.visible = true
 		$MonkeySmirk/Timer.start()
 		Global.boss_rush_beaten = false

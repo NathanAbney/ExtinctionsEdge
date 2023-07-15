@@ -35,8 +35,9 @@ var valid = load("res://Audio/Sounds/Retro8.ogg") # Sound 14 = valid
 var slow = load("res://Audio/Sounds/slow.wav") # Sound 15 = slow
 var normalspeed = load("res://Audio/Sounds/normalspeed.wav") # Sound 16 = normal speed
 var dooropen = load("res://Audio/Sounds/door open.wav") # Sound 17 = door open
+var impact = load("res://Audio/Sounds/impact.wav") # Sound 18 = impact
 
-var sounds = [coin, shoot, regain, bubble, heal, speed, open, step, hurt, buy, deny, select, back, valid, slow, normalspeed, dooropen]
+var sounds = [coin, shoot, regain, bubble, heal, speed, open, step, hurt, buy, deny, select, back, valid, slow, normalspeed, dooropen, impact]
 
 func play_music(song : int):
 	if !Global.cheat_song:
