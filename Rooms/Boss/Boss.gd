@@ -1,6 +1,8 @@
 extends Node2D
 
 func _ready():
+	if Global.supersmall:
+		$Player1.scale = Vector2(.5,.5)
 	Global.current_level = Global.current_level + 1
 	$Player1.health = Global.health
 	if Global.dark_mode:

@@ -97,6 +97,7 @@ func _ready():
 	MusicController.able = true
 	Global.cheat_song = false
 	Global.dark_mode = false
+	Global.supersmall = false
 	Global.coins = 0
 	Global.boss_rush = false
 	TimeTrack.stop_clock()
@@ -245,6 +246,9 @@ func _on_code_text_submitted(new_text):
 	if new_text == "NATHANSCODE":
 		MusicController.play_sound(5)
 		Global.QRActive = true
+	if new_text == "SUPERSMALLDINO":
+		MusicController.play_sound(14)
+		Global.supersmall = true
 	if new_text == "SENDMENUDES":
 		MusicController.play_sound(14)
 		MusicController.play_music(13)

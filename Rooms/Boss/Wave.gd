@@ -6,6 +6,8 @@ var rng = RandomNumberGenerator.new()
 var remaining : int = 0
 
 func _ready():
+	if Global.supersmall:
+		$Player1.scale = Vector2(.5,.5)
 	print("Global health: " + str(Global.health))
 	Global.current_level = Global.current_level + 1
 	MusicController.play_music(4)

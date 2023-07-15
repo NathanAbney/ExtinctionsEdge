@@ -17,6 +17,7 @@ var enemy_hats : bool = false
 var dark_mode : bool = false
 var boss : int
 var QRActive : bool = false
+var supersmall : bool = false
 
 # Setting up the room data
 
