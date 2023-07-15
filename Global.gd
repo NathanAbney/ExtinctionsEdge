@@ -28,16 +28,19 @@ var sr4 = "res://Rooms/Small/SmallRoom5.tscn"
 var sr5 = "res://Rooms/Small/SmallRoom6.tscn"
 var sr6 = "res://Rooms/Small/GoldRoom.tscn"
 var sr7 = "res://Rooms/Small/TrapRoom.tscn"
+var sr8 = "res://Rooms/Small/SmallRoom7.tscn"
+var sr9 = "res://Rooms/Small/SmallRoom8.tscn"
 
-var small_rooms = [sr1, sr2, sr3, sr4, sr5, sr6, sr7]
+var small_rooms = [sr1, sr2, sr3, sr4, sr5, sr6, sr7, sr8, sr9]
 
 var mr1 = "res://Rooms/Medium/MediumRoom1.tscn"
 var mr2 = "res://Rooms/Medium/MediumRoom2.tscn"
 var mr3 = "res://Rooms/Medium/MediumRoom3.tscn"
 var mr4 = "res://Rooms/Medium/MediumRoom4.tscn"
 var mr5 = "res://Rooms/Medium/MediumRoom5.tscn"
+var mr6 = "res://Rooms/Medium/MediumRoom6.tscn"
 
-var med_rooms = [mr1, mr2, mr3, mr4, mr5]
+var med_rooms = [mr1, mr2, mr3, mr4, mr5, mr6]
 
 var lr1 = "res://Rooms/Large/LargeRoom1.tscn"
 var lr2 = "res://Rooms/Large/LargeRoom2.tscn"
