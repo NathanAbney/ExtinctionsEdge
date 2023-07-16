@@ -5,7 +5,7 @@ var activated = false
 
 func _ready():
 	$Player1.sethealth(6)
-	Global.coins = 50
+	Global.coins = 56
 	MusicController.play_music(7)
 	if Global.dark_mode:
 		get_node("Darken").color = Color(0,0,0)

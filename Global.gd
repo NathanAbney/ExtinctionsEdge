@@ -39,8 +39,10 @@ var mr3 = "res://Rooms/Medium/MediumRoom3.tscn"
 var mr4 = "res://Rooms/Medium/MediumRoom4.tscn"
 var mr5 = "res://Rooms/Medium/MediumRoom5.tscn"
 var mr6 = "res://Rooms/Medium/MediumRoom6.tscn"
+var mr7 = "res://Rooms/Medium/MediumRoom7.tscn"
+var mr8 = "res://Rooms/Medium/MediumRoom8.tscn"
 
-var med_rooms = [mr1, mr2, mr3, mr4, mr5, mr6]
+var med_rooms = [mr1, mr2, mr3, mr4, mr5, mr6, mr7, mr8]
 
 var lr1 = "res://Rooms/Large/LargeRoom1.tscn"
 var lr2 = "res://Rooms/Large/LargeRoom2.tscn"

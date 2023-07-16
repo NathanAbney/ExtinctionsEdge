@@ -67,7 +67,7 @@ func update_save():
 			print("Yellow Dino Unlocked")
 			config.set_value("Characters","YellowDino",true)
 			config.set_value("Stats","Wins", wins + 1)
-		if TimeTrack.time < record:
+		if TimeTrack.time < record && !Global.boss_rush_beaten:
 			config.set_value("Stats","Record",TimeTrack.time)
 		TimeTrack.time = 0
 		var saveError = config.save("user://character_unlock.cfg")
@@ -257,9 +257,6 @@ func _on_code_text_submitted(new_text):
 		Global.boss_rush_beaten = false
 		create_save()
 		load_user_data()
-		$StartMenu/Menu/Dinos/BlueDino.disabled = !BlueUnlocked
-		$StartMenu/Menu/Dinos/RedDino.disabled = !RedUnlocked
-		$StartMenu/Menu/Dinos/YellowDino.disabled = !YellowUnlocked
 	$Options/OptionPanel/Code.clear()
 
 func _on_stat_pressed():

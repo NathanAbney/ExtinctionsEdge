@@ -2823,14 +2823,14 @@ offset_top = -746.0
 offset_right = -240.0
 offset_bottom = -697.0
 scale = Vector2(43.299, 18.6759)
-color = Color(1, 1, 1, 0.141176)
+color = Color(0, 0, 0, 1)
 
 [node name="Fog2" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_u6rkd")
-offset_left = 1145.0
-offset_top = -1608.0
-offset_right = 1191.0
-offset_bottom = -1559.0
+offset_left = 1115.0
+offset_top = -1662.0
+offset_right = 1161.0
+offset_bottom = -1613.0
 scale = Vector2(43.299, 18.6759)
 color = Color(1, 1, 1, 0.141176)
 
