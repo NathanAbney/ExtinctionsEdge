@@ -2741,7 +2741,6 @@ layer_3/z_index = 0
 layer_3/tile_data = PackedInt32Array()
 
 [node name="Player1" parent="." groups=["player"] instance=ExtResource("3_c5dq5")]
-visible = false
 position = Vector2(-116, -156)
 
 [node name="Darken" type="CanvasModulate" parent="."]
@@ -2751,6 +2750,36 @@ color = Color(0.294118, 0.294118, 0.294118, 1)
 position = Vector2(24, 280)
 
 [node name="Items" type="Node" parent="."]
+
+[node name="Coin" parent="Items" instance=ExtResource("11_8rbnq")]
+position = Vector2(56, -123)
+
+[node name="Coin2" parent="Items" instance=ExtResource("11_8rbnq")]
+position = Vector2(-137, -59)
+
+[node name="Coin3" parent="Items" instance=ExtResource("11_8rbnq")]
+position = Vector2(186, 7)
+
+[node name="Coin4" parent="Items" instance=ExtResource("11_8rbnq")]
+position = Vector2(-23, 71)
+
+[node name="Coin5" parent="Items" instance=ExtResource("11_8rbnq")]
+position = Vector2(24, 246)
+
+[node name="Coin6" parent="Items" instance=ExtResource("11_8rbnq")]
+position = Vector2(-9, 247)
+
+[node name="Coin7" parent="Items" instance=ExtResource("11_8rbnq")]
+position = Vector2(56, 247)
+
+[node name="Coin8" parent="Items" instance=ExtResource("11_8rbnq")]
+position = Vector2(-40, -168)
+
+[node name="Coin9" parent="Items" instance=ExtResource("11_8rbnq")]
+position = Vector2(9, -24)
+
+[node name="Coin10" parent="Items" instance=ExtResource("11_8rbnq")]
+position = Vector2(89, 38)
 
 [node name="Monsters" type="Node" parent="."]
 
@@ -2810,36 +2839,6 @@ offset_right = -1056.0
 offset_bottom = -329.0
 scale = Vector2(43.299, 18.6759)
 color = Color(1, 1, 1, 0.141176)
-
-[node name="Coin" parent="." instance=ExtResource("11_8rbnq")]
-position = Vector2(56, -123)
-
-[node name="Coin2" parent="." instance=ExtResource("11_8rbnq")]
-position = Vector2(-137, -59)
-
-[node name="Coin3" parent="." instance=ExtResource("11_8rbnq")]
-position = Vector2(186, 7)
-
-[node name="Coin4" parent="." instance=ExtResource("11_8rbnq")]
-position = Vector2(-23, 71)
-
-[node name="Coin5" parent="." instance=ExtResource("11_8rbnq")]
-position = Vector2(24, 246)
-
-[node name="Coin6" parent="." instance=ExtResource("11_8rbnq")]
-position = Vector2(-9, 247)
-
-[node name="Coin7" parent="." instance=ExtResource("11_8rbnq")]
-position = Vector2(56, 247)
-
-[node name="Coin8" parent="." instance=ExtResource("11_8rbnq")]
-position = Vector2(-40, -168)
-
-[node name="Coin9" parent="." instance=ExtResource("11_8rbnq")]
-position = Vector2(9, -24)
-
-[node name="Coin10" parent="." instance=ExtResource("11_8rbnq")]
-position = Vector2(89, 38)
 
 [connection signal="dead" from="Player1" to="." method="_on_player_1_dead"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

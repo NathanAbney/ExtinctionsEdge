@@ -2714,6 +2714,7 @@ color = Color(0, 0, 0, 1)
 [node name="Tilemap" type="TileMap" parent="."]
 z_index = -3
 tile_set = SubResource("TileSet_n25lq")
+collision_visibility_mode = 1
 format = 2
 layer_0/name = "Ground"
 layer_0/z_index = -1
@@ -2738,12 +2739,14 @@ layer_3/modulate = Color(1, 1, 1, 1)
 layer_3/y_sort_enabled = false
 layer_3/y_sort_origin = 0
 layer_3/z_index = 0
-layer_3/tile_data = PackedInt32Array(131079, 983040, 16, 131080, 983040, 16, 131081, 983040, 16, 131082, 983040, 16, 131083, 983040, 16, 131084, 983040, 16, 131085, 983040, 16, 131086, 983040, 16, 131087, 983040, 16, 131088, 983040, 16, 131089, 983040, 16, 131090, 983040, 16, 131091, 983040, 16, 131092, 983040, 16, -196601, 983040, 16, -196600, 983040, 16, -196599, 983040, 16, -196598, 983040, 16, -196597, 983040, 16, -196596, 983040, 16, -196595, 983040, 16, -196594, 983040, 16, -196593, 983040, 16, -196592, 983040, 16, -262128, 983040, 16, -327664, 983040, 16, -393200, 983040, 16, -458736, 983040, 16, -524272, 983040, 16, -589808, 983040, 16, -655344, 983040, 16, -720880, 983040, 16, -786416, 983040, 16, -851952, 983040, 16, -917488, 983040, 16)
+layer_3/tile_data = PackedInt32Array()
 
 [node name="Player1" parent="." groups=["player"] instance=ExtResource("3_fm0bb")]
+visible = false
 position = Vector2(-19, 5)
 
 [node name="Darken" type="CanvasModulate" parent="."]
+visible = false
 color = Color(0.294118, 0.294118, 0.294118, 1)
 
 [node name="Stairs" parent="." instance=ExtResource("4_dimf1")]
@@ -2838,6 +2841,7 @@ wait_time = 0.2
 one_shot = true
 
 [node name="Fog" type="ColorRect" parent="."]
+visible = false
 material = SubResource("ShaderMaterial_5cgsm")
 offset_left = -1023.0
 offset_top = -996.0
